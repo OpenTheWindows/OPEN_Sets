@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules",
+    "./typings/**/*.d.ts"
+  ],
+  "filesGlob": [
+    "./src/scripts/**/*.ts",
+    "./src/scripts/definitions/*.d.ts",
+    "./typings/tsd.d.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false
+}

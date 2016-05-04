@@ -1,0 +1,8 @@
+{
+  "name": "open-sets",
+  "version": "0.0.1",
+  "dependencies": {
+    "phaser-official": "2.3.0"
+  }
+}
+

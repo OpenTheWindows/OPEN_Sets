@@ -1,0 +1,11 @@
+.DS_Store
+*.db
+npm-debug.log
+node_modules/
+vendor/
+.idea/
+*.iml
+build/
+dist/
+typings/
+coverage/
