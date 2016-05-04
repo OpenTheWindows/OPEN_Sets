@@ -9,10 +9,9 @@ module.exports = function (config) {
     files: [
       { pattern: './src/scripts/services/*.ts', included: false },
       { pattern: './src/scripts/services/*.js', included: true },
-      { pattern: './src/tests/dist/spec.js', included: true },
       { pattern: './src/scripts/services/*.js.map', included: false },
-      { pattern: './src/tests/*.js', included: false },
       { pattern: './src/tests/*.ts', included: false },
+      { pattern: './src/tests/*.js', included: true, watched: false },      
       { pattern: './src/tests/*.js.map', included: false }
     ],
     exclude: [],

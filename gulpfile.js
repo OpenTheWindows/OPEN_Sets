@@ -33,14 +33,16 @@ var tsProject = $.typescript.createProject({
   declarationFiles: true,
   noExternalResolve: true,
   sortOutput: true,
-  sourceRoot: '../scripts'
+  sourceRoot: '../scripts',
+  noResolve: false
 });
 
 var specProject = $.typescript.createProject({
   declarationFiles: true,
   noExternalResolve: true,
   sortOutput: true,
-  sourceRoot: '../tests'
+  sourceRoot: '../tests',
+  noResolve: false
 });
 
 gulp.task('typescript', function() {
@@ -127,7 +129,7 @@ gulp.task('cache:clear', function () {
 });
 
 gulp.task('clean-test', function (cb) {
-return del(['src/scripts/services/*.js', 'src/scripts/services/*.map', 'src/tests/*.js', 'src/tests/*.map','/src/tests/dist/'], cb);
+return del(['src/scripts/services/*.js', 'src/scripts/services/*.map', 'src/tests/*.js', 'src/tests/*.map'], cb);
 });
 
 gulp.task("build-source", function () {
@@ -163,7 +165,13 @@ gulp.task('execute-test', function (done) {
   return new KarmaServer({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, done).start();
+  }, function(karmaResult) {
+        if (karmaResult === 1) {
+            done('karma: tests failed with code ' + karmaResult);
+        } else {
+            done();
+        }
+    }).start();
 });
 
 gulp.task('open-test-coverage', function () {
