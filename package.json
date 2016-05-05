@@ -42,7 +42,8 @@
   "scripts": {
     "postinstall": "bower install && typings install",
     "start": "gulp",
-    "test": "gulp test"
+    "test": "gulp test",
+    "test:coverage":"gulp test-coverage"
   },
   "engines": {
     "node": ">= 4.2.1",
