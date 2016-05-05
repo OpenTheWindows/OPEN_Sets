@@ -40,8 +40,7 @@
     "typings": "^0.8.1"
   },
   "scripts": {
-    "install": "bower install",
-    "postinstall": "typings install",
+    "postinstall": "bower install && typings install",
     "start": "gulp",
     "test": "gulp test"
   },
