@@ -1,4 +1,4 @@
-# OPEN_Sets
+# OPEN_Sets [![Build Status](https://travis-ci.org/OpenTheWindows/OPEN_Sets.svg?branch=master)](https://travis-ci.org/OpenTheWindows/OPEN_Sets)
 The "Sets" game project.
 
 1. Phaser
