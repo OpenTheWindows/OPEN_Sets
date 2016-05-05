@@ -36,12 +36,14 @@
     "phantomjs-prebuilt": "^2.1.7",
     "remap-istanbul": "^0.6.3",
     "run-sequence": "*",
-    "tsd": "^0.6.5"
+    "tsd": "^0.6.5",
+    "typings": "^0.8.1"
   },
   "scripts": {
-    "postinstall": "bower install && tsd install",
+    "install":"bower install",
+    "postinstall": "typings install",
     "start": "gulp",
-    "test":  "gulp test"
+    "test": "gulp test"
   },
   "license": "MIT",
   "repository": {}
