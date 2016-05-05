@@ -129,15 +129,15 @@ gulp.task('cache:clear', function () {
 });
 
 gulp.task('clean-test', function (cb) {
-return del(['src/scripts/services/*.js', 'src/scripts/services/*.map', 'src/tests/*.js', 'src/tests/*.map'], cb);
+return del([paths.dist], cb);
 });
 
 gulp.task("build-source", function () {
-  return gulp.src('src/scripts/services/*.ts')
+  return gulp.src('src/scripts/services/**/*.ts')
     .pipe($.sourcemaps.init())
     .pipe($.typescript(tsProject))
     .pipe($.sourcemaps.write('./', {sourceRoot: './services'}))
-    .pipe(gulp.dest(__dirname + '/src/scripts/services/'));
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task("build-test", function () {
@@ -145,7 +145,7 @@ var specResult = gulp.src(paths.spec)
     .pipe($.sourcemaps.init())
     .pipe($.typescript(specProject))
     .pipe($.sourcemaps.write('./', {sourceRoot: './services'}))
-    .pipe(gulp.dest(__dirname + '/src/tests'));
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('pre-test', function (done) {

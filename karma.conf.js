@@ -7,12 +7,10 @@ module.exports = function (config) {
     reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
 
     files: [
-      { pattern: './src/scripts/services/*.ts', included: false },
-      { pattern: './src/scripts/services/*.js', included: true },
-      { pattern: './src/scripts/services/*.js.map', included: false },
-      { pattern: './src/tests/*.ts', included: false },
-      { pattern: './src/tests/*.js', included: true, watched: false },      
-      { pattern: './src/tests/*.js.map', included: false }
+      { pattern: './src/scripts/services/**/*.ts', included: false },
+      { pattern: './src/tests/**/*.ts', included: false },
+      { pattern: './dist/*.js', included: true, watched: false },      
+      { pattern: './dist/*.js.map', included: false }
     ],
     exclude: [],
 
@@ -27,8 +25,7 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      './src/scripts/services/*.js': ['coverage', 'sourcemap'],
-      './src/tests/*.js': ['sourcemap']
+      './dist/!(*spec).js': ['coverage', 'sourcemap'],
     },
 
     coverageReporter: {
