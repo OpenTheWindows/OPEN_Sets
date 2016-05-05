@@ -1,5 +1,3 @@
-/// <reference path="definitions/phaser.comments.d.ts"/>
-
 module OPENSets {
   export class Game extends Phaser.Game {
     constructor() {
