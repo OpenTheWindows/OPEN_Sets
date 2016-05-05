@@ -40,8 +40,14 @@
     "typings": "^0.8.1"
   },
   "scripts": {
-    "postinstall": "bower install && tsd install",
-    "start": "gulp"
+    "postinstall": "bower install && typings install",
+    "start": "gulp",
+    "test": "gulp test",
+    "test:coverage":"gulp test-coverage"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
   },
   "license": "MIT",
   "repository": {}

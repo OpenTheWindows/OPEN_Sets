@@ -4,7 +4,7 @@ module.exports = function (config) {
 
     frameworks: ['jasmine'],
     browsers: ['PhantomJS'],
-    reporters: ['progress', 'coverage', 'karma-remap-istanbul'],
+    reporters: ['progress', 'coverage'],
 
     files: [
       { pattern: './src/scripts/services/**/*.ts', included: false },

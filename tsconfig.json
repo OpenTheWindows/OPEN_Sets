@@ -9,12 +9,13 @@
   },
   "exclude": [
     "node_modules",
-    "./typings/**/*.d.ts"
+    "typings/main",
+    "typings/main.d.ts"
   ],
   "filesGlob": [
     "./src/scripts/**/*.ts",
     "./src/scripts/definitions/*.d.ts",
-    "./typings/tsd.d.ts"
+    "typings/browser.d.ts"
   ],
   "compileOnSave": false,
   "buildOnSave": false

@@ -184,7 +184,12 @@ gulp.task('test', function() {
     'clean-test',
     ['build-source', 'build-test'],
     'execute-test',
-    'coverage',
+    'coverage');
+});
+
+gulp.task('test-coverage', function() {
+  return runSequence(
+    'test',
     'open-test-coverage');
 });
 
