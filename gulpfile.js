@@ -2,58 +2,50 @@ var gulp = require('gulp'),
   $ = require('gulp-load-plugins')(),
   bowerFiles = require('main-bower-files'),
   concat = require('gulp-concat-sourcemap'),
-  deploy = require('gulp-gh-pages'),
   del = require('del'),
   runSequence = require('run-sequence'),
-  remapIstanbul = require("remap-istanbul/lib/gulpRemapIstanbul");
+  remapIstanbul = require("remap-istanbul/lib/gulpRemapIstanbul"),
+  karmaServer = require('karma').Server,
+  paths = {
+    assets: 'src/assets/**/*',
+    less: 'src/css/main.less',
+    index: 'src/index.html',
+    ts: 'src/scripts/**/*.ts',
+    spec: 'src/tests/**/*.spec.ts',
+    build: 'build',
+    dist: 'dist'
+  };
 
-var KarmaServer = require('karma').Server;
-var jasmine = require('gulp-jasmine');
+var tsProject = $.typescript.createProject('tsconfig.json');
 
-var paths = {
-  assets: 'src/assets/**/*',
-  less: 'src/css/main.less',
-  index: 'src/index.html',
-  ts: 'src/scripts/**/*.ts',
-  spec: 'src/tests/**/*.spec.ts',
-  build: 'build',
-  dist: 'dist'
-};
+var specProject = $.typescript.createProject('tsconfig.spec.json');
+
+gulp.task('typescript', function () {
+  var tsResult = gulp.src([paths.ts])
+    .pipe($.sourcemaps.init())
+    .pipe($.typescript(tsProject));
+
+  return tsResult.js
+    .pipe(concat('main.js'))
+    //.pipe($.sourcemaps.write(paths.build))
+    .pipe(gulp.dest(paths.build));
+});
 
 gulp.task('clean', function (cb) {
   return del([paths.build, paths.dist], cb);
 });
 
+gulp.task('cache:clear', function () {
+  return cache.clearAll()
+});
+
+gulp.task('clean-test', function (cb) {
+  return del([paths.dist], cb);
+});
+
 gulp.task('copy', function () {
   return gulp.src(paths.assets)
     .pipe(gulp.dest(paths.dist + '/assets'));
-});
-
-var tsProject = $.typescript.createProject({
-  declarationFiles: true,
-  noExternalResolve: true,
-  sortOutput: true,
-  sourceRoot: '../scripts',
-  noResolve: false
-});
-
-var specProject = $.typescript.createProject({
-  declarationFiles: true,
-  noExternalResolve: true,
-  sortOutput: true,
-  sourceRoot: '../tests',
-  noResolve: false
-});
-
-gulp.task('typescript', function() {
-  var tsResult = gulp.src([paths.ts])
-    .pipe($.sourcemaps.init())
-    .pipe($.typescript(tsProject));
-    
-  return tsResult.js
-    .pipe(concat('main.js'))
-    //.pipe($.sourcemaps.write(paths.build))
-    .pipe(gulp.dest(paths.build));
 });
 
 gulp.task('less', function () {
@@ -90,7 +82,7 @@ gulp.task('connect', function () {
   $.connect.server({
     root: [__dirname + '/src', paths.build],
     port: 9000,
-        livereload: true
+    livereload: true
   });
 });
 
@@ -112,99 +104,72 @@ gulp.task('minifyCss', ['less'], function () {
     .pipe(gulp.dest(paths.dist))
 });
 
-gulp.task('deploy', function () {
-  return gulp.src('dist/**/*')
-    .pipe(deploy());
-});
-
 gulp.task('default', function () {
   runSequence('clean', ['inject', 'typescript', 'less', 'connect', 'watch'], 'open');
 });
+
 gulp.task('build', function () {
   return runSequence('clean', ['copy', 'minifyJs', 'minifyCss', 'processhtml']);
 });
 
-gulp.task('cache:clear', function () {
-  return cache.clearAll()
-});
-
-gulp.task('clean-test', function (cb) {
-return del([paths.dist], cb);
-});
-
 gulp.task("build-source", function () {
-  return gulp.src('src/scripts/services/**/*.ts')
-    .pipe($.sourcemaps.init())
-    .pipe($.typescript(tsProject))
-    .pipe($.sourcemaps.write('./', {sourceRoot: './services'}))
-    .pipe(gulp.dest(paths.dist));
-});
-
-gulp.task("build-test", function () {
-var specResult = gulp.src(paths.spec)
+  return specProject.src()
     .pipe($.sourcemaps.init())
     .pipe($.typescript(specProject))
-    .pipe($.sourcemaps.write('./', {sourceRoot: './services'}))
+    .pipe($.sourcemaps.write('./', { sourceRoot: './src' }))
     .pipe(gulp.dest(paths.dist));
-});
-
-gulp.task('pre-test', function (done) {
-  var b = browserify({
-    standalone: 'test',
-    entries: __dirname + '/src/tests/spec.js',
-    debug: true
-  });
-
-  return b.bundle()
-    .pipe(source("spec.js"))
-    .pipe(buffer())
-    .pipe(gulp.dest(__dirname + "/src/tests/dist/"));
 });
 
 gulp.task('execute-test', function (done) {
-  return new KarmaServer({
+  return new karmaServer({
     configFile: __dirname + '/karma.conf.js',
     singleRun: true
-  }, function(karmaResult) {
-        if (karmaResult === 1) {
-            done('karma: tests failed with code ' + karmaResult);
-        } else {
-            done();
-        }
-    }).start();
+  }, function (karmaResult) {
+    if (karmaResult === 1) {
+      done('karma: tests failed with code ' + karmaResult);
+    } else {
+      done();
+    }
+  }).start();
 });
 
-gulp.task('open-test-coverage', function () {
-  gulp.src('./coverage/html/remap/html-report/index.html')
-    .pipe($.open());
-});
+gulp.task('coverage', function () {
+  gulp.src('./coverage/coverage-final.json')
+    .pipe(remapIstanbul({
+      reports: {
+        'lcovonly': './coverage/remap/lcov.info',
+        'json': './coverage/remap/coverage.json',
+        'html': './coverage/remap/html-report',
+        'text-summary': './coverage/remap/text-summary.txt'
+      }
+    }))
+    .on('finish', function () {
+      console.log('Remapping done! View the result in coverage/html/remap/html-report');
+    });
+})
 
-gulp.task('test', function() {
+gulp.task('test', function () {
   return runSequence(
     'clean-test',
-    ['build-source', 'build-test'],
+    'build-source',
     'execute-test',
     'coverage');
 });
 
-gulp.task('test-coverage', function() {
-  return runSequence(
-    'test',
-    'open-test-coverage');
+gulp.task('open-coverage-report', function () {
+  gulp.src('./coverage/remap/html-report/index.html')
+    .pipe($.open());
 });
 
-gulp.task('coverage', function(){
-  gulp.src('./coverage/html/coverage-final.json')
-        .pipe(remapIstanbul({
-            reports: {
-                'lcovonly': './coverage/html/remap/lcov.info',
-                'json': './coverage/html/remap/coverage.json',
-                'html': './coverage/html/remap/html-report',
-                'text-summary': './coverage/html/remap/text-summary.txt'
-            }
-        }))
-        .on('finish', function () {
-            console.log('Remapping done! View the result in coverage/html/remap/html-report');
-        });
-})
+// gulp.task('pre-test', function (done) {
+//   var browserify = browserify({
+//     standalone: 'test',
+//     entries: __dirname + '/src/tests/spec.js',
+//     debug: true
+//   });
 
+//   return browserify.bundle()
+//     .pipe(source("spec.js"))
+//     .pipe(buffer())
+//     .pipe(gulp.dest(__dirname + "/src/tests/dist/"));
+// });

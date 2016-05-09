@@ -5,14 +5,13 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
     browsers: ['PhantomJS'],
     reporters: ['progress', 'coverage'],
+    exclude: [],
 
     files: [
       { pattern: './src/scripts/services/**/*.ts', included: false },
-      { pattern: './src/tests/**/*.ts', included: false },
-      { pattern: './dist/*.js', included: true, watched: false },      
-      { pattern: './dist/*.js.map', included: false }
+      { pattern: './dist/**/*.js', included: true, watched: false },
+      { pattern: './dist/scripts/**/*.js.map', included: false }
     ],
-    exclude: [],
 
     plugins: [
       'karma-jasmine',
@@ -25,13 +24,13 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      './dist/!(*spec).js': ['coverage', 'sourcemap'],
+      './dist/scripts/**/*.js': ['coverage', 'sourcemap'],
     },
 
     coverageReporter: {
       reporters: [
-        { type: 'html', subdir: 'html', dir: 'coverage/' },
-        { type: 'json', subdir: 'html', dir: 'coverage/' },
+        { type: 'html', subdir: '.', dir: 'coverage/' },
+        { type: 'json', subdir: '.', dir: 'coverage/' },
         { type: 'text-summary', subdir: '.' }
       ]
     },

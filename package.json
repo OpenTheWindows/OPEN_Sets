@@ -43,7 +43,7 @@
     "postinstall": "bower install && typings install",
     "start": "gulp",
     "test": "gulp test",
-    "test:coverage":"gulp test-coverage"
+    "test:coverage":"gulp test && gulp open-coverage-report"
   },
   "engines": {
     "node": ">= 4.2.1",
