@@ -31,17 +31,17 @@ module OPENSets.State {
       this.load.image('play-button', 'assets/images/play-button.png');
 
       //Load animations
-      this.load.image('happy-animation-atlas', 'assets/images/happy-animation.atlas');
-      this.load.image('happy-animation', 'assets/images/happy-animation.png');
-      this.load.image('happy-animation2', 'assets/images/happy-animation2.png');
-      this.load.image('happy-animation3', 'assets/images/happy-animation3.png');
-      this.load.image('happy-animation4', 'assets/images/happy-animation4.png');
-      this.load.image('happy-animation5', 'assets/images/happy-animation5.png');
+      //this.load.image('happy-animation-atlas', 'assets/animations/happy-animation.atlas');
+      this.load.image('happy-animation', 'assets/animations/happy-animation.png');
+      this.load.image('happy-animation2', 'assets/animations/happy-animation2.png');
+      this.load.image('happy-animation3', 'assets/animations/happy-animation3.png');
+      this.load.image('happy-animation4', 'assets/animations/happy-animation4.png');
+      this.load.image('happy-animation5', 'assets/animations/happy-animation5.png');
 
-      //Load sound
-      this.load.image('audio-transition', 'audio-transition.wav');
-      this.load.image('audio-right-option', 'audio-right-option.mp3');
-      this.load.image('audio-wrong-option', 'audio-wrong-option.wav');
+      //Load sounds
+      this.load.audio('audio-transition', 'assets/sounds/audio-transition.wav');
+      this.load.audio('audio-right-option', 'assets/sounds/audio-right-option.mp3');
+      this.load.audio('audio-wrong-option', 'assets/sounds/audio-wrong-option.wav');
     }
 
     create() {
