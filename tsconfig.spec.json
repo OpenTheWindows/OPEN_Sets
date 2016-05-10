@@ -11,11 +11,13 @@
     "node_modules",
     "typings/main",
     "typings/main.d.ts",
+    "src/scripts/state/*.ts",
+    "src/scripts/*.ts",
     "src/vendor"
   ],
   "filesGlob": [
-    "./src/scripts/**/*.ts",
-    "./src/scripts/definitions/*.d.ts",
+    "/src/services/**/*.ts",
+    "/src/tests/**/*.ts",
     "./typings/browser.d.ts"
   ],
   "compileOnSave": false,
