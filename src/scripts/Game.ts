@@ -2,8 +2,8 @@ module OPENSets {
   export class Game extends Phaser.Game {
     constructor() {
       super({
-        width: 2000,
-        height: 2010,
+        width: 1700,
+        height: 820,
         transparent: false,
         enableDebug: true
       });

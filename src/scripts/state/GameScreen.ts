@@ -1,16 +1,18 @@
 module OPENSets.State {
-  var mainPicture, firstPicture, secondPicture, thirdPicture;
-
   export class GameScreen extends Phaser.State {
 
+    public mainPicture: Phaser.Image;
+    public firstPicture: Phaser.Button;
+    public secondPicture: Phaser.Button;
+    public thirdPicture: Phaser.Button;
 
     create() {
       var thing: String = 'code !';
       // this.add.text(10, 10, `Game screen ${thing}`, { font: '65px Arial' });
-      mainPicture = this.game.add.image(600, 50, 'main-picture');
-      firstPicture = this.game.add.button(70, 500, 'first-picture', this.WrongPicturePicked, this, 2, 1, 0);
-      secondPicture = this.game.add.button(750, 450, 'second-picture', this.WrongPicturePicked, this, 2, 1, 0);
-      thirdPicture = this.game.add.button(1300, 480, 'third-picture', this.RightPicturePicked, this, 2, 1, 0);
+      this.mainPicture = this.game.add.image(600, 50, 'table');
+      this.firstPicture = this.game.add.button(70, 500, 'chicken', this.WrongPicturePicked, this, 2, 1, 0);
+      this.secondPicture = this.game.add.button(750, 450, 'second-picture', this.WrongPicturePicked, this, 2, 1, 0);
+      this.thirdPicture = this.game.add.button(1300, 480, 'chair', this.RightPicturePicked, this, 2, 1, 0);
 
       this.game.add.image(580, 10, 'frame');
       this.game.add.image(1200, 455, 'vertical-line');
@@ -19,10 +21,12 @@ module OPENSets.State {
 
 
       //=============
-      thirdPicture.inputEnabled = true;
-      thirdPicture.input.enableDrag(true);
-      thirdPicture.input.enableSnap(90, 90, false, true);
-      thirdPicture.events.onDragStop.add(this.fixLocation);
+      this.thirdPicture.inputEnabled = true;
+      this.thirdPicture.input.enableDrag(true);
+
+      this.thirdPicture.events.onInputDown.add(this.fixLocation, this);
+      // this.game.time.events.add(Phaser.Timer.SECOND * 1, this.fixLocation1, this);
+      // thirdPicture.events.onDragStop.add(this.fixLocation1);
     }
 
     WrongPicturePicked() {
@@ -30,12 +34,18 @@ module OPENSets.State {
     }
 
     RightPicturePicked() {
-      alert("Успешно одбран објект :)");
+      //   alert("Успешно одбран објект :)");
     }
 
-    fixLocation(item) {
+    fixLocation1(item) {
       item.x = 1320;
       item.y = 65;
+    }
+    fixLocation(item) {
+      //  thirdPicture.events.onDragStop.add(this.fixLocation1);
+      // item.x = 1320;
+      // item.y = 65;
+      this.game.add.tween(item).to({ y: 65, x: 1320 }, 2000, Phaser.Easing.Linear.None, true);
     }
   }
 }
