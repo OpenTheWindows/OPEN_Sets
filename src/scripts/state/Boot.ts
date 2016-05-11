@@ -33,7 +33,6 @@ module OPENSets.State {
       this.load.image('play-button', 'assets/images/play-button.png');
       this.load.image('frame', 'assets/images/frame.png');
       this.load.image('vertical-line', 'assets/images/verticalLine.png');
-      this.load.image('horizontal-line', 'assets/images/horizontalLine.png');
 
       //Load animations
       this.load.atlas('happy-animation', 'assets/animations/happy-animation.png', 'assets/animations/happy-animation.json');
