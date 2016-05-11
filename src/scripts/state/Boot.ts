@@ -6,6 +6,7 @@ module OPENSets.State {
       //Load images
       this.load.image('chair', 'assets/images/chair.png');
       this.load.image('chicken', 'assets/images/chicken.png');
+      this.load.image('clothespin', 'assets/images/clothespin.png');
       this.load.image('cloud', 'assets/images/cloud.png');
       this.load.image('egg', 'assets/images/egg.png');
       this.load.image('fawn', 'assets/images/fawn.png');
