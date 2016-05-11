@@ -35,14 +35,14 @@ module OPENSets.State {
       this.load.image('horizontal-line', 'assets/images/horizontalLine.png');
 
       //Load animations
-      this.load.image('happy-animation-atlas', 'assets/animations/happy-animation.atlas');
+      //this.load.image('happy-animation-atlas', 'assets/animations/happy-animation.atlas');
       this.load.image('happy-animation', 'assets/animations/happy-animation.png');
       this.load.image('happy-animation2', 'assets/animations/happy-animation2.png');
       this.load.image('happy-animation3', 'assets/animations/happy-animation3.png');
       this.load.image('happy-animation4', 'assets/animations/happy-animation4.png');
       this.load.image('happy-animation5', 'assets/animations/happy-animation5.png');
 
-      //Load sound
+      //Load sounds
       this.load.audio('audio-transition', 'assets/sounds/audio-transition.wav');
       this.load.audio('audio-right-option', 'assets/sounds/audio-right-option.mp3');
       this.load.audio('audio-wrong-option', 'assets/sounds/audio-wrong-option.wav');
