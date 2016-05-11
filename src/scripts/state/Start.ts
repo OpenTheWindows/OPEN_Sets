@@ -13,6 +13,8 @@ module OPENSets.State {
           //this.game.state.start('loadGameLevel');
         }
       });
+
+      this.game.state.start('gameScreen');
     }
   }
 }
