@@ -1,4 +1,4 @@
-module Services {
+module OPENSets.Services {
   export class MyService {
     constructor(public a: number, public b: number) { }
 
