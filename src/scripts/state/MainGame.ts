@@ -54,6 +54,5 @@ module OPENSets.State {
     rightPicturePicked(item) {
       this.game.add.tween(item).to({ y: 80, x: this.game.world.centerX + 25 }, 2000, Phaser.Easing.Linear.None, true);
     }
-
   }
 }
