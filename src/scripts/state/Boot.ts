@@ -32,7 +32,6 @@ module OPENSets.State {
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
       this.load.image('play-button', 'assets/images/play-button.png');
       this.load.image('frame', 'assets/images/frame.png');
-      this.load.image('vertical-line', 'assets/images/verticalLine.png');
 
       //Load animations
       this.load.atlas('happy-animation', 'assets/animations/happy-animation.png', 'assets/animations/happy-animation.json');
