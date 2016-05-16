@@ -34,7 +34,7 @@ module OPENSets.State {
       this.load.image('frame', 'assets/images/frame.png');
 
       //Load animations
-      this.load.atlas('happy-animation', 'assets/animations/happy-animation.png', 'assets/animations/happy-animation.json');
+      this.load.atlasJSONHash('happy-animation', 'assets/animations/happy-animation.png', 'assets/animations/happy-animation.json');
 
       //Load sounds
       this.load.audio('audio-transition', 'assets/sounds/audio-transition.wav');
