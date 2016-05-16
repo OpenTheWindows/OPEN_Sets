@@ -76,7 +76,9 @@ module OPENSets.State {
         this.game.world.centerY,
         'happy-animation');
       happyAnimation.anchor.setTo(0.5);
-      happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
+      happyAnimation.animations.add(
+        'idle',
+        [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
       happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
         alert('load new game iteration');
       }, this);
