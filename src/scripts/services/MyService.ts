@@ -4,7 +4,7 @@ module OPENSets.Services {
 
     add(): number {
       if (this.a < 10) {
-        this.a = 10
+        this.a = 10;
       }
       return this.a + this.b;
     }
