@@ -9,8 +9,7 @@ module OPENSets.State {
         if (this.game.input.activePointer.isMouse && this.game.input.activePointer.button !== Phaser.Mouse.LEFT_BUTTON) {
           return;
         } else {
-          alert("loadGameLevel");
-          //this.game.state.start('loadGameLevel');
+          this.game.state.start('mainGame');
         }
       });
       startButton.events.onInputOver.add(() => {
