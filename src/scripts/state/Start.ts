@@ -13,6 +13,12 @@ module OPENSets.State {
           //this.game.state.start('loadGameLevel');
         }
       });
+      startButton.events.onInputOver.add(() => {
+          this.key = "play-button-shadow";
+      });
+      startButton.events.onInputOut.add(() => {
+          this.key = "play-button";
+      });
     }
   }
 }
