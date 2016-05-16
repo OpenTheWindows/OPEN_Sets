@@ -8,7 +8,7 @@ module OPENSets.State {
     }
 
     create() {
-      this.game.state.start('main');
+      this.game.state.start('start');
     }
   }
 }

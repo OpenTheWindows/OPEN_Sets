@@ -2,6 +2,7 @@ module OPENSets.State {
   export class Boot extends Phaser.State {
     preload() {
       this.load.image('preload-bar', 'assets/images/preloader.gif');
+
       //Load images
       this.load.image('chair', 'assets/images/chair.png');
       this.load.image('chicken', 'assets/images/chicken.png');
@@ -30,14 +31,10 @@ module OPENSets.State {
       this.load.image('backpack', 'assets/images/backpack.png');
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
       this.load.image('play-button', 'assets/images/play-button.png');
+      this.load.image('frame', 'assets/images/frame.png');
 
       //Load animations
-      //this.load.image('happy-animation-atlas', 'assets/animations/happy-animation.atlas');
-      this.load.image('happy-animation', 'assets/animations/happy-animation.png');
-      this.load.image('happy-animation2', 'assets/animations/happy-animation2.png');
-      this.load.image('happy-animation3', 'assets/animations/happy-animation3.png');
-      this.load.image('happy-animation4', 'assets/animations/happy-animation4.png');
-      this.load.image('happy-animation5', 'assets/animations/happy-animation5.png');
+      this.load.atlas('happy-animation', 'assets/animations/happy-animation.png', 'assets/animations/happy-animation.json');
 
       //Load sounds
       this.load.audio('audio-transition', 'assets/sounds/audio-transition.wav');
@@ -51,7 +48,12 @@ module OPENSets.State {
       this.input.maxPointers = 1;
       this.stage.disableVisibilityChange = true;
 
+      //===Responsive Design=====
+      this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+      this.scale.pageAlignHorizontally = false;
+
       this.game.state.start('preload');
     }
   }
 }
+
