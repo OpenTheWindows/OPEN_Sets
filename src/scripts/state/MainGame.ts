@@ -2,12 +2,20 @@ module OPENSets.State {
   export class MainGame extends Phaser.State {
     public buttonsInitialX: number = 155;
     public buttonsInitialY: number = 500;
+    public unhappySound: Phaser.Sound;
+    public happySound: Phaser.Sound;
 
     create() {
       this.drawScene();
 
-      let model = new Models.GameModel('table', new Array<Models.Option>(new Models.Option('chicken', false), new Models.Option('clothespin', false), new Models.Option('chair', true)));
+      let model = new Models.GameModel('table', new Array<Models.Option>(
+        new Models.Option('chicken', false),
+        new Models.Option('clothespin', false),
+        new Models.Option('chair', true)));
       this.drawOptions(model);
+
+      this.unhappySound = this.add.audio('audio-wrong-option');
+      this.happySound = this.add.audio('audio-right-option');
     }
 
     drawScene() {
@@ -34,7 +42,7 @@ module OPENSets.State {
     drawOptions(model: Models.GameModel) {
       this.game.add.image(this.game.world.centerX - 280, 80, model.givenItem);
 
-      for (var i = 0; i < model.options.length; i++) {
+      for (let i = 0; i < model.options.length; i++) {
         let optionButton = this.game.add.button(
           this.buttonsInitialX + i * 567,
           this.buttonsInitialY,
@@ -47,18 +55,21 @@ module OPENSets.State {
     }
 
     wrongPicturePicked() {
-      // play unhappy sound here
-      alert("Одбравте погрешен предмет, обидете се повторно :) ");
+      this.unhappySound.play();
+      alert('Одбравте погрешен предмет, обидете се повторно :) ');
     }
 
     rightPicturePicked(item) {
-      var tween = this.game.add.tween(item);
-      tween.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true)
+      let tween = this.game.add.tween(item);
+      tween.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
       tween.onComplete.add(() => {
-        var happyAnimation = this.game.add.sprite(this.game.world.centerX - 256, this.game.world.centerY - 256, "happy-animation");
-        happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]);
+        let happyAnimation = this.game.add.sprite(
+          this.game.world.centerX - 256,
+          this.game.world.centerY - 256,
+          'happy-animation');
+        happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
         happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
-          alert("loadGameLevel");
+          alert('load new game iteration');
         }, this);
       }, this);
     }

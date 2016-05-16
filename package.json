@@ -37,13 +37,16 @@
     "remap-istanbul": "^0.6.3",
     "run-sequence": "*",
     "tsd": "^0.6.5",
+    "tslint": "^3.10.1",
+    "typescript": "^1.8.10",
     "typings": "^0.8.1"
   },
   "scripts": {
     "postinstall": "bower install && typings install",
     "start": "gulp",
     "test": "gulp test",
-    "test:coverage":"gulp test && gulp open-coverage-report"
+    "test:coverage": "gulp test && gulp open-coverage-report",
+    "lint": "tslint src/scripts/services/*.ts && tslint src/scripts/state/*.ts"
   },
   "engines": {
     "node": ">= 4.2.1",
