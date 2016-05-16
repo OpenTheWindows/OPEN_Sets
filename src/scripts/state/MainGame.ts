@@ -6,7 +6,10 @@ module OPENSets.State {
     create() {
       this.drawScene();
 
-      let model = new Models.GameModel('table', new Array<Models.Option>(new Models.Option('chicken', false), new Models.Option('clothespin', false), new Models.Option('chair', true)));
+      let model = new Models.GameModel('table', new Array<Models.Option>(
+        new Models.Option('chicken', false),
+        new Models.Option('clothespin', false),
+        new Models.Option('chair', true)));
       this.drawOptions(model);
     }
 
@@ -34,7 +37,7 @@ module OPENSets.State {
     drawOptions(model: Models.GameModel) {
       this.game.add.image(this.game.world.centerX - 280, 80, model.givenItem);
 
-      for (var i = 0; i < model.options.length; i++) {
+      for (let i = 0; i < model.options.length; i++) {
         let optionButton = this.game.add.button(
           this.buttonsInitialX + i * 567,
           this.buttonsInitialY,
@@ -48,7 +51,7 @@ module OPENSets.State {
 
     wrongPicturePicked() {
       // play unhappy sound here
-      alert("Одбравте погрешен предмет, обидете се повторно :) ");
+      alert('Одбравте погрешен предмет, обидете се повторно :) ');
     }
 
     rightPicturePicked(item) {
