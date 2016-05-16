@@ -59,9 +59,10 @@ module OPENSets.State {
       tween.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
       tween.onComplete.add(() => {
         let happyAnimation = this.game.add.sprite(
-          this.game.world.centerX - 256,
-          this.game.world.centerY - 256,
+          this.game.world.centerX,
+          this.game.world.centerY,
           'happy-animation');
+        happyAnimation.anchor.setTo(0.5);
         happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]);
         happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
           alert('load new game iteration');
