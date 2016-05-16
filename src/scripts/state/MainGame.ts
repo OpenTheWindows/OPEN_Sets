@@ -2,6 +2,8 @@ module OPENSets.State {
   export class MainGame extends Phaser.State {
     public buttonsInitialX: number = 155;
     public buttonsInitialY: number = 500;
+    public unhappySound: Phaser.Sound;
+    public happySound: Phaser.Sound;
 
     create() {
       this.drawScene();
@@ -11,6 +13,9 @@ module OPENSets.State {
         new Models.Option('clothespin', false),
         new Models.Option('chair', true)));
       this.drawOptions(model);
+
+      this.unhappySound = this.add.audio('audio-wrong-option');
+      this.happySound = this.add.audio('audio-right-option');
     }
 
     drawScene() {
@@ -50,7 +55,7 @@ module OPENSets.State {
     }
 
     wrongPicturePicked() {
-      // play unhappy sound here
+      this.unhappySound.play();
       alert('Одбравте погрешен предмет, обидете се повторно :) ');
     }
 
@@ -62,7 +67,7 @@ module OPENSets.State {
           this.game.world.centerX - 256,
           this.game.world.centerY - 256,
           'happy-animation');
-        happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]);
+        happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
         happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
           alert('load new game iteration');
         }, this);
