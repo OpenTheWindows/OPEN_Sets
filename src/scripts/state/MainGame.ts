@@ -4,6 +4,7 @@ module OPENSets.State {
     public buttonsInitialY: number = 500;
     public unhappySound: Phaser.Sound;
     public happySound: Phaser.Sound;
+    public transitionSound: Phaser.Sound;
 
     create() {
       this.drawScene();
@@ -16,6 +17,7 @@ module OPENSets.State {
 
       this.unhappySound = this.add.audio('audio-wrong-option');
       this.happySound = this.add.audio('audio-right-option');
+      this.transitionSound = this.add.audio('audio-transition', 1, true);
     }
 
     drawScene() {
@@ -56,22 +58,27 @@ module OPENSets.State {
 
     wrongPicturePicked() {
       this.unhappySound.play();
-      alert('Одбравте погрешен предмет, обидете се повторно :) ');
     }
 
     rightPicturePicked(item) {
       let tween = this.game.add.tween(item);
       tween.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
+      this.transitionSound.play();
       tween.onComplete.add(() => {
-        let happyAnimation = this.game.add.sprite(
-          this.game.world.centerX,
-          this.game.world.centerY,
-          'happy-animation');
-        happyAnimation.anchor.setTo(0.5);
-        happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
-        happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
-          alert('load new game iteration');
-        }, this);
+        this.transitionSound.stop();
+        this.playHappyAnimationAndSound();
+      }, this);
+    }
+
+    playHappyAnimationAndSound(): void {
+      let happyAnimation = this.game.add.sprite(
+        this.game.world.centerX,
+        this.game.world.centerY,
+        'happy-animation');
+      happyAnimation.anchor.setTo(0.5);
+      happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
+      happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
+        alert('load new game iteration');
       }, this);
     }
   }
