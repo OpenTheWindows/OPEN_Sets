@@ -34,7 +34,7 @@ module OPENSets.State {
       this.load.image('frame', 'assets/images/frame.png');
 
       // Load animations
-      this.load.atlas(
+      this.load.atlasJSONHash(
         'happy-animation',
         'assets/animations/happy-animation.png',
         'assets/animations/happy-animation.json');

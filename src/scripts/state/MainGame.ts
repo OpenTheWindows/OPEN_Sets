@@ -55,7 +55,18 @@ module OPENSets.State {
     }
 
     rightPicturePicked(item) {
-      this.game.add.tween(item).to({ y: 80, x: this.game.world.centerX + 25 }, 2000, Phaser.Easing.Linear.None, true);
+      let tween = this.game.add.tween(item);
+      tween.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
+      tween.onComplete.add(() => {
+        let happyAnimation = this.game.add.sprite(
+          this.game.world.centerX - 256,
+          this.game.world.centerY - 256,
+          'happy-animation');
+        happyAnimation.animations.add('idle', [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]);
+        happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
+          alert('load new game iteration');
+        }, this);
+      }, this);
     }
   }
 }
