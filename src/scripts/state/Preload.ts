@@ -1,10 +1,9 @@
 module OPENSets.State {
   export class Preload extends Phaser.State {
-    private preloadBar: Phaser.Sprite;
 
     preload() {
-      this.preloadBar = this.add.sprite(290, 290, 'preload-bar');
-      this.load.setPreloadSprite(this.preloadBar);
+      let preloadBar = this.add.sprite(290, 290, 'preload-bar');
+      this.load.setPreloadSprite(preloadBar);
     }
 
     create() {

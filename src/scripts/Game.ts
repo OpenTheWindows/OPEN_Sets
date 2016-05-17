@@ -12,6 +12,7 @@ module OPENSets {
       this.state.add('preload', State.Preload);
       this.state.add('start', State.Start);
       this.state.add('mainGame', State.MainGame);
+
       this.state.start('boot');
     }
   }
