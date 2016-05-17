@@ -10,7 +10,7 @@ module OPENSets.State {
         }
         create() {
             this.game.add.sprite(this.game.world.centerX - 256, 0, 'sets-logo');
-            let startButton = this.game.add.button(this.game.world.centerX - 64, this.game.world.centerY + 160, "play-button", this.startGame, this, 0, 1, 0);
+            let startButton = this.game.add.button(this.game.world.centerX - 64, this.game.world.centerY + 160, "play-button", this.startGame, this, 0, 1, 2);
         }
     }
 }
