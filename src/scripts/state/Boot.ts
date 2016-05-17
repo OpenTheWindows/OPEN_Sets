@@ -30,7 +30,7 @@ module OPENSets.State {
       this.load.image('washing-mashine', 'assets/images/washing-mashine.png');
       this.load.image('backpack', 'assets/images/backpack.png');
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
-      this.load.image('play-button', 'assets/images/play-button.png');
+      this.load.spritesheet('play-button', 'assets/images/play-button.png', 160, 160);
       this.load.image('frame', 'assets/images/frame.png');
 
       // Load animations
