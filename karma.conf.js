@@ -19,7 +19,6 @@ module.exports = function (config) {
       'karma-phantomjs-launcher',
       'karma-sourcemap-loader',
       'karma-typescript-preprocessor',
-      'karma-remap-istanbul',
       'karma-chrome-launcher'
     ],
 
