@@ -5,6 +5,7 @@ The "Sets" game project.
 2. Typescript
 3. Gulp
 4. Jasmine (unit tests) + Karma (test runner)
+5. Electron
 
 ## File Structure
 ```
@@ -30,6 +31,7 @@ OPEN_Sets/
  │       ├──pointers/                   * pointer images are stored here
  │       └──sounds/                     * sounds are stored here  
  │        
+ ├──app.js                              * the electron main 'process' script
  ├──bower.json                          * what bower uses to install phaser
  ├──gulpfile.js                         * gulp file with the core tasks
  ├──karma.conf.js                       * config for the karma test runner
