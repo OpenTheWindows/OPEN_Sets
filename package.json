@@ -14,7 +14,6 @@
     "gulp-concat": "*",
     "gulp-concat-sourcemap": "*",
     "gulp-connect": "*",
-    "gulp-electron": "^0.1.3",
     "gulp-gh-pages": "*",
     "gulp-inject": "*",
     "gulp-jasmine": "^2.3.0",
