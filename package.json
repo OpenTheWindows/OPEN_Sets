@@ -53,7 +53,7 @@
     "test:coverage": "gulp test && gulp open-coverage-report",
     "lint": "tslint src/scripts/services/*.ts && tslint src/scripts/state/*.ts",
     "electron": "electron .",
-    "pack": "electron-packager . OPEN_Sets --platform=win32 --arch=x64 --overwrite --out=./release"
+    "pack": "electron-packager . OPEN_Sets --platform=win32 --arch=x64 --overwrite --out=../sets_release"
   },
   "engines": {
     "node": ">= 4.2.1",
