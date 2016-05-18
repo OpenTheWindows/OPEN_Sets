@@ -9,18 +9,18 @@ module OPENSets.State {
     }
 
     create() {
-      let logo = this.game.add.sprite(this.game.world.centerX, 0, 'sets-logo');
+      let logo = this.game.add.sprite(this.game.world.centerX, 30, 'sets-logo');
       logo.anchor.setTo(0.5, 0);
 
       this.game.add.text(
         this.game.world.centerX - 85,
-        this.game.world.centerY - 110,
+        this.game.world.centerY - 100,
         'Парови',
         { fill: 'white', fontSize: '48px' });
 
       let startButton = this.game.add.button(
         this.game.world.centerX,
-        this.game.world.centerY + 160,
+        this.game.world.centerY + 190,
         'play-button',
         this.startGame,
         this,
