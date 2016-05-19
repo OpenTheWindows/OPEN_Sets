@@ -11,7 +11,7 @@
     "node_modules",
     "typings/main",
     "typings/main.d.ts",
-    "src/scripts/state/*.ts",
+    "src/scripts/states/*.ts",
     "src/scripts/*.ts",
     "src/vendor"
   ],

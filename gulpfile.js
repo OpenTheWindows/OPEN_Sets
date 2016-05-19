@@ -4,7 +4,7 @@ var gulp = require('gulp'),
   concat = require('gulp-concat-sourcemap'),
   del = require('del'),
   runSequence = require('run-sequence'),
-  remapIstanbul = require("remap-istanbul/lib/gulpRemapIstanbul"),
+  remapIstanbul = require('remap-istanbul/lib/gulpRemapIstanbul'),
   karmaServer = require('karma').Server,
   paths = {
     assets: 'src/assets/**/*',
@@ -14,11 +14,21 @@ var gulp = require('gulp'),
     spec: 'src/tests/**/*.spec.ts',
     build: 'build',
     dist: 'dist'
-  };
+  },
+  tsProject = $.typescript.createProject('tsconfig.json'),
+  specProject = $.typescript.createProject('tsconfig.spec.json');
 
-var tsProject = $.typescript.createProject('tsconfig.json');
 
-var specProject = $.typescript.createProject('tsconfig.spec.json');
+// the default DEV task sequence
+gulp.task('default', function () {
+  runSequence('clean', ['inject', 'typescript', 'less', 'connect', 'watch'], 'open');
+});
+
+// the build task that sequence before packing the electron app
+gulp.task('build', function () {
+  return runSequence('clean', ['copy', 'minifyJs', 'minifyCss', 'processhtml']);
+});
+
 
 gulp.task('typescript', function () {
   var tsResult = gulp.src([paths.ts])
@@ -33,10 +43,6 @@ gulp.task('typescript', function () {
 
 gulp.task('clean', function (cb) {
   return del([paths.build, paths.dist], cb);
-});
-
-gulp.task('cache:clear', function () {
-  return cache.clearAll()
 });
 
 gulp.task('clean-test', function (cb) {
@@ -75,7 +81,6 @@ gulp.task('watch', function () {
   gulp.watch(paths.ts, ['typescript', 'reload']);
   gulp.watch(paths.less, ['less', 'reload']);
   gulp.watch(paths.index, ['reload']);
-  gulp.watch(paths.assets, ['assets']);
 });
 
 gulp.task('connect', function () {
@@ -104,15 +109,7 @@ gulp.task('minifyCss', ['less'], function () {
     .pipe(gulp.dest(paths.dist))
 });
 
-gulp.task('default', function () {
-  runSequence('clean', ['inject', 'typescript', 'less', 'connect', 'watch'], 'open');
-});
-
-gulp.task('build', function () {
-  return runSequence('clean', ['copy', 'minifyJs', 'minifyCss', 'processhtml']);
-});
-
-gulp.task("build-source", function () {
+gulp.task('build-source', function () {
   return specProject.src()
     .pipe($.sourcemaps.init())
     .pipe($.typescript(specProject))
@@ -161,15 +158,3 @@ gulp.task('open-coverage-report', function () {
     .pipe($.open());
 });
 
-// gulp.task('pre-test', function (done) {
-//   var browserify = browserify({
-//     standalone: 'test',
-//     entries: __dirname + '/src/tests/spec.js',
-//     debug: true
-//   });
-
-//   return browserify.bundle()
-//     .pipe(source("spec.js"))
-//     .pipe(buffer())
-//     .pipe(gulp.dest(__dirname + "/src/tests/dist/"));
-// });
