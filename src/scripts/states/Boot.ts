@@ -38,6 +38,7 @@ module OPENSets.State {
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
       this.load.spritesheet('play-button', 'assets/images/play-button.png', 160, 160);
       this.load.image('frame', 'assets/images/frame.png');
+      this.load.spritesheet('next-button', 'assets/images/next-button.png', 254, 141);
       this.load.image('wrong', 'assets/images/wrong.png');
 
       // Load animations
