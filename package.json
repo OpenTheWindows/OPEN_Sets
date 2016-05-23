@@ -43,6 +43,7 @@
     "run-sequence": "*",
     "tsd": "^0.6.5",
     "tslint": "^3.10.1",
+    "tslint-stylish": "^2.1.0-beta",
     "typescript": "^1.8.10",
     "typings": "^0.8.1"
   },
@@ -51,7 +52,7 @@
     "start": "gulp",
     "test": "gulp test",
     "test:coverage": "gulp test && gulp open-coverage-report",
-    "lint": "tslint src/scripts/services/*.ts && tslint src/scripts/state/*.ts",
+    "lint": "tslint src/scripts/{services,states}/*.ts -s node_modules/tslint-stylish -t stylish",
     "electron": "electron .",
     "pack": "electron-packager . OPEN_Sets --platform=win32 --arch=x64 --overwrite --out=../sets_release"
   },
