@@ -1,6 +1,6 @@
 module OPENSets.State {
   export class Boot extends Phaser.State {
-    preload() {
+    preload(): void {
       this.load.image('preload-bar', 'assets/images/preloader.gif');
 
       // Load images
@@ -12,6 +12,7 @@ module OPENSets.State {
       this.load.image('fawn', 'assets/images/fawn.png');
       this.load.image('fork', 'assets/images/fork.png');
       this.load.image('iron', 'assets/images/iron.png');
+      this.load.image('ironing-board', 'assets/images/ironing.png');
       this.load.image('key', 'assets/images/key.png');
       this.load.image('knife', 'assets/images/knife.png');
       this.load.image('lock', 'assets/images/lock.png');
@@ -29,9 +30,15 @@ module OPENSets.State {
       this.load.image('umbrella', 'assets/images/umbrella.png');
       this.load.image('washing-mashine', 'assets/images/washing-mashine.png');
       this.load.image('backpack', 'assets/images/backpack.png');
+      this.load.image('basket', 'assets/images/basket.png');
+      this.load.image('basketball', 'assets/images/basketball.png');
+      this.load.image('fish', 'assets/images/fish.png');
+      this.load.image('fishbowl', 'assets/images/fishbowl.png');
+
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
       this.load.spritesheet('play-button', 'assets/images/play-button.png', 160, 160);
       this.load.image('frame', 'assets/images/frame.png');
+      this.load.image('wrong', 'assets/images/wrong.png');
 
       // Load animations
       this.load.atlasJSONHash(
@@ -45,7 +52,7 @@ module OPENSets.State {
       this.load.audio('audio-wrong-option', 'assets/sounds/audio-wrong-option.wav');
     }
 
-    create() {
+    create(): void {
       this.game.stage.backgroundColor = 0xFFFFFF;
 
       this.input.maxPointers = 1;
