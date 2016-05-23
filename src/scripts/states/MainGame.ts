@@ -5,7 +5,6 @@ module OPENSets.State {
     public unhappySound: Phaser.Sound;
     public happySound: Phaser.Sound;
     public transitionSound: Phaser.Sound;
-    public wrongOptionsList: Array<Phaser.Button>;
     public wrongOptions: Phaser.Group;
     public triesCounter: Services.TriesCounterService;
 
@@ -46,14 +45,7 @@ module OPENSets.State {
       graphics.lineTo(x2, y2);
     }
 
-    removeWrongOptions() {
-      for (let i = 0; i < this.wrongOptionsList.length; i++) {
-        this.wrongOptionsList[i].destroy();
-      }
-    }
-
     drawOptions(model: Models.GameModel) {
-      this.wrongOptionsList = new Array<Phaser.Button>();
       this.game.add.image(this.game.world.centerX - 280, 80, model.givenItem);
 
       for (let i = 0; i < model.options.length; i++) {
@@ -65,7 +57,6 @@ module OPENSets.State {
         if (model.isCorrectOption(i)) {
           optionButton.events.onInputDown.add(this.rightPicturePicked, this);
         } else {
-          this.wrongOptionsList.push(optionButton);
           optionButton.events.onInputDown.add(this.wrongPicturePicked, this);
           this.wrongOptions.add(optionButton);
         }
@@ -85,7 +76,7 @@ module OPENSets.State {
       this.transitionSound.play();
       tween.onComplete.add(() => {
         this.transitionSound.stop();
-        this.removeWrongOptions();
+        this.wrongOptions.destroy();
         this.playHappyAnimationAndSound();
       }, this);
     }
