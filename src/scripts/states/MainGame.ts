@@ -7,9 +7,6 @@ module OPENSets.State {
     public happySound: Phaser.Sound;
     public transitionSound: Phaser.Sound;
 
-    public balloons: Phaser.TileSprite;
-    public correct = false;
-
     public wrongOptions: Phaser.Group;
     public triesCounter: Services.TriesCounterService;
 
