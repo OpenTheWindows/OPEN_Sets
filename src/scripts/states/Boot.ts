@@ -34,6 +34,22 @@ module OPENSets.State {
       this.load.image('basketball', 'assets/images/basketball.png');
       this.load.image('fish', 'assets/images/fish.png');
       this.load.image('fishbowl', 'assets/images/fishbowl.png');
+      this.load.image('belt', 'assets/images/belt.png');
+      this.load.image('books', 'assets/images/books.png');
+      this.load.image('christmas-bauble', 'assets/images/christmas-bauble.png');
+      this.load.image('christmas-tree', 'assets/images/christmas-tree.png');
+      this.load.image('goal', 'assets/images/goal.png');
+      this.load.image('hammer', 'assets/images/hammer.png');
+      this.load.image('nail', 'assets/images/nail.png');
+      this.load.image('pants', 'assets/images/pants.png');
+      this.load.image('snowflake', 'assets/images/snow-flake.png');
+      this.load.image('snowman', 'assets/images/snowman.png');
+      this.load.image('soccer', 'assets/images/soccer.png');
+      this.load.image('socks', 'assets/images/socks.png');
+      this.load.image('sun', 'assets/images/sun.png');
+      this.load.image('sunglasses', 'assets/images/sunglasses.png');
+      this.load.image('tomato', 'assets/images/tomato.png');
+      this.load.image('cucumber', 'assets/images/cucumber.png');
 
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
       this.load.spritesheet('play-button', 'assets/images/play-button.png', 160, 160);
