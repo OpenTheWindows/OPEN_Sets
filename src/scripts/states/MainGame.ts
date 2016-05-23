@@ -59,18 +59,22 @@ module OPENSets.State {
 
         if (model.isCorrectOption(i)) {
           optionButton.events.onInputDown.add(this.rightPicturePicked, this);
-        } else {
+        }
+        else {
           optionButton.events.onInputDown.add(this.wrongPicturePicked, this);
           this.wrongOptions.add(optionButton);
         }
       }
     }
 
-    wrongPicturePicked() {
-      this.unhappySound.play();
+    wrongPicturePicked(item) {
       if (this.triesCounter.isThresholdPassed()) {
         this.disableWrongOptions();
       }
+      else {
+        this.animateWrongOption(item);
+      }
+      this.unhappySound.play();
     }
 
     rightPicturePicked(item) {
@@ -79,6 +83,7 @@ module OPENSets.State {
       this.transitionSound.play();
       tween.onComplete.add(() => {
         this.transitionSound.stop();
+        this.wrongOptions.destroy();
         this.playHappyAnimationAndSound();
       }, this);
     }
@@ -100,6 +105,19 @@ module OPENSets.State {
     disableWrongOptions(): void {
       this.wrongOptions.setAll('alpha', 0.5);
       this.wrongOptions.setAll('inputEnabled', false);
+    }
+
+    animateWrongOption(item: Phaser.Button): void {
+      let x = item.x;
+      let y = item.y;
+      item.inputEnabled = false;
+      let sprite = this.game.add.image(x, y, 'wrong');
+      sprite.alpha = 0;
+      this.game.add.tween(sprite).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, true)
+        .onComplete.add(() => {
+          sprite.destroy();
+          item.inputEnabled = true;
+        });
     }
   }
 }
