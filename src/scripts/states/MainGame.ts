@@ -2,9 +2,11 @@ module OPENSets.State {
   export class MainGame extends Phaser.State {
     public buttonsInitialX: number = 155;
     public buttonsInitialY: number = 500;
+
     public unhappySound: Phaser.Sound;
     public happySound: Phaser.Sound;
     public transitionSound: Phaser.Sound;
+
     public wrongOptions: Phaser.Group;
     public triesCounter: Services.TriesCounterService;
 
@@ -64,16 +66,6 @@ module OPENSets.State {
       }
     }
 
-    wrongPicturePicked(item) {
-      if (this.triesCounter.isThresholdPassed()) {
-        this.disableWrongOptions();
-      }
-      else {
-        this.animateWrongOption(item);
-      }
-      this.unhappySound.play();
-    }
-
     rightPicturePicked(item) {
       let tween = this.game.add.tween(item);
       tween.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
@@ -97,6 +89,16 @@ module OPENSets.State {
       happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
         alert('load new game iteration');
       }, this);
+    }
+
+    wrongPicturePicked(item) {
+      if (this.triesCounter.isThresholdPassed()) {
+        this.disableWrongOptions();
+      }
+      else {
+        this.animateWrongOption(item);
+        this.unhappySound.play();
+      }
     }
 
     disableWrongOptions(): void {
