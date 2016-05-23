@@ -1,6 +1,6 @@
 module OPENSets.State {
   export class Boot extends Phaser.State {
-    preload() {
+    preload(): void {
       this.load.image('preload-bar', 'assets/images/preloader.gif');
 
       // Load images
@@ -52,7 +52,7 @@ module OPENSets.State {
       this.load.audio('audio-wrong-option', 'assets/sounds/audio-wrong-option.wav');
     }
 
-    create() {
+    create(): void {
       this.game.stage.backgroundColor = 0xFFFFFF;
 
       this.input.maxPointers = 1;

@@ -1,6 +1,6 @@
 module OPENSets.State {
   export class Start extends Phaser.State {
-    startGame() {
+    startGame(): void {
       if (this.game.input.activePointer.isMouse && this.game.input.activePointer.button !== Phaser.Mouse.LEFT_BUTTON) {
         return;
       }
@@ -8,8 +8,8 @@ module OPENSets.State {
       this.game.state.start('mainGame');
     }
 
-    create() {
-      let logo = this.game.add.sprite(this.game.world.centerX, 30, 'sets-logo');
+    create(): void {
+      let logo: Phaser.Sprite = this.game.add.sprite(this.game.world.centerX, 30, 'sets-logo');
       logo.anchor.setTo(0.5, 0);
 
       this.game.add.text(
@@ -18,7 +18,7 @@ module OPENSets.State {
         'Парови',
         { fill: 'white', fontSize: '48px' });
 
-      let startButton = this.game.add.button(
+      let startButton: Phaser.Button = this.game.add.button(
         this.game.world.centerX,
         this.game.world.centerY + 190,
         'play-button',
