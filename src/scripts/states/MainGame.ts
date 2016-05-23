@@ -6,8 +6,12 @@ module OPENSets.State {
     public happySound: Phaser.Sound;
     public transitionSound: Phaser.Sound;
     public wrongOptionsList: Array<Phaser.Button>;
+    public wrongOptions: Phaser.Group;
+    public triesCounter: Services.TriesCounterService;
 
     create() {
+      this.wrongOptions = this.game.add.group();
+      this.triesCounter = new Services.TriesCounterService();
       this.drawScene();
 
       let model = new Models.GameModel('table', new Array<Models.Option>(
@@ -58,17 +62,21 @@ module OPENSets.State {
           this.buttonsInitialY,
           model.getOptionName(i));
 
-        if (!model.isCorrectOption(i)) {
+        if (model.isCorrectOption(i)) {
+          optionButton.events.onInputDown.add(this.rightPicturePicked, this);
+        } else {
           this.wrongOptionsList.push(optionButton);
+          optionButton.events.onInputDown.add(this.wrongPicturePicked, this);
+          this.wrongOptions.add(optionButton);
         }
-        optionButton.events.onInputDown.add(
-          model.isCorrectOption(i) ? this.rightPicturePicked : this.wrongPicturePicked,
-          this);
       }
     }
 
     wrongPicturePicked() {
       this.unhappySound.play();
+      if (this.triesCounter.isThresholdPassed()) {
+        this.disableWrongOptions();
+      }
     }
 
     rightPicturePicked(item) {
@@ -94,6 +102,11 @@ module OPENSets.State {
       happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
         alert('load new game iteration');
       }, this);
+    }
+
+    disableWrongOptions(): void {
+      this.wrongOptions.setAll('alpha', 0.5);
+      this.wrongOptions.setAll('inputEnabled', false);
     }
   }
 }
