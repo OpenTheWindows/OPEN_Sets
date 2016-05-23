@@ -7,6 +7,7 @@ module OPENSets.State {
     public transitionSound: Phaser.Sound;
     public wrongOptions: Phaser.Group;
     public triesCounter: Services.TriesCounterService;
+    public nextButton: Phaser.Button;
 
     create() {
       this.wrongOptions = this.game.add.group();
@@ -36,6 +37,7 @@ module OPENSets.State {
       // vertical lines
       this.drawLine(567, 460, 567, 800, 4);
       this.drawLine(1133, 460, 1133, 800, 4);
+      this.drawNextButton();
     }
 
     drawLine(x1, y1, x2, y2, width) {
@@ -43,6 +45,20 @@ module OPENSets.State {
       graphics.lineStyle(width, 0xA8A8A8);
       graphics.moveTo(x1, y1);
       graphics.lineTo(x2, y2);
+    }
+
+    drawNextButton(): void {
+      this.nextButton = this.game.add.button(
+        this.game.world.centerX,
+        this.buttonsInitialY + 60,
+        'next-button',
+        this.wrongPicturePicked,
+        this,
+        0, // over frame
+        1, // normal frame
+        2); // click frame
+      this.nextButton.anchor.setTo(0.5, 0);
+      this.nextButton.visible = false;
     }
 
     drawOptions(model: Models.GameModel) {
@@ -77,6 +93,7 @@ module OPENSets.State {
       tween.onComplete.add(() => {
         this.transitionSound.stop();
         this.wrongOptions.destroy();
+        this.nextButton.visible = true;
         this.playHappyAnimationAndSound();
       }, this);
     }
