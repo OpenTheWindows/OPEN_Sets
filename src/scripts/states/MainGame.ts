@@ -11,6 +11,12 @@ module OPENSets.State {
     public triesCounter: Services.TriesCounterService;
     public nextButton: Phaser.Button;
 
+    nextIteration() {
+
+      this.game.state.start('mainGame');
+      alert('load new game iteration');
+    }
+
     create(): void {
       this.wrongOptions = this.game.add.group();
       this.triesCounter = new Services.TriesCounterService();
@@ -54,7 +60,7 @@ module OPENSets.State {
         this.game.world.centerX,
         this.buttonsInitialY + 60,
         'next-button',
-        this.wrongPicturePicked,
+        this.nextIteration,
         this,
         0, // over frame
         1, // normal frame
@@ -105,7 +111,7 @@ module OPENSets.State {
         'idle',
         [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
       happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
-        alert('load new game iteration');
+        //alert('load new game iteration');
       }, this);
     }
 
