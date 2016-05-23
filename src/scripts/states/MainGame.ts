@@ -2,18 +2,15 @@ module OPENSets.State {
   export class MainGame extends Phaser.State {
     public buttonsInitialX: number = 155;
     public buttonsInitialY: number = 500;
-
     public unhappySound: Phaser.Sound;
     public happySound: Phaser.Sound;
     public transitionSound: Phaser.Sound;
-
     public wrongOptions: Phaser.Group;
     public triesCounter: Services.TriesCounterService;
 
     create() {
       this.wrongOptions = this.game.add.group();
       this.triesCounter = new Services.TriesCounterService();
-
       this.drawScene();
 
       let model = new Models.GameModel('table', new Array<Models.Option>(
