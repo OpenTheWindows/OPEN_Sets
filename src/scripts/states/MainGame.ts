@@ -48,6 +48,20 @@ module OPENSets.State {
       graphics.moveTo(x1, y1);
       graphics.lineTo(x2, y2);
     }
+    
+    drawNextButton(): void {
+      this.nextButton = this.game.add.button(
+        this.game.world.centerX,
+        this.buttonsInitialY + 60,
+        'next-button',
+        this.wrongPicturePicked,
+        this,
+        0, // over frame
+        1, // normal frame
+        2); // click frame
+      this.nextButton.anchor.setTo(0.5, 0);
+      this.nextButton.visible = false;
+    }
 
     drawNextButton(): void {
       this.nextButton = this.game.add.button(
