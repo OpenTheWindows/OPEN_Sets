@@ -11,8 +11,7 @@ module OPENSets.State {
     public triesCounter: Services.TriesCounterService;
     public nextButton: Phaser.Button;
 
-    nextIteration() {
-
+    nextIteration(): void {
       this.game.state.start('mainGame');
       alert('load new game iteration');
     }
