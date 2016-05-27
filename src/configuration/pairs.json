@@ -1,0 +1,180 @@
+{
+    "pairs": [
+        {
+            "id": 0,
+            "name": "table-chair",
+            "itemOne": "chair",
+            "pathOne": "assets/images/chair.png",
+            "itemTwo": "table",
+            "pathTwo": "assets/images/table.png"
+        },
+        {
+            "id": 1,
+            "name": "shoes-socks",
+            "itemOne": "shoes",
+            "pathOne": "assets/images/shoes.png",
+            "itemTwo": "socks",
+            "pathTwo": "assets/images/socks.png"
+        },
+        {
+            "id": 2,
+            "name": "hammer-nail",
+            "itemOne": "hammer",
+            "pathOne": "assets/images/hammer.png",
+            "itemTwo": "nail",
+            "pathTwo": "assets/images/nail.png"
+        },
+        {
+            "id": 3,
+            "name": "paint_pallete-paint_brush",
+            "itemOne": "paint_pallete",
+            "pathOne": "assets/images/paint_pallete.png",
+            "itemTwo": "paint_brush",
+            "pathTwo": "assets/images/paint_brush.png"
+        },
+        {
+            "id": 4,
+            "name": "pencil-sharpener",
+            "itemOne": "pencil",
+            "pathOne": "assets/images/pencil.png",
+            "itemTwo": "sharpener",
+            "pathTwo": "assets/images/sharpener.png"
+        },
+        {
+            "id": 5,
+            "name": "cloud-umbrella",
+            "itemOne": "cloud",
+            "pathOne": "assets/images/cloud.png",
+            "itemTwo": "umbrella",
+            "pathTwo": "assets/images/umbrella.png"
+        },
+        {
+            "id": 6,
+            "name": "teeth-toothbrush",
+            "itemOne": "teeth",
+            "pathOne": "assets/images/teeth.png",
+            "itemTwo": "toothbrush",
+            "pathTwo": "assets/images/toothbrush.png"
+        },
+        {
+            "id": 7,
+            "name": "liquid_soap-water_fountain",
+            "itemOne": "liquid_soap",
+            "pathOne": "assets/images/liquid_soap.png",
+            "itemTwo": "water_fountain",
+            "pathTwo": "assets/images/water_fountain.png"
+        },
+        {
+            "id": 8,
+            "name": "egg-frying_pan",
+            "itemOne": "egg",
+            "pathOne": "assets/images/egg.png",
+            "itemTwo": "frying_pan",
+            "pathTwo": "assets/images/frying_pan.png"
+        },
+        {
+            "id": 9,
+            "name": "fork-knife",
+            "itemOne": "fork",
+            "pathOne": "assets/images/fork.png",
+            "itemTwo": "knife",
+            "pathTwo": "assets/images/knife.png"
+        },
+        {
+            "id": 10,
+            "name": "key-locker",
+            "itemOne": "key",
+            "pathOne": "assets/images/key.png",
+            "itemTwo": "locker",
+            "pathTwo": "assets/images/locker.png"
+        },
+        {
+            "id": 11,
+            "name": "basketball-basketball_hoop",
+            "itemOne": "basketball",
+            "pathOne": "assets/images/basketball.png",
+            "itemTwo": "basketball_hoop",
+            "pathTwo": "assets/images/basketball_hoop.png"
+        },
+        {
+            "id": 12,
+            "name": "iron-iron_table",
+            "itemOne": "iron",
+            "pathOne": "assets/images/iron.png",
+            "itemTwo": "iron_table",
+            "pathTwo": "assets/images/iron_table.png"
+        },
+        {
+            "id": 13,
+            "name": "fish-fish_bowl",
+            "itemOne": "fish",
+            "pathOne": "assets/images/fish.png",
+            "itemTwo": "fish_bowl",
+            "pathTwo": "assets/images/fish_bowl.png"
+        },
+        {
+            "id": 14,
+            "name": "belt-pants",
+            "itemOne": "belt",
+            "pathOne": "assets/images/belt.png",
+            "itemTwo": "pants",
+            "pathTwo": "assets/images/pants.png"
+        },
+        {
+            "id": 15,
+            "name": "backpack-books",
+            "itemOne": "backpack",
+            "pathOne": "assets/images/backpack.png",
+            "itemTwo": "books",
+            "pathTwo": "assets/images/books.png"
+        },
+        {
+            "id": 16,
+            "name": "sun-sunglasses",
+            "itemOne": "sun",
+            "pathOne": "assets/images/sun.png",
+            "itemTwo": "sunglasses",
+            "pathTwo": "assets/images/sunglasses.png"
+        },
+        {
+            "id": 17,
+            "name": "christmas_tree-ornament",
+            "itemOne": "christmas_tree",
+            "pathOne": "assets/images/christmas_tree.png",
+            "itemTwo": "ornament",
+            "pathTwo": "assets/images/ornament.png"
+        },
+        {
+            "id": 18,
+            "name": "football_net-football",
+            "itemOne": "football_net",
+            "pathOne": "assets/images/football_net.png",
+            "itemTwo": "football",
+            "pathTwo": "assets/images/football.png"
+        },
+        {
+            "id": 19,
+            "name": "snowflake-snowman",
+            "itemOne": "snowflake",
+            "pathOne": "assets/images/snowflake.png",
+            "itemTwo": "snowman",
+            "pathTwo": "assets/images/snowman.png"
+        },
+        {
+            "id": 20,
+            "name": "cucumber-tomato",
+            "itemOne": "cucumber",
+            "pathOne": "assets/images/cucumber.png",
+            "itemTwo": "tomato",
+            "pathTwo": "assets/images/tomato.png"
+        },
+        {
+            "id": 21,
+            "name": "baby-baby_stroller",
+            "itemOne": "baby",
+            "pathOne": "assets/images/baby.png",
+            "itemTwo": "baby_stroller",
+            "pathTwo": "assets/images/baby_stroller.png"
+        }
+    ]
+}
