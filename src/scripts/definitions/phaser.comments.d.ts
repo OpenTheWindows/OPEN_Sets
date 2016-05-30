@@ -21604,7 +21604,6 @@ declare module Phaser {
     */
     class State {
 
-
         /**
         * A reference to the GameObjectFactory which can be used to add new objects to the World.
         */
