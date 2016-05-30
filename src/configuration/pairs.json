@@ -26,11 +26,11 @@
         },
         {
             "id": 3,
-            "name": "paint_pallete-paint_brush",
-            "itemOne": "paint_pallete",
-            "pathOne": "assets/images/paint_pallete.png",
+            "name": "paint_pallet-paint_brush",
+            "itemOne": "paint_pallet",
+            "pathOne": "assets/images/paint-pallet.png",
             "itemTwo": "paint_brush",
-            "pathTwo": "assets/images/paint_brush.png"
+            "pathTwo": "assets/images/paint-brush.png"
         },
         {
             "id": 4,
@@ -60,9 +60,9 @@
             "id": 7,
             "name": "liquid_soap-water_fountain",
             "itemOne": "liquid_soap",
-            "pathOne": "assets/images/liquid_soap.png",
+            "pathOne": "assets/images/soap.png",
             "itemTwo": "water_fountain",
-            "pathTwo": "assets/images/water_fountain.png"
+            "pathTwo": "assets/images/tap.png"
         },
         {
             "id": 8,
@@ -70,7 +70,7 @@
             "itemOne": "egg",
             "pathOne": "assets/images/egg.png",
             "itemTwo": "frying_pan",
-            "pathTwo": "assets/images/frying_pan.png"
+            "pathTwo": "assets/images/pan.png"
         },
         {
             "id": 9,
@@ -82,11 +82,11 @@
         },
         {
             "id": 10,
-            "name": "key-locker",
+            "name": "key-lock",
             "itemOne": "key",
             "pathOne": "assets/images/key.png",
-            "itemTwo": "locker",
-            "pathTwo": "assets/images/locker.png"
+            "itemTwo": "lock",
+            "pathTwo": "assets/images/lock.png"
         },
         {
             "id": 11,
@@ -94,7 +94,7 @@
             "itemOne": "basketball",
             "pathOne": "assets/images/basketball.png",
             "itemTwo": "basketball_hoop",
-            "pathTwo": "assets/images/basketball_hoop.png"
+            "pathTwo": "assets/images/basket.png"
         },
         {
             "id": 12,
@@ -102,7 +102,7 @@
             "itemOne": "iron",
             "pathOne": "assets/images/iron.png",
             "itemTwo": "iron_table",
-            "pathTwo": "assets/images/iron_table.png"
+            "pathTwo": "assets/images/ironing.png"
         },
         {
             "id": 13,
@@ -110,7 +110,7 @@
             "itemOne": "fish",
             "pathOne": "assets/images/fish.png",
             "itemTwo": "fish_bowl",
-            "pathTwo": "assets/images/fish_bowl.png"
+            "pathTwo": "assets/images/fishbowl.png"
         },
         {
             "id": 14,
@@ -140,23 +140,23 @@
             "id": 17,
             "name": "christmas_tree-ornament",
             "itemOne": "christmas_tree",
-            "pathOne": "assets/images/christmas_tree.png",
+            "pathOne": "assets/images/christmas-tree.png",
             "itemTwo": "ornament",
-            "pathTwo": "assets/images/ornament.png"
+            "pathTwo": "assets/images/christmas-bauble.png"
         },
         {
             "id": 18,
             "name": "football_net-football",
             "itemOne": "football_net",
-            "pathOne": "assets/images/football_net.png",
+            "pathOne": "assets/images/goal.png",
             "itemTwo": "football",
-            "pathTwo": "assets/images/football.png"
+            "pathTwo": "assets/images/soccer.png"
         },
         {
             "id": 19,
             "name": "snowflake-snowman",
             "itemOne": "snowflake",
-            "pathOne": "assets/images/snowflake.png",
+            "pathOne": "assets/images/snow-flake.png",
             "itemTwo": "snowman",
             "pathTwo": "assets/images/snowman.png"
         },
@@ -170,11 +170,11 @@
         },
         {
             "id": 21,
-            "name": "baby-baby_stroller",
+            "name": "baby-stroller",
             "itemOne": "baby",
             "pathOne": "assets/images/baby.png",
-            "itemTwo": "baby_stroller",
-            "pathTwo": "assets/images/baby_stroller.png"
+            "itemTwo": "stroller",
+            "pathTwo": "assets/images/stroller.png"
         }
     ]
 }
