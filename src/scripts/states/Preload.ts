@@ -1,19 +1,33 @@
 module OPENSets.State {
-    export class Preload extends Phaser.State {
+  export class Preload extends Phaser.State {
+    private gameState : Helpers.GameState;
 
-        preload(): void {
-            let preloadBar: Phaser.Sprite = this.add.sprite(290, 290, 'preload-bar');
-            this.load.setPreloadSprite(preloadBar);
-            
-            let jsonObject = JSON.parse(this.game.cache.getText('pairs'));
-            for (var item of jsonObject.pairs) {
-                this.load.image(item.itemOne, item.pathOne);
-                this.load.image(item.itemTwo, item.pathTwo);
-            }
-        }
-
-        create(): void {
-            this.game.state.start('start');
-        }
+    constructor() {
+      super();
+      this.gameState = Helpers.GameState.getInstance();
     }
+
+    preload(): void {
+      let preloadBar: Phaser.Sprite = this.add.sprite(290, 290, 'preload-bar');
+      this.load.setPreloadSprite(preloadBar);
+
+      let jsonObject = JSON.parse(this.game.cache.getText('pairs'));
+      let newPair: Models.Pair;
+
+      for (var item of jsonObject.pairs) {
+        this.load.image(item.itemOne, item.pathOne);
+        this.load.image(item.itemTwo, item.pathTwo);
+
+        newPair = new Models.Pair(item.id);
+        newPair.name = item.name;
+        newPair.itemOne = item.itemOne;
+        newPair.itemTwo = item.itemTwo;
+        this.gameState.randomizedPairs.push(newPair);
+      }
+    }
+
+    create(): void {
+      this.game.state.start('start');
+    }
+  }
 }
