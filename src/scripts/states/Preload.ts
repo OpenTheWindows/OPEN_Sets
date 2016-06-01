@@ -24,6 +24,11 @@ module OPENSets.State {
         newPair.itemTwo = item.itemTwo;
         this.gameState.randomizedPairs.push(newPair);
       }
+
+      this.gameState.randomizedPairs = Helpers.Helpers.shuffleArray(this.gameState.randomizedPairs);
+
+      //Debug output
+      //alert(Helpers.Helpers.arrayContainsDoubles(this.gameState.randomizedPairs));
     }
 
     create(): void {

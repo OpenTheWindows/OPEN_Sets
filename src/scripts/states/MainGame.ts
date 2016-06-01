@@ -19,6 +19,7 @@ module OPENSets.State {
       super();
       this.gameState = Helpers.GameState.getInstance();
       this.randomizeGameModelService = new Services.RandomizeGameModelService();
+      this.iteration = 0;
     }
 
     nextIteration(): void {
@@ -26,22 +27,22 @@ module OPENSets.State {
     }
 
     getNextRandomPair(): OPENSets.Models.Pair {
-      this.iteration++;
-      return this.gameState.randomizedPairs[this.iteration - 1];
+      return this.gameState.randomizedPairs[this.iteration++];
     }
 
     create(): void {
-
-      this.iteration = 0;
-      this.gameState.randomizedPairs = Helpers.Helpers.shuffleArray(this.gameState.randomizedPairs);
-
       this.wrongOptions = this.game.add.group();
       this.triesCounter = new Services.TriesCounterService();
       this.drawScene();
 
-      let model = this.createNewGameModel(this.getNextRandomPair());
-
-      this.drawOptions(model);
+      if(this.iteration < this.gameState.randomizedPairs.length){
+        let model = this.createNewGameModel(this.getNextRandomPair());
+        this.drawOptions(model);
+      }
+      else{
+        //TODO: add some graphics for game finished.
+        alert("Igrata zavrsi!");
+      }
 
       this.unhappySound = this.add.audio('audio-wrong-option');
       this.happySound = this.add.audio('audio-right-option');
