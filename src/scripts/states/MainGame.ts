@@ -9,11 +9,11 @@ module OPENSets.State {
 
     public wrongOptions: Phaser.Group;
     public triesCounter: Services.TriesCounterService;
-    public randomizeGameModelService : Services.RandomizeGameModelService;
+    public randomizeGameModelService: Services.RandomizeGameModelService;
     public nextButton: Phaser.Button;
 
     private iteration: number;
-    private gameState : Helpers.GameState;
+    private gameState: Helpers.GameState;
 
     constructor() {
       super();
@@ -35,12 +35,13 @@ module OPENSets.State {
       this.triesCounter = new Services.TriesCounterService();
       this.drawScene();
 
-      if(this.iteration < this.gameState.randomizedPairs.length){
+      if (this.iteration < this.gameState.randomizedPairs.length) {
         let model = this.createNewGameModel(this.getNextRandomPair());
         this.drawOptions(model);
       }
-      else{
+      else {
         //TODO: add some graphics for game finished.
+        this.game.state.start('start');
         alert("Igrata zavrsi!");
       }
 

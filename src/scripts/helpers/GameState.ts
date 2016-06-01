@@ -1,6 +1,7 @@
 module OPENSets.Helpers {
   export class GameState {
     public randomizedPairs : Array<Models.Pair>;
+    public wrongTriesTreshold : number;
     private static _instance: GameState = new GameState();
 
     constructor() {

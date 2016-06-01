@@ -1,6 +1,5 @@
 module OPENSets.State {
   export class Start extends Phaser.State {
-
     startGame(): void {
       if (this.game.input.activePointer.isMouse && this.game.input.activePointer.button !== Phaser.Mouse.LEFT_BUTTON) {
         return;
