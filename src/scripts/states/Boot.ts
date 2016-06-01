@@ -18,6 +18,12 @@ module OPENSets.State {
         'assets/animations/happy-animation.png',
         'assets/animations/happy-animation.json');
 
+      // Load animations
+      this.load.atlasJSONHash(
+        'monkey-animation',
+        'assets/animations/monkey-animation.png',
+        'assets/animations/monkey-animation.json');
+
       // Load sounds
       this.load.audio('audio-transition', 'assets/sounds/audio-transition.wav');
       this.load.audio('audio-right-option', 'assets/sounds/audio-right-option.mp3');

@@ -138,7 +138,7 @@ module OPENSets.State {
         'idle',
         [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
       happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
-        //alert('load new game iteration');
+        // alert('load new game iteration');
       }, this);
     }
 
