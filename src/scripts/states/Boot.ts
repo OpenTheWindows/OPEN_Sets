@@ -21,7 +21,7 @@ module OPENSets.State {
       this.load.atlasJSONHash(
         'bunny-animation',
         'assets/animations/bunny-animation.png',
-        'assets/animations/hbunny-animation.json');
+        'assets/animations/bunny-animation.json');
 
       // Load sounds
       this.load.audio('audio-transition', 'assets/sounds/audio-transition.wav');
