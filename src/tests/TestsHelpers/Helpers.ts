@@ -30,6 +30,7 @@ module OPENSets.TestsHelpers {
           }
          ]
       }`;
+
       let result = new Array<Models.Pair>();
 
       let pairsJsonParsed = JSON.parse(pairsJson);

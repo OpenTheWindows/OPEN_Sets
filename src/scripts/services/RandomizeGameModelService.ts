@@ -1,6 +1,6 @@
 module OPENSets.Services {
   export class RandomizeGameModelService {
-    private gameState : Helpers.GameState;
+    private gameState: Helpers.GameState;
 
     constructor() {
       this.gameState = Helpers.GameState.getInstance();
@@ -8,9 +8,9 @@ module OPENSets.Services {
 
     public randomize(gameModel: Models.GameModel): Models.GameModel {
 
-      let randomNumber = Math.random();
-      var wrongAnswerPair1: Models.Pair;
-      var wrongAnswerPair2: Models.Pair;
+      let randomNumber: number = Math.random();
+      let wrongAnswerPair1: Models.Pair;
+      let wrongAnswerPair2: Models.Pair;
 
       if (randomNumber > 0.5) {
         gameModel.question = gameModel.quest.itemOne;
@@ -23,9 +23,12 @@ module OPENSets.Services {
 
       wrongAnswerPair1 = gameModel.quest;
       wrongAnswerPair2 = gameModel.quest;
-      while (wrongAnswerPair1.name == gameModel.quest.name || wrongAnswerPair2.name == gameModel.quest.name || wrongAnswerPair1.name == wrongAnswerPair2.name) {
-        wrongAnswerPair1 = this.gameState.randomizedPairs[Math.floor(Math.random() * this.gameState.randomizedPairs.length)];
-        wrongAnswerPair2 = this.gameState.randomizedPairs[Math.floor(Math.random() * this.gameState.randomizedPairs.length)];
+      while (wrongAnswerPair1.name === gameModel.quest.name || wrongAnswerPair2.name === gameModel.quest.name ||
+        wrongAnswerPair1.name === wrongAnswerPair2.name) {
+          wrongAnswerPair1 =
+            this.gameState.randomizedPairs[Math.floor(Math.random() * this.gameState.randomizedPairs.length)];
+          wrongAnswerPair2 =
+            this.gameState.randomizedPairs[Math.floor(Math.random() * this.gameState.randomizedPairs.length)];
       }
       gameModel.wrongAnswer1.name = wrongAnswerPair1.itemOne;
       gameModel.wrongAnswer2.name = wrongAnswerPair2.itemTwo;

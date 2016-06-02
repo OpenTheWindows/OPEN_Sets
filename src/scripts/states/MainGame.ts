@@ -36,13 +36,13 @@ module OPENSets.State {
       this.drawScene();
 
       if (this.iteration < this.gameState.randomizedPairs.length) {
-        let model = this.createNewGameModel(this.getNextRandomPair());
+        let model: Models.GameModel = this.createNewGameModel(this.getNextRandomPair());
         this.drawOptions(model);
       }
       else {
-        //TODO: add some graphics for game finished.
+        // TODO: add some graphics for game finished.
         this.game.state.start('start');
-        alert("Igrata zavrsi!");
+        alert('Igrata zavrsi!');
       }
 
       this.unhappySound = this.add.audio('audio-wrong-option');
@@ -51,8 +51,8 @@ module OPENSets.State {
     }
 
     createNewGameModel(pair: Models.Pair): Models.GameModel {
-      var question: string;
-      var gameModel = new Models.GameModel(pair);
+      let question: string;
+      let gameModel: Models.GameModel = new Models.GameModel(pair);
 
       gameModel = this.randomizeGameModelService.randomize(gameModel);
 
@@ -61,7 +61,7 @@ module OPENSets.State {
 
     drawOptions(model: Models.GameModel): void {
       this.game.add.image(this.game.world.centerX - 280, 80, model.question);
-      var options = model.getRandomOptions();
+      let options: Models.Option[] = model.getRandomOptions();
 
       for (let i: number = 0; i < options.length; i++) {
         let optionButton: Phaser.Button = this.game.add.button(

@@ -11,12 +11,12 @@ module OPENSets.State {
       let preloadBar: Phaser.Sprite = this.add.sprite(290, 290, 'preload-bar');
       this.load.setPreloadSprite(preloadBar);
 
-      let globalConfiguration = JSON.parse(this.game.cache.getText('globalConfiguration'));
+      let globalConfiguration: any = JSON.parse(this.game.cache.getText('globalConfiguration'));
       let newPair: Models.Pair;
 
       this.gameState.wrongTriesTreshold = globalConfiguration.wrongTriesTreshold;
 
-      for (var item of globalConfiguration.pairs) {
+      for (let item of globalConfiguration.pairs) {
         this.load.image(item.itemOne, item.pathOne);
         this.load.image(item.itemTwo, item.pathTwo);
 

@@ -9,7 +9,7 @@ describe('RandomizeGameModelServiceTests', () => {
     // Arrange
     let gameState = OPENSets.Helpers.GameState.getInstance();
     gameState.randomizedPairs = OPENSets.TestsHelpers.Helpers.createPairsForTesting();
-    var gameModel = new OPENSets.Models.GameModel(gameState.randomizedPairs[0]);
+    let gameModel = new OPENSets.Models.GameModel(gameState.randomizedPairs[0]);
 
     // Act
     let result = randomizeGameModelService.randomize(gameModel);
