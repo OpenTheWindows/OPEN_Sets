@@ -151,6 +151,7 @@ module OPENSets.State {
     }
 
     rightPicturePicked(item: Phaser.Button): void {
+      item.inputEnabled = false;
       this.disableWrongOptions();
       let rightOptionTransition: Phaser.Tween = this.game.add.tween(item);
       rightOptionTransition.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
