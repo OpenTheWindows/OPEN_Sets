@@ -1,0 +1,108 @@
+{"frames": {
+
+"bear0.png":
+{
+	"frame": {"x":0,"y":0,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear1.png":
+{
+	"frame": {"x":250,"y":0,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear2.png":
+{
+	"frame": {"x":0,"y":218,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear3.png":
+{
+	"frame": {"x":250,"y":218,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear4.png":
+{
+	"frame": {"x":0,"y":436,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear5.png":
+{
+	"frame": {"x":250,"y":436,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear6.png":
+{
+	"frame": {"x":0,"y":654,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear7.png":
+{
+	"frame": {"x":250,"y":654,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear8.png":
+{
+	"frame": {"x":0,"y":872,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear9.png":
+{
+	"frame": {"x":250,"y":872,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear10.png":
+{
+	"frame": {"x":0,"y":1090,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+},
+"bear11.png":
+{
+	"frame": {"x":250,"y":1090,"w":250,"h":218},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":218},
+	"sourceSize": {"w":250,"h":218}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bear-animation.png",
+	"format": "RGBA8888",
+	"size": {"w":500,"h":1308},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4b64d040f3619f1c8c01918f32fc1f96:19c5572b8d00c32c6948004bf5dfe1c2:768bb4d925b32d71c6f34816775ada7d$"
+}
+}
