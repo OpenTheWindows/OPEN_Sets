@@ -9,49 +9,41 @@ module OPENSets.State {
 
     public wrongOptions: Phaser.Group;
     public triesCounter: Services.TriesCounterService;
+    public randomizeGameModelService: Services.RandomizeGameModelService;
     public nextButton: Phaser.Button;
 
-    private randomizedPairs: OPENSets.Models.Pair[];
     private iteration: number;
+    private gameState: Helpers.GameState;
+
+    constructor() {
+      super();
+      this.gameState = Helpers.GameState.getInstance();
+      this.randomizeGameModelService = new Services.RandomizeGameModelService();
+      this.iteration = 0;
+    }
 
     nextIteration(): void {
       this.game.state.start('mainGame');
     }
 
     getNextRandomPair(): OPENSets.Models.Pair {
-      this.iteration++;
-      this.game.cache['randomizedPairs']
-      return this.randomizedPairs[this.iteration - 1];
+      return this.gameState.randomizedPairs[this.iteration++];
     }
 
     create(): void {
-
-      this.iteration = 0;
-      this.randomizedPairs = new Array<Models.Pair>();
-
-      let jsonObject = JSON.parse(this.game.cache.getText('pairs'));
-      let newPair: Models.Pair;
-      for (let item of jsonObject.pairs) {
-
-        newPair = new Models.Pair(item.id);
-        newPair.name = item.name;
-        newPair.itemOne = item.itemOne;
-        newPair.itemTwo = item.itemTwo;
-        this.randomizedPairs.push(newPair);
-      }
-
-      this.randomizedPairs = Helpers.Helpers.shuffleArray(this.randomizedPairs);
-
       this.wrongOptions = this.game.add.group();
       this.triesCounter = new Services.TriesCounterService();
       this.drawScene();
 
-      console.log('maingame create');
-      console.log(this.randomizedPairs.length);
-
-      let model = this.createNewGameModel(this.getNextRandomPair());
-
-      this.drawOptions(model);
+      if (this.iteration < this.gameState.randomizedPairs.length) {
+        let model: Models.GameModel = this.createNewGameModel(this.getNextRandomPair());
+        this.drawOptions(model);
+      }
+      else {
+        // TODO: add some graphics for game finished.
+        this.game.state.start('start');
+        alert('Igrata zavrsi!');
+      }
 
       this.unhappySound = this.add.audio('audio-wrong-option');
       this.happySound = this.add.audio('audio-right-option');
@@ -60,39 +52,45 @@ module OPENSets.State {
 
     createNewGameModel(pair: Models.Pair): Models.GameModel {
       let question: string;
-      let rightAnswer = new Models.Option('', true);
-      let wrongAnswer1 = new Models.Option('', false);
-      let wrongAnswer2 = new Models.Option('', false);
-      let wrongAnswerPair1: Models.Pair;
-      let wrongAnswerPair2: Models.Pair;
+      let gameModel: Models.GameModel = new Models.GameModel(pair);
 
-      let randomNumber = Math.random();
+      gameModel = this.randomizeGameModelService.randomize(gameModel);
 
-      if (randomNumber > 0.5) {
-        question = pair.itemOne;
-        rightAnswer.name = pair.itemTwo;
+      return gameModel;
+    }
+
+    drawOptions(model: Models.GameModel): void {
+      this.game.add.image(this.game.world.centerX - 280, 80, model.question);
+      let options: Models.Option[] = model.getRandomOptions();
+
+      for (let i: number = 0; i < options.length; i++) {
+        let optionButton: Phaser.Button = this.game.add.button(
+          this.buttonsInitialX + i * 567,
+          this.buttonsInitialY,
+          options[i].name);
+
+        if (options[i].isCorrect) {
+          optionButton.events.onInputDown.add(this.rightPicturePicked, this);
+        }
+        else {
+          optionButton.events.onInputDown.add(this.wrongPicturePicked, this);
+          this.wrongOptions.add(optionButton);
+        }
       }
-      else {
-        question = pair.itemTwo;
-        rightAnswer.name = pair.itemOne;
-      }
+    }
 
-      wrongAnswerPair1 = pair;
-      wrongAnswerPair2 = pair;
-      while (wrongAnswerPair1.name === pair.name
-        || wrongAnswerPair2.name === pair.name
-        || wrongAnswerPair1.name === wrongAnswerPair2.name) {
-        wrongAnswerPair1 = this.randomizedPairs[Math.floor(Math.random() * this.randomizedPairs.length)];
-        wrongAnswerPair2 = this.randomizedPairs[Math.floor(Math.random() * this.randomizedPairs.length)];
-      }
-      wrongAnswer1.name = wrongAnswerPair1.itemOne;
-      wrongAnswer2.name = wrongAnswerPair2.itemTwo;
-
-      let options = [rightAnswer, wrongAnswer1, wrongAnswer2];
-
-      options = Helpers.Helpers.shuffleArray(options);
-
-      return new Models.GameModel(question, options);
+    drawNextButton(): void {
+      this.nextButton = this.game.add.button(
+        this.game.world.centerX,
+        this.buttonsInitialY + 60,
+        'next-button',
+        this.nextIteration,
+        this,
+        0, // over frame
+        1, // normal frame
+        2); // click frame
+      this.nextButton.anchor.setTo(0.5, 0);
+      this.nextButton.visible = false;
     }
 
     drawScene(): void {
@@ -115,39 +113,6 @@ module OPENSets.State {
       graphics.lineStyle(width, 0xA8A8A8);
       graphics.moveTo(x1, y1);
       graphics.lineTo(x2, y2);
-    }
-
-    drawNextButton(): void {
-      this.nextButton = this.game.add.button(
-        this.game.world.centerX,
-        this.buttonsInitialY + 60,
-        'next-button',
-        this.nextIteration,
-        this,
-        0, // over frame
-        1, // normal frame
-        2); // click frame
-      this.nextButton.anchor.setTo(0.5, 0);
-      this.nextButton.visible = false;
-    }
-
-    drawOptions(model: Models.GameModel): void {
-      this.game.add.image(this.game.world.centerX - 280, 80, model.givenItem);
-
-      for (let i: number = 0; i < model.options.length; i++) {
-        let optionButton: Phaser.Button = this.game.add.button(
-          this.buttonsInitialX + i * 567,
-          this.buttonsInitialY,
-          model.getOptionName(i));
-
-        if (model.isCorrectOption(i)) {
-          optionButton.events.onInputDown.add(this.rightPicturePicked, this);
-        }
-        else {
-          optionButton.events.onInputDown.add(this.wrongPicturePicked, this);
-          this.wrongOptions.add(optionButton);
-        }
-      }
     }
 
     rightPicturePicked(item: Phaser.Button): void {
