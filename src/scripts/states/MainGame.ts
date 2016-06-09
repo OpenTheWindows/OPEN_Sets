@@ -116,13 +116,14 @@ module OPENSets.State {
     }
 
     rightPicturePicked(item: Phaser.Button): void {
+      item.inputEnabled = false;
+      this.disableWrongOptions();
       let rightOptionTransition: Phaser.Tween = this.game.add.tween(item);
       rightOptionTransition.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
       this.transitionSound.play();
       rightOptionTransition.onComplete.add(() => {
         this.transitionSound.stop();
         this.wrongOptions.destroy();
-        this.nextButton.visible = true;
         this.playHappyAnimationAndSound();
       },
         this);
@@ -138,7 +139,7 @@ module OPENSets.State {
         'idle',
         [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
       happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
-        // alert('load new game iteration');
+        this.nextButton.visible = true;
       }, this);
     }
 
@@ -160,13 +161,11 @@ module OPENSets.State {
     animateWrongOption(item: Phaser.Button): void {
       let x: number = item.x;
       let y: number = item.y;
-      item.inputEnabled = false;
       let wrong: Phaser.Image = this.game.add.image(x, y, 'wrong');
       wrong.alpha = 0;
       this.game.add.tween(wrong).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, true)
         .onComplete.add(() => {
           wrong.destroy();
-          item.inputEnabled = true;
         });
     }
   }

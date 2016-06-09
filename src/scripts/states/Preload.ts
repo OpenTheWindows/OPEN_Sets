@@ -8,7 +8,7 @@ module OPENSets.State {
     }
 
     preload(): void {
-      let preloadBar: Phaser.Sprite = this.add.sprite(290, 290, 'preload-bar');
+      let preloadBar: Phaser.Sprite = this.add.sprite(this.game.world.centerX - 110, this.game.world.centerY, 'loader');
       this.load.setPreloadSprite(preloadBar);
 
       let globalConfiguration: any = JSON.parse(this.game.cache.getText('globalConfiguration'));
