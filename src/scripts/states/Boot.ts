@@ -2,7 +2,9 @@ module OPENSets.State {
   export class Boot extends Phaser.State {
     preload(): void {
       // Load pairs from json
-      this.load.text('pairs', 'configuration/pairs.json');
+      this.load.text('globalConfiguration', 'configuration/globalConfiguration.json');
+
+      this.load.image('preload-bar', 'assets/images/preloader.gif');
 
       this.load.image('loader', 'assets/images/loader.png');
 
