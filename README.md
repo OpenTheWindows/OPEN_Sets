@@ -23,9 +23,9 @@ OPEN_Sets/
  │   │        
  │   ├──tests/                          * folder that holds the tests for the services
  │   │        
- │   ├──css/                            * static assets are served here
+ │   ├──css/                            * our stylesheets are here
  │   │     
- │   └──assets/                         * our stylesheets are here
+ │   └──assets/                         * folder that holds the assets
  │       ├──animations/                 * animation atlases are stored here
  │       ├──images/                     * images are stored here
  │       ├──pointers/                   * pointer images are stored here
