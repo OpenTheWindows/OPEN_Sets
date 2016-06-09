@@ -20,7 +20,7 @@ module OPENSets.State {
         this.load.image(item.itemOne, item.pathOne);
         this.load.image(item.itemTwo, item.pathTwo);
 
-        newPair = new Models.Pair(item.id);
+        newPair = new Models.Pair();
         newPair.name = item.name;
         newPair.itemOne = item.itemOne;
         newPair.itemTwo = item.itemTwo;

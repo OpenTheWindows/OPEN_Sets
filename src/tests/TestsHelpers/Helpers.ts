@@ -37,7 +37,7 @@ module OPENSets.TestsHelpers {
       let newPair: Models.Pair;
 
       for (var item of pairsJsonParsed.pairs) {
-        newPair = new Models.Pair(item.id);
+        newPair = new Models.Pair();
         newPair.name = item.name;
         newPair.itemOne = item.itemOne;
         newPair.itemTwo = item.itemTwo;

@@ -1,5 +1,5 @@
 {
-  "wrongTriesTreshold" : "2",
+  "wrongTriesTreshold" : "6",
   "pairs": [
     {
       "id": 0,
