@@ -2,7 +2,7 @@ module OPENSets.State {
   export class Preload extends Phaser.State {
 
     preload(): void {
-      let preloadBar: Phaser.Sprite = this.add.sprite(290, 290, 'preload-bar');
+      let preloadBar: Phaser.Sprite = this.add.sprite(this.game.world.centerX - 110, this.game.world.centerY, 'loader');
       this.load.setPreloadSprite(preloadBar);
 
       let jsonObject = JSON.parse(this.game.cache.getText('pairs'));
