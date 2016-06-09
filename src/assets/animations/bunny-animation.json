@@ -1,0 +1,44 @@
+{"frames": {
+
+"bunny0.png":
+{
+	"frame": {"x":1,"y":1,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"bunny1.png":
+{
+	"frame": {"x":515,"y":1,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"bunny2.png":
+{
+	"frame": {"x":1029,"y":1,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"bunny3.png":
+{
+	"frame": {"x":1543,"y":1,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bunny-animation.png",
+	"format": "RGBA8888",
+	"size": {"w":2056,"h":514},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:23c6ee9a27a416704119f1f15a32f16b:0d5740727083b524be4b08977253d1aa:bcae328f329652bdfc216c9a4d3634a9$"
+}
+}
