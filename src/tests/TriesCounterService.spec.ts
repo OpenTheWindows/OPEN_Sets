@@ -6,6 +6,11 @@ describe('TriesCounterServiceTests', () => {
   });
 
   it('givenCounterService_whenNoWrongTriesAreMade_shouldBeFalsy', () => {
+    // Arrange
+    let gameState = OPENSets.Helpers.GameState.getInstance();
+    let treshold: number = 6;
+    gameState.wrongTriesTreshold = treshold;
+
     // Act
     let result = counter.isThresholdPassed();
 
@@ -15,7 +20,11 @@ describe('TriesCounterServiceTests', () => {
 
   it('givenCounterService_whenNoSixTriesAreMade_shouldBeTruthy', () => {
     // Arrange
-    for (let i = 0; i < 5; i++) {
+    let gameState = OPENSets.Helpers.GameState.getInstance();
+    let treshold: number = 6;
+    gameState.wrongTriesTreshold = treshold;
+
+    for (let i = 0; i < treshold - 1; i++) {
       counter.isThresholdPassed();
     }
 

@@ -1,0 +1,140 @@
+{"frames": {
+
+"cheer0.png":
+{
+	"frame": {"x":0,"y":0,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer1.png":
+{
+	"frame": {"x":400,"y":0,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer2.png":
+{
+	"frame": {"x":800,"y":0,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer3.png":
+{
+	"frame": {"x":1200,"y":0,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer4.png":
+{
+	"frame": {"x":0,"y":329,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer5.png":
+{
+	"frame": {"x":400,"y":329,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer6.png":
+{
+	"frame": {"x":800,"y":329,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer7.png":
+{
+	"frame": {"x":1200,"y":329,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer8.png":
+{
+	"frame": {"x":0,"y":658,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer9.png":
+{
+	"frame": {"x":400,"y":658,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer10.png":
+{
+	"frame": {"x":800,"y":658,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer11.png":
+{
+	"frame": {"x":1200,"y":658,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer12.png":
+{
+	"frame": {"x":0,"y":987,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer13.png":
+{
+	"frame": {"x":400,"y":987,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer14.png":
+{
+	"frame": {"x":800,"y":987,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+},
+"cheer15.png":
+{
+	"frame": {"x":1200,"y":987,"w":400,"h":329},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":329},
+	"sourceSize": {"w":400,"h":329}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "cheerleader-animation.png",
+	"format": "RGBA8888",
+	"size": {"w":1600,"h":1316},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d1758cb1179bb5eb2b990f7fbdb8df0b:12ab26d2fc2c12638d4a959466382d32:8b3b5f42fc6b6cfc41269224876d65ff$"
+}
+}
