@@ -1,0 +1,92 @@
+{"frames": {
+
+"dance0.png":
+{
+	"frame": {"x":0,"y":0,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance1.png":
+{
+	"frame": {"x":400,"y":0,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance2.png":
+{
+	"frame": {"x":800,"y":0,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance3.png":
+{
+	"frame": {"x":1200,"y":0,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance4.png":
+{
+	"frame": {"x":1600,"y":0,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance5.png":
+{
+	"frame": {"x":0,"y":264,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance6.png":
+{
+	"frame": {"x":400,"y":264,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance7.png":
+{
+	"frame": {"x":800,"y":264,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance8.png":
+{
+	"frame": {"x":1200,"y":264,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+},
+"dance9.png":
+{
+	"frame": {"x":1600,"y":264,"w":400,"h":264},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":264},
+	"sourceSize": {"w":400,"h":264}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "dance-animation.png",
+	"format": "RGBA8888",
+	"size": {"w":2000,"h":528},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0caafa2d044022a74e9080f8006f3904:a8062fcc3f5113cc05ee12511e092bf5:b4aa6ca76af16c9132d046e1fd769ce8$"
+}
+}

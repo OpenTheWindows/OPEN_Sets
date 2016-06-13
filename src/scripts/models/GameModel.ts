@@ -1,19 +1,17 @@
 module OPENSets.Models {
   export class GameModel {
-    public givenItem: string;
-    public options: Option[];
+    public quest : Models.Pair;
+    public question : string;
+    public rightAnswer = new Models.Option("", true);
+    public wrongAnswer1 = new Models.Option("", false);
+    public wrongAnswer2 = new Models.Option("", false);
 
-    constructor(givenItem: string, options: Option[]) {
-      this.givenItem = givenItem;
-      this.options = options;
+    constructor(quest : Models.Pair) {
+      this.quest = quest;
     }
 
-    getOptionName(index: number): string {
-      return this.options[index].name;
-    }
-
-    isCorrectOption(index: number): boolean {
-      return this.options[index].isCorrect;
+    public getRandomOptions() : Models.Option[] {
+      return Helpers.Helpers.shuffleArray([this.rightAnswer, this.wrongAnswer1, this.wrongAnswer2]);
     }
   }
 }
