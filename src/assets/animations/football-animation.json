@@ -1,0 +1,92 @@
+{"frames": {
+
+"football0.png":
+{
+	"frame": {"x":0,"y":0,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football1.png":
+{
+	"frame": {"x":400,"y":0,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football2.png":
+{
+	"frame": {"x":800,"y":0,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football3.png":
+{
+	"frame": {"x":1200,"y":0,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football4.png":
+{
+	"frame": {"x":1600,"y":0,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football5.png":
+{
+	"frame": {"x":0,"y":364,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football6.png":
+{
+	"frame": {"x":400,"y":364,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football7.png":
+{
+	"frame": {"x":800,"y":364,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football8.png":
+{
+	"frame": {"x":1200,"y":364,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+},
+"football9.png":
+{
+	"frame": {"x":1600,"y":364,"w":400,"h":364},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":364},
+	"sourceSize": {"w":400,"h":364}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "football-animation.png",
+	"format": "RGBA8888",
+	"size": {"w":2000,"h":728},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9da634445e647d4063d4ee1a8a5ce833:9c8d2316b766b38a4acd2faa4d33bee4:7b3aad66cd1c9992857e06bb5ba905ab$"
+}
+}

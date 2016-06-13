@@ -1,0 +1,132 @@
+{"frames": {
+
+"mouse0.png":
+{
+	"frame": {"x":0,"y":0,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse1.png":
+{
+	"frame": {"x":420,"y":0,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse2.png":
+{
+	"frame": {"x":840,"y":0,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse3.png":
+{
+	"frame": {"x":1260,"y":0,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse4.png":
+{
+	"frame": {"x":0,"y":440,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse5.png":
+{
+	"frame": {"x":420,"y":440,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse6.png":
+{
+	"frame": {"x":840,"y":440,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse7.png":
+{
+	"frame": {"x":1260,"y":440,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse8.png":
+{
+	"frame": {"x":0,"y":880,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse9.png":
+{
+	"frame": {"x":420,"y":880,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse10.png":
+{
+	"frame": {"x":840,"y":880,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse11.png":
+{
+	"frame": {"x":1260,"y":880,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse12.png":
+{
+	"frame": {"x":0,"y":1320,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse13.png":
+{
+	"frame": {"x":420,"y":1320,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+},
+"mouse14.png":
+{
+	"frame": {"x":840,"y":1320,"w":420,"h":440},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":420,"h":440},
+	"sourceSize": {"w":420,"h":440}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "mouse-animation.png",
+	"format": "RGBA8888",
+	"size": {"w":1680,"h":1760},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5ada654b671cd5975847cbc5d423cf03:6203d5f3b067f9dddbcbfd4aa02818ca:95116aa63cb441fdf1b25d0f31ecd353$"
+}
+}
