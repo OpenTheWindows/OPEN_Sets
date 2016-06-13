@@ -56,5 +56,12 @@ npm start
 
 ### Running the unit tests
 ```bash
-npm test
+npm test:coverage
+```
+
+## Running the Electron app
+* uncomment the `electron build:uncomment` sections from the `index.html`
+* comment the `build:remove` scripts block from the `index.html`
+```bash
+npm run electron
 ```
