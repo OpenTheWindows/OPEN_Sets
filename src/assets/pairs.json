@@ -1,0 +1,156 @@
+[
+  {
+    "name": "table-chair",
+    "itemOne": "chair",
+    "pathOne": "assets/images/chair.png",
+    "itemTwo": "table",
+    "pathTwo": "assets/images/table.png"
+  },
+  {
+    "name": "shoes-socks",
+    "itemOne": "shoes",
+    "pathOne": "assets/images/shoes.png",
+    "itemTwo": "socks",
+    "pathTwo": "assets/images/socks.png"
+  },
+  {
+    "name": "hammer-nail",
+    "itemOne": "hammer",
+    "pathOne": "assets/images/hammer.png",
+    "itemTwo": "nail",
+    "pathTwo": "assets/images/nail.png"
+  },
+  {
+    "name": "paint_pallet-paint_brush",
+    "itemOne": "paint_pallet",
+    "pathOne": "assets/images/paint-pallet.png",
+    "itemTwo": "paint_brush",
+    "pathTwo": "assets/images/paint-brush.png"
+  },
+  {
+    "name": "pencil-sharpener",
+    "itemOne": "pencil",
+    "pathOne": "assets/images/pencil.png",
+    "itemTwo": "sharpener",
+    "pathTwo": "assets/images/sharpener.png"
+  },
+  {
+    "name": "cloud-umbrella",
+    "itemOne": "cloud",
+    "pathOne": "assets/images/cloud.png",
+    "itemTwo": "umbrella",
+    "pathTwo": "assets/images/umbrella.png"
+  },
+  {
+    "name": "teeth-toothbrush",
+    "itemOne": "teeth",
+    "pathOne": "assets/images/teeth.png",
+    "itemTwo": "toothbrush",
+    "pathTwo": "assets/images/toothbrush.png"
+  },
+  {
+    "name": "liquid_soap-water_fountain",
+    "itemOne": "liquid_soap",
+    "pathOne": "assets/images/soap.png",
+    "itemTwo": "water_fountain",
+    "pathTwo": "assets/images/tap.png"
+  },
+  {
+    "name": "egg-frying_pan",
+    "itemOne": "egg",
+    "pathOne": "assets/images/egg.png",
+    "itemTwo": "frying_pan",
+    "pathTwo": "assets/images/pan.png"
+  },
+  {
+    "name": "fork-knife",
+    "itemOne": "fork",
+    "pathOne": "assets/images/fork.png",
+    "itemTwo": "knife",
+    "pathTwo": "assets/images/knife.png"
+  },
+  {
+    "name": "key-lock",
+    "itemOne": "key",
+    "pathOne": "assets/images/key.png",
+    "itemTwo": "lock",
+    "pathTwo": "assets/images/lock.png"
+  },
+  {
+    "name": "basketball-basketball_hoop",
+    "itemOne": "basketball",
+    "pathOne": "assets/images/basketball.png",
+    "itemTwo": "basketball_hoop",
+    "pathTwo": "assets/images/basket.png"
+  },
+  {
+    "name": "iron-iron_table",
+    "itemOne": "iron",
+    "pathOne": "assets/images/iron.png",
+    "itemTwo": "iron_table",
+    "pathTwo": "assets/images/ironing.png"
+  },
+  {
+    "name": "fish-fish_bowl",
+    "itemOne": "fish",
+    "pathOne": "assets/images/fish.png",
+    "itemTwo": "fish_bowl",
+    "pathTwo": "assets/images/fishbowl.png"
+  },
+  {
+    "name": "belt-pants",
+    "itemOne": "belt",
+    "pathOne": "assets/images/belt.png",
+    "itemTwo": "pants",
+    "pathTwo": "assets/images/pants.png"
+  },
+  {
+    "name": "backpack-books",
+    "itemOne": "backpack",
+    "pathOne": "assets/images/backpack.png",
+    "itemTwo": "books",
+    "pathTwo": "assets/images/books.png"
+  },
+  {
+    "name": "sun-sunglasses",
+    "itemOne": "sun",
+    "pathOne": "assets/images/sun.png",
+    "itemTwo": "sunglasses",
+    "pathTwo": "assets/images/sunglasses.png"
+  },
+  {
+    "name": "christmas_tree-ornament",
+    "itemOne": "christmas_tree",
+    "pathOne": "assets/images/christmas-tree.png",
+    "itemTwo": "ornament",
+    "pathTwo": "assets/images/christmas-bauble.png"
+  },
+  {
+    "name": "football_net-football",
+    "itemOne": "football_net",
+    "pathOne": "assets/images/goal.png",
+    "itemTwo": "football",
+    "pathTwo": "assets/images/soccer.png"
+  },
+  {
+    "name": "snowflake-snowman",
+    "itemOne": "snowflake",
+    "pathOne": "assets/images/snow-flake.png",
+    "itemTwo": "snowman",
+    "pathTwo": "assets/images/snowman.png"
+  },
+  {
+    "name": "cucumber-tomato",
+    "itemOne": "cucumber",
+    "pathOne": "assets/images/cucumber.png",
+    "itemTwo": "tomato",
+    "pathTwo": "assets/images/tomato.png"
+  },
+  {
+    "name": "baby-stroller",
+    "itemOne": "baby",
+    "pathOne": "assets/images/baby.png",
+    "itemTwo": "stroller",
+    "pathTwo": "assets/images/stroller.png"
+  }
+]
