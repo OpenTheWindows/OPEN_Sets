@@ -59,9 +59,9 @@ npm start
 npm test:coverage
 ```
 
-## Running the Electron app
+## Packing the Electron app
 * uncomment the `electron build:uncomment` sections from the `index.html`
 * comment the `build:remove` scripts block from the `index.html`
 ```bash
-npm run electron
+npm run pack
 ```
