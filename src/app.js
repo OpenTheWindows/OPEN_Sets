@@ -18,13 +18,14 @@ app.on('ready', () => {
   // Initialize the window to our specified dimensions
   mainWindow = new BrowserWindow({
     width: 1500,
-    height: 820
+    height: 820,
+    // icon: __dirname + '/otw.png'
   });
 
   // Open the DevTools
   // mainWindow.webContents.openDevTools();
 
-  mainWindow.loadURL('file://' + __dirname + '/dist/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   const cursorSize = process.argv[1];
   const cursorColor = process.argv[2];
