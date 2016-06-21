@@ -1,26 +1,28 @@
-describe('RandomizeGameModelServiceTests', () => {
-  let randomizeGameModelService : OPENSets.Services.RandomizeGameModelService;
+namespace OPENSets.Tests {
+  describe('RandomizeGameModelServiceTests', () => {
+    let randomizeGameModelService: Services.RandomizeGameModelService;
 
-  beforeEach(() => {
-    randomizeGameModelService = new OPENSets.Services.RandomizeGameModelService();
+    beforeEach(() => {
+      randomizeGameModelService = new Services.RandomizeGameModelService();
+    });
+
+    it('givenRandomizeGameModelService_whenGameModelIsRandomized_outputShouldContainTreeDifferentOptions', () => {
+      // Arrange
+      let gameState: Helpers.GameState = Helpers.GameState.getInstance();
+      gameState.pairs = TestsHelpers.Helpers.createPairsForTesting();
+      let gameModel: Models.GameModel = new Models.GameModel(gameState.pairs[0]);
+
+      // Act
+      let result: Models.GameModel = randomizeGameModelService.randomize(gameModel);
+
+      // Assert
+      expect(result.pair).toEqual(gameState.pairs[0]);
+      expect(result.givenPairItem).not.toEqual(result.rightOption.name);
+      expect(result.givenPairItem).not.toEqual(result.wrongOption1.name);
+      expect(result.givenPairItem).not.toEqual(result.wrongOption2.name);
+      expect(result.rightOption.name).not.toEqual(result.wrongOption1.name);
+      expect(result.rightOption.name).not.toEqual(result.wrongOption2.name);
+      expect(result.wrongOption1.name).not.toEqual(result.wrongOption2.name);
+    });
   });
-
-  it('givenRandomizeGameModelService_whenGameModelIsRandomized_outputShouldContainTreeDifferentOptions', () => {
-    // Arrange
-    let gameState = OPENSets.Helpers.GameState.getInstance();
-    gameState.randomizedPairs = OPENSets.TestsHelpers.Helpers.createPairsForTesting();
-    let gameModel = new OPENSets.Models.GameModel(gameState.randomizedPairs[0]);
-
-    // Act
-    let result = randomizeGameModelService.randomize(gameModel);
-
-    // Assert
-    expect(result.quest).toEqual(gameState.randomizedPairs[0]);
-    expect(result.question).not.toEqual(result.rightAnswer.name);
-    expect(result.question).not.toEqual(result.wrongAnswer1.name);
-    expect(result.question).not.toEqual(result.wrongAnswer2.name);
-    expect(result.rightAnswer.name).not.toEqual(result.wrongAnswer1.name);
-    expect(result.rightAnswer.name).not.toEqual(result.wrongAnswer2.name);
-    expect(result.wrongAnswer1.name).not.toEqual(result.wrongAnswer2.name);
-  });
-});
+}
