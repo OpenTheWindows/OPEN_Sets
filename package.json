@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "",
   "author": "OpenTheWindows",
-  "main": "app.js",
   "dependencies": {},
   "devDependencies": {
     "bower": "*",
@@ -51,9 +50,9 @@
     "start": "gulp",
     "test": "gulp test",
     "test:coverage": "gulp test && gulp open-coverage-report",
-    "lint": "tslint src/scripts/{services,states}/*.ts -s node_modules/tslint-stylish -t stylish",
-    "electron": "electron .",
-    "pack": "electron-packager . OPEN_Sets --platform=win32 --arch=x64 --overwrite --out=../sets_release"
+    "lint": "tslint src/scripts/{services,states,helpers,models}/*.ts -s node_modules/tslint-stylish -t stylish",
+    "prepack": "gulp build",
+    "pack": "electron-packager ./dist OPEN_Sets --platform=win32 --arch=x64 --overwrite --out=../sets_release --asar=true"
   },
   "engines": {
     "node": ">= 4.2.1",

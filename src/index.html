@@ -9,17 +9,21 @@
 </head>
 
 <body>
-  <!-- build:remove -->
+  <!-- electron build:remove -->
   <script src="http://localhost:35729/livereload.js"></script>
   <script src="vendor/phaser-official/build/phaser.js"></script>
   <script src="main.js"></script>
   <!-- /build -->
 
-  <!-- build:uncomment all.min.js -->
+  <!-- electron build:uncomment all.min.js -->
   <!--<script src="all.min.js"></script>-->
   <script>
-    window.onload = function() {
+    window.onload = () => {
         new OPENSets.Game();
+        
+        // -- electron build:uncomment --  
+        // const remote = require('electron').remote;
+        // document.body.style.cursor = remote.getGlobal('cursor');
       };
   </script>
 </body>

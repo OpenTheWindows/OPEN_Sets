@@ -27,7 +27,7 @@ module OPENSets.State {
     }
 
     getNextRandomPair(): OPENSets.Models.Pair {
-      return this.gameState.randomizedPairs[this.iteration++];
+      return this.gameState.pairs[this.iteration++];
     }
 
     create(): void {
@@ -35,14 +35,14 @@ module OPENSets.State {
       this.triesCounter = new Services.TriesCounterService();
       this.drawScene();
 
-      if (this.iteration < this.gameState.randomizedPairs.length) {
+      if (this.iteration < this.gameState.pairs.length) {
         let model: Models.GameModel = this.createNewGameModel(this.getNextRandomPair());
         this.drawOptions(model);
       }
       else {
         // TODO: add some graphics for game finished.
         this.game.state.start('start');
-        alert('Igrata zavrsi!');
+        alert('Играта заврши!');
       }
 
       this.unhappySound = this.add.audio('audio-wrong-option');
@@ -60,8 +60,8 @@ module OPENSets.State {
     }
 
     drawOptions(model: Models.GameModel): void {
-      this.game.add.image(this.game.world.centerX - 280, 80, model.question);
-      let options: Models.Option[] = model.getRandomOptions();
+      this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
+      let options: Array<Models.Option> = model.getShuffledOptions();
 
       for (let i: number = 0; i < options.length; i++) {
         let optionButton: Phaser.Button = this.game.add.button(

@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "itemOne": "chair",
+    "itemTwo": "table"
+  },
+  {
+    "id": 2,
+    "itemOne": "shoes",
+    "itemTwo": "socks"
+  },
+  {
+    "id": 3,
+    "itemOne": "hammer",
+    "itemTwo": "nail"
+  },
+  {
+    "id": 4,
+    "itemOne": "paint-pallet",
+    "itemTwo": "paint-brush"
+  },
+  {
+    "id": 5,
+    "itemOne": "pencil",
+    "itemTwo": "sharpener"
+  },
+  {
+    "id": 6,
+    "itemOne": "cloud",
+    "itemTwo": "umbrella"
+  },
+  {
+    "id": 7,
+    "itemOne": "teeth",
+    "itemTwo": "toothbrush"
+  },
+  {
+    "id": 8,
+    "itemOne": "soap",
+    "itemTwo": "tap"
+  },
+  {
+    "id": 9,
+    "itemOne": "egg",
+    "itemTwo": "pan"
+  },
+  {
+    "id": 10,
+    "itemOne": "fork",
+    "itemTwo": "knife"
+  },
+  {
+    "id": 11,
+    "itemOne": "key",
+    "itemTwo": "door"
+  },
+  {
+    "id": 12,
+    "itemOne": "basketball",
+    "itemTwo": "basketball-hoop"
+  },
+  {
+    "id": 13,
+    "itemOne": "iron",
+    "itemTwo": "iron-table"
+  },
+  {
+    "id": 14,
+    "itemOne": "fish",
+    "itemTwo": "fishbowl"
+  },
+  {
+    "id": 15,
+    "itemOne": "belt",
+    "itemTwo": "pants"
+  },
+  {
+    "id": 16,
+    "itemOne": "backpack",
+    "itemTwo": "books"
+  },
+  {
+    "id": 17,
+    "itemOne": "sun",
+    "itemTwo": "sunglasses"
+  },
+  {
+    "id": 18,
+    "itemOne": "christmas-tree",
+    "itemTwo": "christmas-bauble"
+  },
+  {
+    "id": 19,
+    "itemOne": "football-net",
+    "itemTwo": "football"
+  },
+  {
+    "id": 20,
+    "itemOne": "snowflake",
+    "itemTwo": "snowman"
+  },
+  {
+    "id": 21,
+    "itemOne": "baby",
+    "itemTwo": "stroller"
+  }
+]

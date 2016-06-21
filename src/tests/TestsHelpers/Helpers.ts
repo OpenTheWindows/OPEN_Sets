@@ -1,50 +1,26 @@
 module OPENSets.TestsHelpers {
   export class Helpers {
-    public static createPairsForTesting(): Models.Pair[] {
+    public static createPairsForTesting(): Array<Models.Pair> {
 
-      let pairsJson = `{
-        "pairs": [
+      let pairsJson: string = `[
           {
             "id": 0,
-            "name": "table-chair",
             "itemOne": "chair",
-            "pathOne": "assets/images/chair.png",
-            "itemTwo": "table",
-            "pathTwo": "assets/images/table.png"
+            "itemTwo": "table"
           },
           {
             "id": 1,
-            "name": "shoes-socks",
             "itemOne": "shoes",
-            "pathOne": "assets/images/shoes.png",
-            "itemTwo": "socks",
-            "pathTwo": "assets/images/socks.png"
+            "itemTwo": "socks"
           },
           {
             "id": 2,
-            "name": "hammer-nail",
             "itemOne": "hammer",
-            "pathOne": "assets/images/hammer.png",
-            "itemTwo": "nail",
-            "pathTwo": "assets/images/nail.png"
+            "itemTwo": "nail"
           }
-         ]
-      }`;
+         ]`;
 
-      let result = new Array<Models.Pair>();
-
-      let pairsJsonParsed = JSON.parse(pairsJson);
-      let newPair: Models.Pair;
-
-      for (var item of pairsJsonParsed.pairs) {
-        newPair = new Models.Pair();
-        newPair.name = item.name;
-        newPair.itemOne = item.itemOne;
-        newPair.itemTwo = item.itemTwo;
-        result.push(newPair);
-      }
-
-      return result;
+      return JSON.parse(pairsJson);
     }
   }
 }
