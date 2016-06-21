@@ -1,8 +1,11 @@
 module OPENSets.Helpers {
   export class GameState {
     private static _instance: GameState = new GameState();
-    public randomizedPairs: Array<Models.Pair>;
+
+    public pairs: Array<Models.Pair>;
     public wrongTriesTreshold: number;
+    public pairsImagesPrefix: string = 'assets/pairs/';
+    public imageSuffix: string = '.png';
 
     public static getInstance(): GameState {
       return GameState._instance;
@@ -12,8 +15,9 @@ module OPENSets.Helpers {
       if (GameState._instance) {
         throw new Error('Error: Instantiation failed: Use GameState.getInstance() instead of new.');
       }
+
       GameState._instance = this;
-      this.randomizedPairs = new Array<Models.Pair>();
+      this.pairs = new Array<Models.Pair>();
       this.wrongTriesTreshold = 6;
     }
   }

@@ -1,17 +1,14 @@
 module OPENSets.Models {
   export class GameModel {
-    public quest: Models.Pair;
-    public question: string;
-    public rightAnswer: Models.Option = new Models.Option('', true);
-    public wrongAnswer1: Models.Option = new Models.Option('', false);
-    public wrongAnswer2: Models.Option = new Models.Option('', false);
+    public givenPairItem: string;
+    public rightOption: Models.Option = new Models.Option('', true);
+    public wrongOption1: Models.Option = new Models.Option('', false);
+    public wrongOption2: Models.Option = new Models.Option('', false);
 
-    constructor(quest: Models.Pair) {
-      this.quest = quest;
-    }
+    constructor(public pair: Models.Pair) { }
 
-    public getRandomOptions(): Models.Option[] {
-      return Helpers.Helpers.shuffleArray([this.rightAnswer, this.wrongAnswer1, this.wrongAnswer2]);
+    public getShuffledOptions(): Array<Models.Option> {
+      return Helpers.Helpers.shuffleArray([this.rightOption, this.wrongOption1, this.wrongOption2]);
     }
   }
 }
