@@ -1,156 +1,107 @@
 [
   {
-    "name": "table-chair",
+    "id": 1,
     "itemOne": "chair",
-    "pathOne": "assets/images/chair.png",
-    "itemTwo": "table",
-    "pathTwo": "assets/images/table.png"
+    "itemTwo": "table"
   },
   {
-    "name": "shoes-socks",
+    "id": 2,
     "itemOne": "shoes",
-    "pathOne": "assets/images/shoes.png",
-    "itemTwo": "socks",
-    "pathTwo": "assets/images/socks.png"
+    "itemTwo": "socks"
   },
   {
-    "name": "hammer-nail",
+    "id": 3,
     "itemOne": "hammer",
-    "pathOne": "assets/images/hammer.png",
-    "itemTwo": "nail",
-    "pathTwo": "assets/images/nail.png"
+    "itemTwo": "nail"
   },
   {
-    "name": "paint_pallet-paint_brush",
-    "itemOne": "paint_pallet",
-    "pathOne": "assets/images/paint-pallet.png",
-    "itemTwo": "paint_brush",
-    "pathTwo": "assets/images/paint-brush.png"
+    "id": 4,
+    "itemOne": "paint-pallet",
+    "itemTwo": "paint-brush"
   },
   {
-    "name": "pencil-sharpener",
+    "id": 5,
     "itemOne": "pencil",
-    "pathOne": "assets/images/pencil.png",
-    "itemTwo": "sharpener",
-    "pathTwo": "assets/images/sharpener.png"
+    "itemTwo": "sharpener"
   },
   {
-    "name": "cloud-umbrella",
+    "id": 6,
     "itemOne": "cloud",
-    "pathOne": "assets/images/cloud.png",
-    "itemTwo": "umbrella",
-    "pathTwo": "assets/images/umbrella.png"
+    "itemTwo": "umbrella"
   },
   {
-    "name": "teeth-toothbrush",
+    "id": 7,
     "itemOne": "teeth",
-    "pathOne": "assets/images/teeth.png",
-    "itemTwo": "toothbrush",
-    "pathTwo": "assets/images/toothbrush.png"
+    "itemTwo": "toothbrush"
   },
   {
-    "name": "liquid_soap-water_fountain",
-    "itemOne": "liquid_soap",
-    "pathOne": "assets/images/soap.png",
-    "itemTwo": "water_fountain",
-    "pathTwo": "assets/images/tap.png"
+    "id": 8,
+    "itemOne": "soap",
+    "itemTwo": "tap"
   },
   {
-    "name": "egg-frying_pan",
+    "id": 9,
     "itemOne": "egg",
-    "pathOne": "assets/images/egg.png",
-    "itemTwo": "frying_pan",
-    "pathTwo": "assets/images/pan.png"
+    "itemTwo": "pan"
   },
   {
-    "name": "fork-knife",
+    "id": 10,
     "itemOne": "fork",
-    "pathOne": "assets/images/fork.png",
-    "itemTwo": "knife",
-    "pathTwo": "assets/images/knife.png"
+    "itemTwo": "knife"
   },
   {
-    "name": "key-lock",
+    "id": 11,
     "itemOne": "key",
-    "pathOne": "assets/images/key.png",
-    "itemTwo": "lock",
-    "pathTwo": "assets/images/lock.png"
+    "itemTwo": "door"
   },
   {
-    "name": "basketball-basketball_hoop",
+    "id": 12,
     "itemOne": "basketball",
-    "pathOne": "assets/images/basketball.png",
-    "itemTwo": "basketball_hoop",
-    "pathTwo": "assets/images/basket.png"
+    "itemTwo": "basketball-hoop"
   },
   {
-    "name": "iron-iron_table",
+    "id": 13,
     "itemOne": "iron",
-    "pathOne": "assets/images/iron.png",
-    "itemTwo": "iron_table",
-    "pathTwo": "assets/images/ironing.png"
+    "itemTwo": "iron-table"
   },
   {
-    "name": "fish-fish_bowl",
+    "id": 14,
     "itemOne": "fish",
-    "pathOne": "assets/images/fish.png",
-    "itemTwo": "fish_bowl",
-    "pathTwo": "assets/images/fishbowl.png"
+    "itemTwo": "fishbowl"
   },
   {
-    "name": "belt-pants",
+    "id": 15,
     "itemOne": "belt",
-    "pathOne": "assets/images/belt.png",
-    "itemTwo": "pants",
-    "pathTwo": "assets/images/pants.png"
+    "itemTwo": "pants"
   },
   {
-    "name": "backpack-books",
+    "id": 16,
     "itemOne": "backpack",
-    "pathOne": "assets/images/backpack.png",
-    "itemTwo": "books",
-    "pathTwo": "assets/images/books.png"
+    "itemTwo": "books"
   },
   {
-    "name": "sun-sunglasses",
+    "id": 17,
     "itemOne": "sun",
-    "pathOne": "assets/images/sun.png",
-    "itemTwo": "sunglasses",
-    "pathTwo": "assets/images/sunglasses.png"
+    "itemTwo": "sunglasses"
   },
   {
-    "name": "christmas_tree-ornament",
-    "itemOne": "christmas_tree",
-    "pathOne": "assets/images/christmas-tree.png",
-    "itemTwo": "ornament",
-    "pathTwo": "assets/images/christmas-bauble.png"
+    "id": 18,
+    "itemOne": "christmas-tree",
+    "itemTwo": "christmas-bauble"
   },
   {
-    "name": "football_net-football",
-    "itemOne": "football_net",
-    "pathOne": "assets/images/goal.png",
-    "itemTwo": "football",
-    "pathTwo": "assets/images/soccer.png"
+    "id": 19,
+    "itemOne": "football-net",
+    "itemTwo": "football"
   },
   {
-    "name": "snowflake-snowman",
+    "id": 20,
     "itemOne": "snowflake",
-    "pathOne": "assets/images/snow-flake.png",
-    "itemTwo": "snowman",
-    "pathTwo": "assets/images/snowman.png"
+    "itemTwo": "snowman"
   },
   {
-    "name": "cucumber-tomato",
-    "itemOne": "cucumber",
-    "pathOne": "assets/images/cucumber.png",
-    "itemTwo": "tomato",
-    "pathTwo": "assets/images/tomato.png"
-  },
-  {
-    "name": "baby-stroller",
+    "id": 21,
     "itemOne": "baby",
-    "pathOne": "assets/images/baby.png",
-    "itemTwo": "stroller",
-    "pathTwo": "assets/images/stroller.png"
+    "itemTwo": "stroller"
   }
 ]
