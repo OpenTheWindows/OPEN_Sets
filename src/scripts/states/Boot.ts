@@ -4,6 +4,9 @@ module OPENSets.State {
       // Load pairs from json
       this.load.text('pairs', 'assets/pairs.json');
 
+      //Load happy animations from json
+      this.load.text('happy-animations', 'assets/happy-animations.json');
+
       this.load.image('loader', 'assets/images/loader.png');
 
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
@@ -14,89 +17,84 @@ module OPENSets.State {
 
       // Load animations
       this.load.atlasJSONHash(
-        'basket-animation',
-        'assets/animations/basket-animation.png',
-        'assets/animations/basket-animation.json');
+        'basket',
+        'assets/animations/basket.png',
+        'assets/animations/basket.json');
 
       this.load.atlasJSONHash(
-        'bear-animation',
-        'assets/animations/bear-animation.png',
-        'assets/animations/bear-animation.json');
+        'bear',
+        'assets/animations/bear.png',
+        'assets/animations/bear.json');
 
       this.load.atlasJSONHash(
-        'bee-animation',
-        'assets/animations/bee-animation.png',
-        'assets/animations/bee-animation.json');
+        'bee',
+        'assets/animations/bee.png',
+        'assets/animations/bee.json');
 
       this.load.atlasJSONHash(
-        'bunny-animation',
-        'assets/animations/bunny-animation.png',
-        'assets/animations/bunny-animation.json');
+        'bunny',
+        'assets/animations/bunny.png',
+        'assets/animations/bunny.json');
 
       this.load.atlasJSONHash(
-        'butterfly-animation',
-        'assets/animations/butterfly-animation.png',
-        'assets/animations/butterfly-animation.json');
+        'butterfly',
+        'assets/animations/butterfly.png',
+        'assets/animations/butterfly.json');
 
       this.load.atlasJSONHash(
-        'cat-animation',
-        'assets/animations/cat-animation.png',
-        'assets/animations/cat-animation.json');
+        'cat',
+        'assets/animations/cat.png',
+        'assets/animations/cat.json');
 
       this.load.atlasJSONHash(
-        'cheerleader-animation',
-        'assets/animations/cheerleader-animation.png',
-        'assets/animations/cheerleader-animation.json');
+        'cheerleader',
+        'assets/animations/cheerleader.png',
+        'assets/animations/cheerleader.json');
 
       this.load.atlasJSONHash(
-        'dance-animation',
-        'assets/animations/dance-animation.png',
-        'assets/animations/dance-animation.json');
+        'dance',
+        'assets/animations/dance.png',
+        'assets/animations/dance.json');
 
       this.load.atlasJSONHash(
-        'exercise-animation',
-        'assets/animations/exercise-animation.png',
-        'assets/animations/exercise-animation.json');
+        'exercise',
+        'assets/animations/exercise.png',
+        'assets/animations/exercise.json');
 
       this.load.atlasJSONHash(
-        'football-animation',
-        'assets/animations/football-animation.png',
-        'assets/animations/football-animation.json');
+        'footballer',
+        'assets/animations/footballer.png',
+        'assets/animations/footballer.json');
 
       this.load.atlasJSONHash(
-        'football-animation',
-        'assets/animations/football-animation.png',
-        'assets/animations/football-animation.json');
+        'frog',
+        'assets/animations/frog.png',
+        'assets/animations/frog.json');
 
       this.load.atlasJSONHash(
-        'frog-animation',
-        'assets/animations/frog-animation.png',
-        'assets/animations/frog-animation.json');
+        'happy',
+        'assets/animations/happy.png',
+        'assets/animations/happy.json');
 
       this.load.atlasJSONHash(
-        'happy-animation',
-        'assets/animations/happy-animation.png',
-        'assets/animations/happy-animation.json');
+        'ladybug',
+        'assets/animations/ladybug.png',
+        'assets/animations/ladybug.json');
 
       this.load.atlasJSONHash(
-        'ladybug-animation',
-        'assets/animations/ladybug-animation.png',
-        'assets/animations/ladybug-animation.json');
+        'monkey',
+        'assets/animations/monkey.png',
+        'assets/animations/monkey.json');
 
       this.load.atlasJSONHash(
-        'monkey-animation',
-        'assets/animations/monkey-animation.png',
-        'assets/animations/monkey-animation.json');
+        'mouse',
+        'assets/animations/mouse.png',
+        'assets/animations/mouse.json');
 
       this.load.atlasJSONHash(
-        'mouse-animation',
-        'assets/animations/mouse-animation.png',
-        'assets/animations/mouse-animation.json');
-
-      this.load.atlasJSONHash(
-        'thumbs-animation',
-        'assets/animations/thumbs-animation.png',
-        'assets/animations/thumbs-animation.json');
+        'thumbs',
+        'assets/animations/thumbs.png',
+        'assets/animations/thumbs.json');
 
       // Load sounds
       this.load.audio('audio-transition', 'assets/sounds/audio-transition.wav');
