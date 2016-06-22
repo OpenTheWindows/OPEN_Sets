@@ -118,4 +118,3 @@ module OPENSets.State {
     }
   }
 }
-
