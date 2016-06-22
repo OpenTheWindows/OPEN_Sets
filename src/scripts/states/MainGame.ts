@@ -133,7 +133,7 @@ module OPENSets.State {
     }
 
     playHappyAnimationAndSound(): void {
-      let model: Models.AnimationModel = new Models.AnimationModel(this.getNextRandomAnimation());
+      let model: Models.AnimationModel = this.getNextRandomAnimation();
 
       let happyAnimation: Phaser.Sprite = this.game.add.sprite(
         this.game.world.centerX,
