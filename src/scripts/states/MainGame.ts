@@ -62,12 +62,6 @@ module OPENSets.State {
       return gameModel;
     }
 
-    createNewAnimationModel(animation: Models.AnimationModel): Models.AnimationModel {
-      let animationModel: Models.AnimationModel = new Models.AnimationModel(animation);
-
-      return animationModel;
-    }
-
     drawOptions(model: Models.GameModel): void {
       this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
       let options: Array<Models.Option> = model.getShuffledOptions();
@@ -139,7 +133,7 @@ module OPENSets.State {
     }
 
     playHappyAnimationAndSound(): void {
-      let model: Models.AnimationModel = this.createNewAnimationModel(this.getNextRandomAnimation());
+      let model: Models.AnimationModel = new Models.AnimationModel(this.getNextRandomAnimation());
 
       let happyAnimation: Phaser.Sprite = this.game.add.sprite(
         this.game.world.centerX,
