@@ -52,7 +52,9 @@
     "test:coverage": "gulp test && gulp open-coverage-report",
     "lint": "tslint src/scripts/{services,states,helpers,models}/*.ts -s node_modules/tslint-stylish -t stylish",
     "prepack": "gulp build",
-    "pack": "electron-packager ./dist OPEN_Sets --platform=win32 --arch=x64 --overwrite --out=../sets_release --asar=true"
+    "pack": "npm run pack64",
+    "pack64": "electron-packager ./dist OPEN_Sets --platform=win32 --arch=x64 --overwrite --out=../sets_release --asar=true --icon=Logo.ico",
+    "pack32": "electron-packager ./dist OPEN_Sets --platform=win32 --arch=ia32 --overwrite --out=../sets_release --asar=true --icon=Logo.ico"
   },
   "engines": {
     "node": ">= 4.2.1",
