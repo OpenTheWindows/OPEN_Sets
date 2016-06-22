@@ -145,6 +145,7 @@ module OPENSets.State {
         this.game.world.centerX,
         this.game.world.centerY,
         model.animation.name);
+
       happyAnimation.anchor.setTo(0.5);
       happyAnimation.animations.add(
         'idle',
