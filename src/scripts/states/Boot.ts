@@ -4,6 +4,9 @@ module OPENSets.State {
       // Load pairs from json
       this.load.text('pairs', 'assets/pairs.json');
 
+      //Load happy animations from json
+      this.load.text('happy-animations', 'assets/happy-animations.json');
+
       this.load.image('loader', 'assets/images/loader.png');
 
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
