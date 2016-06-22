@@ -133,7 +133,7 @@ module OPENSets.State {
       let happyAnimation: Phaser.Sprite = this.game.add.sprite(
         this.game.world.centerX,
         this.game.world.centerY,
-        'happy-animation');
+        'happy');
       happyAnimation.anchor.setTo(0.5);
       happyAnimation.animations.add(
         'idle',
