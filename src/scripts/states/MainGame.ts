@@ -30,6 +30,10 @@ module OPENSets.State {
       return this.gameState.pairs[this.iteration++];
     }
 
+    getNextRandomAnimation(): OPENSets.Models.AnimationModel {
+      return this.gameState.animations[this.iteration];
+    }
+
     create(): void {
       this.wrongOptions = this.game.add.group();
       this.triesCounter = new Services.TriesCounterService();
@@ -51,7 +55,6 @@ module OPENSets.State {
     }
 
     createNewGameModel(pair: Models.Pair): Models.GameModel {
-      let question: string;
       let gameModel: Models.GameModel = new Models.GameModel(pair);
 
       gameModel = this.randomizeGameModelService.randomize(gameModel);
@@ -130,15 +133,18 @@ module OPENSets.State {
     }
 
     playHappyAnimationAndSound(): void {
+      let model: Models.AnimationModel = this.getNextRandomAnimation();
+
       let happyAnimation: Phaser.Sprite = this.game.add.sprite(
         this.game.world.centerX,
         this.game.world.centerY,
-        'happy');
+        model.animation.name);
+
       happyAnimation.anchor.setTo(0.5);
       happyAnimation.animations.add(
         'idle',
-        [1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1]).onStart.add(() => this.happySound.play(), this);
-      happyAnimation.animations.play('idle', 4, false, true).onComplete.add(() => {
+        model.animation.frames).onStart.add(() => this.happySound.play(), this);
+      happyAnimation.animations.play('idle', model.animation.frameRate, false, true).onComplete.add(() => {
         this.nextButton.visible = true;
       }, this);
     }
