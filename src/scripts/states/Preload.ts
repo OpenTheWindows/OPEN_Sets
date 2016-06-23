@@ -14,7 +14,7 @@ module OPENSets.State {
       this.load.setPreloadSprite(preloadBar);
 
       let pairs: Array<Models.Pair> = JSON.parse(this.game.cache.getText('pairs'));
-
+      let animations: Array<Models.AnimationModel> = JSON.parse(this.game.cache.getText('happy-animations'));
 
       for (let pair of pairs) {
         this.load.image(
@@ -29,6 +29,19 @@ module OPENSets.State {
       }
 
       this.gameState.pairs = Helpers.Helpers.shuffleArray(this.gameState.pairs);
+
+      for (let animation of animations) {
+
+        this.load.atlasJSONHash(
+          animation.name,
+          this.gameState.animationsPrefix + animation.name + this.gameState.imageSuffix,
+          this.gameState.animationsPrefix + animation.name + this.gameState.jsonSuffix);
+
+        this.gameState.animations.push(animation);
+      }
+
+      this.gameState.animations = Helpers.Helpers.shuffleArray(this.gameState.animations);
+      this.gameState.animations = this.gameState.animations.concat(this.gameState.animations);
     }
 
     create(): void {
