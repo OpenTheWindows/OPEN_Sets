@@ -138,13 +138,13 @@ module OPENSets.State {
       let happyAnimation: Phaser.Sprite = this.game.add.sprite(
         this.game.world.centerX,
         this.game.world.centerY,
-        model.animation.name);
+        model.name);
 
       happyAnimation.anchor.setTo(0.5);
       happyAnimation.animations.add(
         'idle',
-        model.animation.frames).onStart.add(() => this.happySound.play(), this);
-      happyAnimation.animations.play('idle', model.animation.frameRate, false, true).onComplete.add(() => {
+        model.frames).onStart.add(() => this.happySound.play(), this);
+      happyAnimation.animations.play('idle', model.frameRate, false, true).onComplete.add(() => {
         this.nextButton.visible = true;
       }, this);
     }

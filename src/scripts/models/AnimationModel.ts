@@ -4,6 +4,5 @@ module OPENSets.Models {
     public frames: number[];
     public frameRate: number;
 
-    constructor(public animation: Models.AnimationModel) { }
   }
 }
