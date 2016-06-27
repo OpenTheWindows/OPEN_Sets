@@ -48,6 +48,7 @@
   "scripts": {
     "postinstall": "bower install && typings install",
     "start": "gulp",
+    "pretest": "npm run lint",
     "test": "npm run lint && gulp test",
     "test:coverage": "gulp test && gulp open-coverage-report",
     "lint": "tslint src/scripts/{services,states,helpers,models}/*.ts -s node_modules/tslint-stylish -t stylish",
