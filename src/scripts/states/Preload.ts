@@ -45,7 +45,7 @@ module OPENSets.State {
     }
 
     create(): void {
-      this.game.state.start("start");
+      this.game.state.start('start');
     }
   }
 }
