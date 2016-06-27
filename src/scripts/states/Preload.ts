@@ -1,8 +1,11 @@
 module OPENSets.State {
   export class Preload extends Phaser.State {
     private gameState: Helpers.GameState;
-    private itemPrefix: string = 'assets/pairs/';
-    private itemSuffix: string = '.png';
+
+    private pairsImagesPrefix: string;
+    private animationsPrefix: string;
+    private imageSuffix: string = '.png';
+    private jsonSuffix: string = '.json';
 
     constructor() {
       super();
@@ -13,35 +16,37 @@ module OPENSets.State {
       let preloadBar: Phaser.Sprite = this.add.sprite(this.game.world.centerX - 110, this.game.world.centerY, 'loader');
       this.load.setPreloadSprite(preloadBar);
 
+      let config: any = JSON.parse(this.game.cache.getText('config'));
+
+      this.gameState.wrongTriesTreshold = config.wrongTriesTreshold;
+      this.pairsImagesPrefix = config.pairsPath;
+      this.animationsPrefix = config.animationsPath;
+
       let pairs: Array<Models.Pair> = JSON.parse(this.game.cache.getText('pairs'));
-      let animations: Array<Models.AnimationModel> = JSON.parse(this.game.cache.getText('happy-animations'));
+      let animations: Array<Models.Animation> = JSON.parse(this.game.cache.getText('happy-animations'));
 
       for (let pair of pairs) {
         this.load.image(
           pair.itemOne,
-          this.gameState.pairsImagesPrefix + pair.itemOne + this.gameState.imageSuffix);
+          this.pairsImagesPrefix + pair.itemOne + this.imageSuffix);
 
         this.load.image(
           pair.itemTwo,
-          this.gameState.pairsImagesPrefix + pair.itemTwo + this.gameState.imageSuffix);
+          this.pairsImagesPrefix + pair.itemTwo + this.imageSuffix);
 
         this.gameState.pairs.push(pair);
       }
 
-      this.gameState.pairs = Helpers.Helpers.shuffleArray(this.gameState.pairs);
-
       for (let animation of animations) {
-
         this.load.atlasJSONHash(
           animation.name,
-          this.gameState.animationsPrefix + animation.name + this.gameState.imageSuffix,
-          this.gameState.animationsPrefix + animation.name + this.gameState.jsonSuffix);
+          this.animationsPrefix + animation.name + this.imageSuffix,
+          this.animationsPrefix + animation.name + this.jsonSuffix);
 
         this.gameState.animations.push(animation);
       }
 
-      this.gameState.animations = Helpers.Helpers.shuffleArray(this.gameState.animations);
-      this.gameState.animations = this.gameState.animations.concat(this.gameState.animations);
+      this.gameState.newGame();
     }
 
     create(): void {

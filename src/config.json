@@ -1,0 +1,5 @@
+{
+  "wrongTriesTreshold": 6,
+  "pairsPath": "assets/pairs/",
+  "animationsPath": "assets/animations/"
+}
