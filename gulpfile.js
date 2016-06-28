@@ -56,6 +56,9 @@ gulp.task('copy', function () {
   gulp.src('./src/package.json')
     .pipe(gulp.dest(paths.dist));
 
+  gulp.src('./src/config.json')
+    .pipe(gulp.dest(paths.dist));
+
   return gulp.src(paths.assets)
     .pipe(gulp.dest(paths.dist + '/assets'));
 });

@@ -1,19 +1,20 @@
 namespace OPENSets.Tests {
-  describe('RandomizeGameModelServiceTests', () => {
-    let randomizeGameModelService: Services.RandomizeGameModelService;
+  describe('GameModelGenerationServiceTests', () => {
+    let gameModelGenerationService: Services.GameModelGenerationService;
 
     beforeEach(() => {
-      randomizeGameModelService = new Services.RandomizeGameModelService();
+      gameModelGenerationService = new Services.GameModelGenerationService();
     });
 
-    it('givenRandomizeGameModelService_whenGameModelIsRandomized_outputShouldContainTreeDifferentOptions', () => {
+    it('generateGameModelForPair_whenPairIsGiven_shouldGenerateModelWithTreeDifferentOptions', () => {
       // Arrange
       let gameState: Helpers.GameState = Helpers.GameState.getInstance();
       gameState.pairs = TestsHelpers.Helpers.createPairsForTesting();
-      let gameModel: Models.GameModel = new Models.GameModel(gameState.pairs[0]);
+      spyOn(gameModelGenerationService, 'setRandomMainItemFromThePair').and.callThrough();
+      spyOn(gameModelGenerationService, 'setRandomWrongOptions').and.callThrough();
 
       // Act
-      let result: Models.GameModel = randomizeGameModelService.randomize(gameModel);
+      let result: Models.GameModel = gameModelGenerationService.generateGameModelForPair(gameState.pairs[0]);
 
       // Assert
       expect(result.pair).toEqual(gameState.pairs[0]);
