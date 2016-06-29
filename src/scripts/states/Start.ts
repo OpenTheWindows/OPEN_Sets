@@ -1,10 +1,18 @@
 module OPENSets.State {
   export class Start extends Phaser.State {
+    private startService: Services.StartManagementService;
+
+    constructor() {
+      super();
+      this.startService = new Services.StartManagementService();
+    }
+
     startGame(): void {
       if (this.game.input.activePointer.isMouse && this.game.input.activePointer.button !== Phaser.Mouse.LEFT_BUTTON) {
         return;
       }
 
+      this.startService.prepareNewGame();
       this.game.state.start('mainGame');
     }
 
