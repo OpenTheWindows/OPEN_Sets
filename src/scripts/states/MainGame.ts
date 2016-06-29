@@ -51,7 +51,7 @@ module OPENSets.State {
     }
 
     drawGameModel(): void {
-      let model: Models.GameModel = this.mainGameService.getGameModelForThisIteration();
+      let model: Models.GameModel = this.mainGameService.getGameModelForCurrentIteration();
 
       this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
       let options: Array<Models.Option> = model.getShuffledOptions();
@@ -107,7 +107,7 @@ module OPENSets.State {
 
     playHappyAnimationAndSound(): void {
       let happySound: Phaser.Sound = this.add.audio('audio-right-option');
-      let model: Models.Animation = this.mainGameService.getAnimation();
+      let model: Models.Animation = this.mainGameService.getCurrentAnimation();
 
       let happyAnimation: Phaser.Sprite = this.game.add.sprite(
         this.game.world.centerX,

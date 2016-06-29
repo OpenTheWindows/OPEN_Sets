@@ -16,6 +16,7 @@ module OPENSets.Helpers {
       if (GameState._instance) {
         throw new Error('Error: Instantiation failed: Use GameState.getInstance() instead of new.');
       }
+
       GameState._instance = this;
     }
 
@@ -57,7 +58,11 @@ module OPENSets.Helpers {
       this.animations = animations;
     }
 
-    getAnimation(): Models.Animation {
+    getAllAnimations(): Array<Models.Animation> {
+      return this.shuffledAnimations;
+    }
+
+    getCurrentAnimation(): Models.Animation {
       return this.shuffledAnimations[this.iteration];
     }
 

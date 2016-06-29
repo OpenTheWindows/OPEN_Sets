@@ -15,7 +15,11 @@ module OPENSets.Services {
       return this.triesCounter.isThresholdPassed();
     }
 
-    getGameModelForThisIteration(): Models.GameModel {
+    getTries(): number {
+      return this.triesCounter.getTries();
+    }
+
+    getGameModelForCurrentIteration(): Models.GameModel {
       this.triesCounter.reset();
       return this.gameModelGenerationService.generateGameModelForPair(
         this.gameState.getCurrentPair(),
@@ -26,8 +30,8 @@ module OPENSets.Services {
       return this.gameState.isGameFinished();
     }
 
-    getAnimation(): Models.Animation {
-      return this.gameState.getAnimation();
+    getCurrentAnimation(): Models.Animation {
+      return this.gameState.getCurrentAnimation();
     }
   }
 }
