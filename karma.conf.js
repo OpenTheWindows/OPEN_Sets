@@ -23,7 +23,7 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      './dist/scripts/**/*.js': ['coverage', 'sourcemap'],
+      './dist/scripts/!(models)/**/*.js': ['coverage', 'sourcemap'],
     },
 
     coverageReporter: {
