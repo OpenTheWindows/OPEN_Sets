@@ -25,7 +25,7 @@ module OPENSets.State {
         this.drawGameModel();
         this.unhappySound = this.add.audio('audio-wrong-option');
       }
-      // TODO: add some graphics for game finished. if(this.iteration === this.gameState.getPairsLenght()-1)
+      // TODO: add some graphics for game finished. if(this.mainGameService.isLastIteration())
     }
 
     drawScene(): void {
