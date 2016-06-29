@@ -4,100 +4,28 @@ module OPENSets.State {
     public buttonsInitialY: number = 500;
 
     public unhappySound: Phaser.Sound;
-    public happySound: Phaser.Sound;
-    public transitionSound: Phaser.Sound;
 
     public wrongOptions: Phaser.Group;
-    public triesCounter: Services.TriesCounterService;
-    public gameModelGenerationService: Services.GameModelGenerationService;
     public nextButton: Phaser.Button;
 
-    private iteration: number;
-    private gameState: Helpers.GameState;
+    private mainGameService: Services.MainGameManagementService;
 
     constructor() {
       super();
-      this.gameState = Helpers.GameState.getInstance();
-      this.gameModelGenerationService = new Services.GameModelGenerationService();
-      this.iteration = 0;
-    }
-
-    newGame(): void {
-      this.iteration = 0;
-      this.gameState.newGame();
-    }
-
-    nextIteration(): void {
-      this.game.state.start('mainGame');
-    }
-
-    getNextPair(): OPENSets.Models.Pair {
-      return this.gameState.pairs[this.iteration++];
-    }
-
-    getNextAnimation(): OPENSets.Models.Animation {
-      return this.gameState.getAnimations()[this.iteration];
+      this.mainGameService = new Services.MainGameManagementService();
     }
 
     create(): void {
-      this.wrongOptions = this.game.add.group();
-      this.triesCounter = new Services.TriesCounterService();
-      this.drawScene();
-
-      if (this.iteration < this.gameState.pairs.length) {
-        let model: Models.GameModel = this.createNewGameModel(this.getNextPair());
-        this.drawOptions(model);
-      }
-      else {
-        // TODO: add some graphics for game finished.
-        alert('Играта заврши!');
-        this.newGame();
+      if (this.mainGameService.isGameFinished()) {
         this.game.state.start('start');
       }
-
-      this.unhappySound = this.add.audio('audio-wrong-option');
-      this.happySound = this.add.audio('audio-right-option');
-      this.transitionSound = this.add.audio('audio-transition', 1, true);
-    }
-
-    createNewGameModel(pair: Models.Pair): Models.GameModel {
-      let gameModel: Models.GameModel = this.gameModelGenerationService.generateGameModelForPair(pair);
-
-      return gameModel;
-    }
-
-    drawOptions(model: Models.GameModel): void {
-      this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
-      let options: Array<Models.Option> = model.getShuffledOptions();
-
-      for (let i: number = 0; i < options.length; i++) {
-        let optionButton: Phaser.Button = this.game.add.button(
-          this.buttonsInitialX + i * 567,
-          this.buttonsInitialY,
-          options[i].name);
-
-        if (options[i].isCorrect) {
-          optionButton.events.onInputDown.add(this.rightPicturePicked, this);
-        }
-        else {
-          optionButton.events.onInputDown.add(this.wrongPicturePicked, this);
-          this.wrongOptions.add(optionButton);
-        }
+      else {
+        this.drawScene();
+        this.wrongOptions = this.game.add.group();
+        this.drawGameModel();
+        this.unhappySound = this.add.audio('audio-wrong-option');
       }
-    }
-
-    drawNextButton(): void {
-      this.nextButton = this.game.add.button(
-        this.game.world.centerX,
-        this.buttonsInitialY + 60,
-        'next-button',
-        this.nextIteration,
-        this,
-        0, // over frame
-        1, // normal frame
-        2); // click frame
-      this.nextButton.anchor.setTo(0.5, 0);
-      this.nextButton.visible = false;
+      // TODO: add some graphics for game finished. if(this.iteration === this.gameState.getPairsLenght()-1)
     }
 
     drawScene(): void {
@@ -122,14 +50,55 @@ module OPENSets.State {
       graphics.lineTo(x2, y2);
     }
 
-    rightPicturePicked(item: Phaser.Button): void {
+    drawGameModel(): void {
+      let model: Models.GameModel = this.mainGameService.getGameModelForThisIteration();
+
+      this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
+      let options: Array<Models.Option> = model.getShuffledOptions();
+
+      for (let i: number = 0; i < options.length; i++) {
+        let optionButton: Phaser.Button = this.game.add.button(
+          this.buttonsInitialX + i * 567,
+          this.buttonsInitialY,
+          options[i].name);
+
+        if (options[i].isCorrect) {
+          optionButton.events.onInputDown.add(this.rightOptionClicked, this);
+        }
+        else {
+          optionButton.events.onInputDown.add(this.wrongOptionClicked, this);
+          this.wrongOptions.add(optionButton);
+        }
+      }
+    }
+
+    drawNextButton(): void {
+      this.nextButton = this.game.add.button(
+        this.game.world.centerX,
+        this.buttonsInitialY + 60,
+        'next-button',
+        this.nextIteration,
+        this,
+        0, // over frame
+        1, // normal frame
+        2); // click frame
+      this.nextButton.anchor.setTo(0.5, 0);
+      this.nextButton.visible = false;
+    }
+
+    nextIteration(): void {
+      this.game.state.start('mainGame');
+    }
+
+    rightOptionClicked(item: Phaser.Button): void {
+      let transitionSound: Phaser.Sound = this.add.audio('audio-transition', 1, true);
       item.inputEnabled = false;
       this.disableWrongOptions();
       let rightOptionTransition: Phaser.Tween = this.game.add.tween(item);
       rightOptionTransition.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
-      this.transitionSound.play();
+      transitionSound.play();
       rightOptionTransition.onComplete.add(() => {
-        this.transitionSound.stop();
+        transitionSound.stop();
         this.wrongOptions.destroy();
         this.playHappyAnimationAndSound();
       },
@@ -137,7 +106,8 @@ module OPENSets.State {
     }
 
     playHappyAnimationAndSound(): void {
-      let model: Models.Animation = this.getNextAnimation();
+      let happySound: Phaser.Sound = this.add.audio('audio-right-option');
+      let model: Models.Animation = this.mainGameService.getAnimation();
 
       let happyAnimation: Phaser.Sprite = this.game.add.sprite(
         this.game.world.centerX,
@@ -146,15 +116,15 @@ module OPENSets.State {
 
       happyAnimation.anchor.setTo(0.5);
       happyAnimation.animations.add(
-        'idle',
-        model.frames).onStart.add(() => this.happySound.play(), this);
-      happyAnimation.animations.play('idle', model.frameRate, false, true).onComplete.add(() => {
+        'happy',
+        model.frames).onStart.add(() => happySound.play(), this);
+      happyAnimation.animations.play('happy', model.frameRate, false, true).onComplete.add(() => {
         this.nextButton.visible = true;
       }, this);
     }
 
-    wrongPicturePicked(item: Phaser.Button): void {
-      if (this.triesCounter.isThresholdPassed()) {
+    wrongOptionClicked(item: Phaser.Button): void {
+      if (this.mainGameService.isThresholdPassed()) {
         this.disableWrongOptions();
       }
       else {
@@ -169,9 +139,7 @@ module OPENSets.State {
     }
 
     animateWrongOption(item: Phaser.Button): void {
-      let x: number = item.x;
-      let y: number = item.y;
-      let wrong: Phaser.Image = this.game.add.image(x, y, 'wrong');
+      let wrong: Phaser.Image = this.game.add.image(item.x, item.y, 'wrong');
       wrong.alpha = 0;
       this.game.add.tween(wrong).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, true)
         .onComplete.add(() => {
