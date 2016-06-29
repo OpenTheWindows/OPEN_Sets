@@ -1,16 +1,11 @@
 module OPENSets.Services {
   export class GameModelGenerationService {
-    private gameState: Helpers.GameState;
 
-    constructor() {
-      this.gameState = Helpers.GameState.getInstance();
-    }
-
-    public generateGameModelForPair(pair: Models.Pair): Models.GameModel {
+    public generateGameModelForPair(pair: Models.Pair, pairs: Array<Models.Pair>): Models.GameModel {
       let gameModel: Models.GameModel = new Models.GameModel(pair);
 
       this.setRandomMainItemFromThePair(gameModel);
-      this.setRandomWrongOptions(gameModel);
+      this.setRandomWrongOptions(gameModel, pairs);
 
       return gameModel;
     }
@@ -28,8 +23,7 @@ module OPENSets.Services {
       }
     }
 
-    private setRandomWrongOptions(gameModel: Models.GameModel): void {
-      let pairs: Array<Models.Pair> = this.gameState.pairs;
+    private setRandomWrongOptions(gameModel: Models.GameModel, pairs: Array<Models.Pair>): void {
       let wrongOptionPair1: Models.Pair = gameModel.pair;
       let wrongOptionPair2: Models.Pair = gameModel.pair;
 
