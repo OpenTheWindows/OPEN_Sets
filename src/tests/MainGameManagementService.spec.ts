@@ -10,17 +10,17 @@ namespace OPENSets.Tests {
       mainGameService = new Services.MainGameManagementService();
     });
 
-    it('getGameModelForThisIteration_shouldResetCounterAndReturnGameModel', () => {
+    it('getRandomGameModel_shouldResetCounterAndReturnGameModel', () => {
       // Arrange
-      spyOn(gameState, 'getCurrentPairAndIncrementPairsIndex').and.callFake(() => {
+      spyOn(gameState, 'getPair').and.callFake(() => {
         return TestsHelpers.Helpers.createPairsForTesting()[0];
       });
-      spyOn(gameState, 'getAllPairs').and.callFake(() => {
+      spyOn(gameState, 'getPairs').and.callFake(() => {
         return TestsHelpers.Helpers.createPairsForTesting();
       });
 
       // Act
-      let gameModel: Models.GameModel = mainGameService.getGameModelForCurrentIteration();
+      let gameModel: Models.GameModel = mainGameService.getRandomGameModel();
 
       // Assert
       expect(gameModel).toBeDefined();

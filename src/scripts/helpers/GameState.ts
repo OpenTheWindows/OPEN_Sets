@@ -46,11 +46,11 @@ module OPENSets.Helpers {
       this.pairs = pairs;
     }
 
-    getAllPairs(): Array<Models.Pair> {
+    getPairs(): Array<Models.Pair> {
       return this.pairs;
     }
 
-    getCurrentPairAndIncrementPairsIndex(): Models.Pair {
+    getPair(): Models.Pair {
       return this.pairs[this.iteration++];
     }
 
@@ -58,11 +58,11 @@ module OPENSets.Helpers {
       this.animations = animations;
     }
 
-    getAllAnimations(): Array<Models.Animation> {
+    getAnimations(): Array<Models.Animation> {
       return this.shuffledAnimations;
     }
 
-    getCurrentAnimation(): Models.Animation {
+    getAnimation(): Models.Animation {
       return this.shuffledAnimations[this.iteration];
     }
 

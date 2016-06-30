@@ -19,8 +19,8 @@ namespace OPENSets.Tests {
       gameState.prepareNewGame();
 
       // Assert
-      expect(gameState.getAllAnimations()).not.toEqual(pairs);
-      expect(gameState.getAllPairs()).not.toEqual(animations);
+      expect(gameState.getAnimations()).not.toEqual(pairs);
+      expect(gameState.getPairs()).not.toEqual(animations);
     });
 
     it('prepareNewGame_whenThereAreTwoAnimationsAndFivePairs_shouldTripleTheAnimations', () => {
@@ -33,7 +33,7 @@ namespace OPENSets.Tests {
       gameState.prepareNewGame();
 
       // Assert
-      expect(gameState.getAllAnimations().length).toEqual(animations.length * 3);
+      expect(gameState.getAnimations().length).toEqual(animations.length * 3);
     });
 
     it('isGameFinished_whenItIsTheFirstIteration_shouldBeFalsy', () => {
@@ -51,7 +51,7 @@ namespace OPENSets.Tests {
       // Arrange
       gameState.setPairs(pairs);
       for (let i: number = 0; i < pairs.length; i++) {
-        gameState.getCurrentPairAndIncrementPairsIndex();
+        gameState.getPair();
       }
 
       // Act

@@ -19,19 +19,19 @@ module OPENSets.Services {
       return this.triesCounter.getTries();
     }
 
-    getGameModelForCurrentIteration(): Models.GameModel {
+    getRandomGameModel(): Models.GameModel {
       this.triesCounter.reset();
       return this.gameModelGenerationService.generateGameModelForPair(
-        this.gameState.getCurrentPairAndIncrementPairsIndex(),
-        this.gameState.getAllPairs());
+        this.gameState.getPair(),
+        this.gameState.getPairs());
     }
 
     isGameFinished(): boolean {
       return this.gameState.isGameFinished();
     }
 
-    getCurrentAnimation(): Models.Animation {
-      return this.gameState.getCurrentAnimation();
+    getRandomAnimation(): Models.Animation {
+      return this.gameState.getAnimation();
     }
   }
 }
