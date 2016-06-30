@@ -12,7 +12,7 @@ namespace OPENSets.Tests {
 
     it('getGameModelForThisIteration_shouldResetCounterAndReturnGameModel', () => {
       // Arrange
-      spyOn(gameState, 'getCurrentPair').and.callFake(() => {
+      spyOn(gameState, 'getCurrentPairAndIncrementPairsIndex').and.callFake(() => {
         return TestsHelpers.Helpers.createPairsForTesting()[0];
       });
       spyOn(gameState, 'getAllPairs').and.callFake(() => {

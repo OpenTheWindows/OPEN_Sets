@@ -50,7 +50,7 @@ module OPENSets.Helpers {
       return this.pairs;
     }
 
-    getCurrentPair(): Models.Pair {
+    getCurrentPairAndIncrementPairsIndex(): Models.Pair {
       return this.pairs[this.iteration++];
     }
 

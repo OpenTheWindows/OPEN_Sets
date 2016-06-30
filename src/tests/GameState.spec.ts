@@ -51,7 +51,7 @@ namespace OPENSets.Tests {
       // Arrange
       gameState.setPairs(pairs);
       for (let i: number = 0; i < pairs.length; i++) {
-        gameState.getCurrentPair();
+        gameState.getCurrentPairAndIncrementPairsIndex();
       }
 
       // Act

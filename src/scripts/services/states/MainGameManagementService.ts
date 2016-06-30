@@ -22,7 +22,7 @@ module OPENSets.Services {
     getGameModelForCurrentIteration(): Models.GameModel {
       this.triesCounter.reset();
       return this.gameModelGenerationService.generateGameModelForPair(
-        this.gameState.getCurrentPair(),
+        this.gameState.getCurrentPairAndIncrementPairsIndex(),
         this.gameState.getAllPairs());
     }
 
