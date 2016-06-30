@@ -2,11 +2,11 @@ module OPENSets.Helpers {
   export class GameState {
     private static _instance: GameState = new GameState();
 
-    public wrongTriesTreshold: number;
-
-    public pairs: Array<Models.Pair>;
-    public animations: Array<Models.Animation>;
-    public shuffledAnimations: Array<Models.Animation>;
+    private iteration: number;
+    private wrongTriesTreshold: number;
+    private pairs: Array<Models.Pair>;
+    private animations: Array<Models.Animation>;
+    private shuffledAnimations: Array<Models.Animation>;
 
     public static getInstance(): GameState {
       return GameState._instance;
@@ -18,12 +18,10 @@ module OPENSets.Helpers {
       }
 
       GameState._instance = this;
-      this.pairs = new Array<Models.Pair>();
-      this.animations = new Array<Models.Animation>();
-      this.shuffledAnimations = new Array<Models.Animation>();
     }
 
-    newGame(): void {
+    prepareNewGame(): void {
+      this.iteration = 0;
       this.pairs = Helpers.shuffleArray(this.pairs);
       this.shuffledAnimations = Helpers.shuffleArray(this.animations);
 
@@ -36,8 +34,40 @@ module OPENSets.Helpers {
       }
     }
 
+    setWrongTriesTreshold(treshold: number): void {
+      this.wrongTriesTreshold = treshold;
+    }
+
+    getWrongTriesTreshold(): number {
+      return this.wrongTriesTreshold;
+    }
+
+    setPairs(pairs: Array<Models.Pair>): void {
+      this.pairs = pairs;
+    }
+
+    getPairs(): Array<Models.Pair> {
+      return this.pairs;
+    }
+
+    getPair(): Models.Pair {
+      return this.pairs[this.iteration++];
+    }
+
+    setAnimations(animations: Array<Models.Animation>): void {
+      this.animations = animations;
+    }
+
     getAnimations(): Array<Models.Animation> {
       return this.shuffledAnimations;
+    }
+
+    getAnimation(): Models.Animation {
+      return this.shuffledAnimations[this.iteration];
+    }
+
+    isGameFinished(): boolean {
+      return this.iteration >= this.pairs.length;
     }
   }
 }
