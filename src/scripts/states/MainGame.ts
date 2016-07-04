@@ -5,66 +5,69 @@ module OPENSets.State {
 
     public unhappySound: Phaser.Sound;
     public happySound: Phaser.Sound;
-    public transitionSound: Phaser.Sound;
 
     public wrongOptions: Phaser.Group;
-    public triesCounter: Services.TriesCounterService;
-    public gameModelGenerationService: Services.GameModelGenerationService;
+    public sceneGroup: Phaser.Group;
     public nextButton: Phaser.Button;
 
     private iteration: number;
-    private gameState: Helpers.GameState;
     private isLastPair: boolean;
+    private gameState: Helpers.GameState;
+    private mainGameService: Services.MainGameManagementService;
 
     constructor() {
       super();
-      this.gameState = Helpers.GameState.getInstance();
-      this.gameModelGenerationService = new Services.GameModelGenerationService();
-      this.iteration = 0;
-    }
-
-    newGame(): void {
-      this.iteration = 0;
-      this.gameState.newGame();
-    }
-
-    nextIteration(): void {
-      this.game.state.start('mainGame');
-    }
-
-    getNextPair(): OPENSets.Models.Pair {
-      return this.gameState.pairs[this.iteration++];
-    }
-
-    getNextAnimation(): OPENSets.Models.Animation {
-      return this.gameState.getAnimations()[this.iteration];
+      this.mainGameService = new Services.MainGameManagementService();
     }
 
     create(): void {
-      this.wrongOptions = this.game.add.group();
-      this.triesCounter = new Services.TriesCounterService();
-      this.drawScene();
-
-      if (this.iteration < this.gameState.pairs.length) {
-        let model: Models.GameModel = this.createNewGameModel(this.getNextPair());
-        this.drawOptions(model);
+      if (this.mainGameService.isGameFinished()) {
+        this.game.state.start('start');
       }
+      else {
+        this.sceneGroup = this.game.add.group();
+        this.drawScene();
 
-      this.unhappySound = this.add.audio('audio-wrong-option');
-      this.happySound = this.add.audio('audio-right-option');
-      this.transitionSound = this.add.audio('audio-transition', 1, true);
+        this.wrongOptions = this.game.add.group();
+        this.drawGameModel();
+
+        this.unhappySound = this.add.audio('audio-wrong-option');
+        this.happySound = this.add.audio('audio-right-option');
+      }
     }
 
-    createNewGameModel(pair: Models.Pair): Models.GameModel {
-      let gameModel: Models.GameModel = this.gameModelGenerationService.generateGameModelForPair(pair);
+    drawScene(): void {
+      // frame
+      let frame: Phaser.Image = this.game.add.image(this.game.world.centerX, 10, 'frame');
+      frame.anchor.setTo(0.5, 0);
+      frame.scale.setTo(1.1, 1);
+      this.sceneGroup.add(frame);
 
-      return gameModel;
+      // horizontal line
+      this.drawLine(0, 430, 1700, 430, 2);
+
+      // vertical lines
+      this.drawLine(567, 460, 567, 800, 4);
+      this.drawLine(1133, 460, 1133, 800, 4);
+
+      this.drawNextButton();
     }
 
-    drawOptions(model: Models.GameModel): void {
-      this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
+    drawLine(x1: number, y1: number, x2: number, y2: number, width: number): void {
+      let graphics: Phaser.Graphics = this.game.add.graphics(0, 0);
+      graphics.lineStyle(width, 0xA8A8A8);
+      graphics.moveTo(x1, y1);
+      graphics.lineTo(x2, y2);
+      this.sceneGroup.add(graphics);
+    }
+
+    drawGameModel(): void {
+      let model: Models.GameModel = this.mainGameService.getRandomGameModel();
+
+      let givenPairItem: Phaser.Image = this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
+      this.sceneGroup.add(givenPairItem);
+
       let options: Array<Models.Option> = model.getShuffledOptions();
-
       for (let i: number = 0; i < options.length; i++) {
         let optionButton: Phaser.Button = this.game.add.button(
           this.buttonsInitialX + i * 567,
@@ -72,10 +75,11 @@ module OPENSets.State {
           options[i].name);
 
         if (options[i].isCorrect) {
-          optionButton.events.onInputDown.add(this.rightPicturePicked, this);
+          optionButton.events.onInputDown.add(this.rightOptionClicked, this);
+          this.sceneGroup.add(optionButton);
         }
         else {
-          optionButton.events.onInputDown.add(this.wrongPicturePicked, this);
+          optionButton.events.onInputDown.add(this.wrongOptionClicked, this);
           this.wrongOptions.add(optionButton);
         }
       }
@@ -95,50 +99,34 @@ module OPENSets.State {
       this.nextButton.visible = false;
     }
 
-    drawScene(): void {
-      // frame
-      let frame: Phaser.Image = this.game.add.image(this.game.world.centerX, 10, 'frame');
-      frame.anchor.setTo(0.5, 0);
-      frame.scale.setTo(1.1, 1);
-
-      // horizontal line
-      this.drawLine(0, 430, 1700, 430, 2);
-
-      // vertical lines
-      this.drawLine(567, 460, 567, 800, 4);
-      this.drawLine(1133, 460, 1133, 800, 4);
-      this.drawNextButton();
+    nextIteration(): void {
+      this.game.state.start('mainGame');
     }
 
-    drawLine(x1: number, y1: number, x2: number, y2: number, width: number): void {
-      let graphics: Phaser.Graphics = this.game.add.graphics(0, 0);
-      graphics.lineStyle(width, 0xA8A8A8);
-      graphics.moveTo(x1, y1);
-      graphics.lineTo(x2, y2);
-    }
-
-    rightPicturePicked(item: Phaser.Button): void {
+    rightOptionClicked(item: Phaser.Button): void {
+      let transitionSound: Phaser.Sound = this.add.audio('audio-transition', 1, true);
       item.inputEnabled = false;
       this.disableWrongOptions();
       let rightOptionTransition: Phaser.Tween = this.game.add.tween(item);
       rightOptionTransition.to({ x: this.game.world.centerX + 25, y: 80 }, 2500, Phaser.Easing.Linear.None, true);
-      this.transitionSound.play();
+      transitionSound.play();
       rightOptionTransition.onComplete.add(() => {
-        this.transitionSound.stop();
+        transitionSound.stop();
         this.wrongOptions.destroy();
 
-        if (this.iteration < this.gameState.pairs.length) {
+        if (!this.mainGameService.isLastPair()) {
           this.playHappyAnimationAndSound();
         }
         else {
           this.finalAnimationAndSound();
+
         }
       },
         this);
     }
 
     playHappyAnimationAndSound(): void {
-      let model: Models.Animation = this.getNextAnimation();
+      let model: Models.Animation = this.mainGameService.getRandomAnimation();
 
       let happyAnimation: Phaser.Sprite = this.game.add.sprite(
         this.game.world.centerX,
@@ -146,36 +134,40 @@ module OPENSets.State {
         model.name);
 
       happyAnimation.anchor.setTo(0.5);
-      happyAnimation.animations.add(
-        'idle',
-        model.frames).onStart.add(() => this.happySound.play(), this);
-      happyAnimation.animations.play('idle', model.frameRate, false, true).onComplete.add(() => {
+      happyAnimation.animations.add('happy', model.frames).onStart.add(() => {
+        this.happySound.play();
+        this.sceneGroup.setAll('alpha', 0.2);
+      }, this);
+      happyAnimation.animations.play('happy', model.frameRate, false, true).onComplete.add(() => {
+        this.sceneGroup.setAll('alpha', 1);
         this.nextButton.visible = true;
       }, this);
     }
 
     finalAnimationAndSound(): void {
-      let lasAnimation: Models.FinalAnimation[] = this.gameState.finalAnimations;
+      let lastAnimation: Models.FinalAnimation[] = this.mainGameService.getFinalAnimation();
       let lastAnimationFinished: boolean = false;
 
-      for (let i: number = 0; i < lasAnimation.length; i++) {
+      for (let i: number = 0; i < lastAnimation.length; i++) {
 
         var animation: Phaser.Sprite = this.game.add.sprite(
-          lasAnimation[i].x,
-          lasAnimation[i].y,
-          lasAnimation[i].name
+          lastAnimation[i].x,
+          lastAnimation[i].y,
+          lastAnimation[i].name
         );
-        if (i != lasAnimation.length - 1) {
-          animation.animations.add('a', lasAnimation[i].frames);
-          animation.animations.play('a', lasAnimation[i].frameRate, true);
+        if (i != lastAnimation.length - 1) {
+          animation.animations.add('a', lastAnimation[i].frames);
+          animation.animations.play('a', lastAnimation[i].frameRate, true);
+          this.sceneGroup.setAll('alpha', 0.2);
         }
         else {
-          animation.animations.add('a', lasAnimation[i].frames)
+          animation.animations.add('a', lastAnimation[i].frames)
             .onStart.add(() => this.happySound.play(), this);
+          this.sceneGroup.setAll('alpha', 0.2);
 
-          animation.animations.play('a', lasAnimation[i].frameRate, false, true)
+          animation.animations.play('a', lastAnimation[i].frameRate, false, true)
             .onComplete.add(() => {
-              this.newGame();
+              this.sceneGroup.setAll('alpha', 1);
               this.game.state.start('start');
             }, this);
         }
@@ -183,8 +175,8 @@ module OPENSets.State {
       }
     }
 
-    wrongPicturePicked(item: Phaser.Button): void {
-      if (this.triesCounter.isThresholdPassed()) {
+    wrongOptionClicked(item: Phaser.Button): void {
+      if (this.mainGameService.isThresholdPassed()) {
         this.disableWrongOptions();
       }
       else {
@@ -199,9 +191,7 @@ module OPENSets.State {
     }
 
     animateWrongOption(item: Phaser.Button): void {
-      let x: number = item.x;
-      let y: number = item.y;
-      let wrong: Phaser.Image = this.game.add.image(x, y, 'wrong');
+      let wrong: Phaser.Image = this.game.add.image(item.x, item.y, 'wrong');
       wrong.alpha = 0;
       this.game.add.tween(wrong).to({ alpha: 1 }, 500, Phaser.Easing.Linear.None, true, 0, 0, true)
         .onComplete.add(() => {
