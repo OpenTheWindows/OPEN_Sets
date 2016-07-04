@@ -1,16 +1,22 @@
 module OPENSets.Services {
   export class TriesCounterService {
-    public counter: number;
-    private gameState: Helpers.GameState;
+    private counter: number;
 
     constructor() {
-      this.gameState = Helpers.GameState.getInstance();
       this.counter = 0;
     }
 
-    isThresholdPassed(): boolean {
+    reset(): void {
+      this.counter = 0;
+    }
+
+    getTries(): number {
+      return this.counter;
+    }
+
+    isThresholdPassed(treshold: number): boolean {
       this.counter++;
-      return this.counter >= this.gameState.wrongTriesTreshold;
+      return this.counter >= treshold;
     }
   }
 }

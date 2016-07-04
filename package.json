@@ -50,7 +50,7 @@
     "start": "gulp",
     "test": "gulp test",
     "test:coverage": "gulp test && gulp open-coverage-report",
-    "lint": "tslint src/scripts/{services,states,helpers,models}/*.ts -s node_modules/tslint-stylish -t stylish",
+    "lint": "tslint src/scripts/{services,states,helpers,models}/**/*.ts -s node_modules/tslint-stylish -t stylish",
     "prepack": "gulp build",
     "pack": "npm run pack64",
     "pack64": "electron-packager ./dist OPEN_Sets --platform=win32 --arch=x64 --overwrite --out=../sets_release --asar=true --icon=Logo.ico",
