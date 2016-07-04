@@ -6,6 +6,7 @@ module OPENSets.State {
     public unhappySound: Phaser.Sound;
 
     public wrongOptions: Phaser.Group;
+    public sceneGroup: Phaser.Group;
     public nextButton: Phaser.Button;
 
     private mainGameService: Services.MainGameManagementService;
@@ -20,9 +21,12 @@ module OPENSets.State {
         this.game.state.start('start');
       }
       else {
+        this.sceneGroup = this.game.add.group();
         this.drawScene();
+
         this.wrongOptions = this.game.add.group();
         this.drawGameModel();
+
         this.unhappySound = this.add.audio('audio-wrong-option');
       }
       // TODO: add some graphics for game finished. if(this.mainGameService.isLastIteration())
@@ -33,6 +37,7 @@ module OPENSets.State {
       let frame: Phaser.Image = this.game.add.image(this.game.world.centerX, 10, 'frame');
       frame.anchor.setTo(0.5, 0);
       frame.scale.setTo(1.1, 1);
+      this.sceneGroup.add(frame);
 
       // horizontal line
       this.drawLine(0, 430, 1700, 430, 2);
@@ -40,6 +45,7 @@ module OPENSets.State {
       // vertical lines
       this.drawLine(567, 460, 567, 800, 4);
       this.drawLine(1133, 460, 1133, 800, 4);
+
       this.drawNextButton();
     }
 
@@ -48,14 +54,16 @@ module OPENSets.State {
       graphics.lineStyle(width, 0xA8A8A8);
       graphics.moveTo(x1, y1);
       graphics.lineTo(x2, y2);
+      this.sceneGroup.add(graphics);
     }
 
     drawGameModel(): void {
       let model: Models.GameModel = this.mainGameService.getRandomGameModel();
 
-      this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
-      let options: Array<Models.Option> = model.getShuffledOptions();
+      let givenPairItem: Phaser.Image = this.game.add.image(this.game.world.centerX - 280, 80, model.givenPairItem);
+      this.sceneGroup.add(givenPairItem);
 
+      let options: Array<Models.Option> = model.getShuffledOptions();
       for (let i: number = 0; i < options.length; i++) {
         let optionButton: Phaser.Button = this.game.add.button(
           this.buttonsInitialX + i * 567,
@@ -64,6 +72,7 @@ module OPENSets.State {
 
         if (options[i].isCorrect) {
           optionButton.events.onInputDown.add(this.rightOptionClicked, this);
+          this.sceneGroup.add(optionButton);
         }
         else {
           optionButton.events.onInputDown.add(this.wrongOptionClicked, this);
@@ -115,10 +124,12 @@ module OPENSets.State {
         model.name);
 
       happyAnimation.anchor.setTo(0.5);
-      happyAnimation.animations.add(
-        'happy',
-        model.frames).onStart.add(() => happySound.play(), this);
+      happyAnimation.animations.add('happy', model.frames).onStart.add(() => {
+        happySound.play();
+        this.sceneGroup.setAll('alpha', 0.2);
+      }, this);
       happyAnimation.animations.play('happy', model.frameRate, false, true).onComplete.add(() => {
+        this.sceneGroup.setAll('alpha', 1);
         this.nextButton.visible = true;
       }, this);
     }

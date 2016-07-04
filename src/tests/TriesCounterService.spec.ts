@@ -4,7 +4,7 @@ namespace OPENSets.Tests {
     let treshold: number = 6;
 
     beforeEach(() => {
-      counter = new Services.TriesCounterService(treshold);
+      counter = new Services.TriesCounterService();
     });
 
     it('givenCounterService_whenNoWrongTriesAreMade_shouldBeFalsy', () => {
@@ -12,7 +12,7 @@ namespace OPENSets.Tests {
       let gameState: Helpers.GameState = Helpers.GameState.getInstance();
 
       // Act
-      let result: boolean = counter.isThresholdPassed();
+      let result: boolean = counter.isThresholdPassed(treshold);
 
       // Assert
       expect(result).toBeFalsy();
@@ -23,11 +23,11 @@ namespace OPENSets.Tests {
       let gameState: Helpers.GameState = Helpers.GameState.getInstance();
 
       for (let i: number = 0; i < treshold - 1; i++) {
-        counter.isThresholdPassed();
+        counter.isThresholdPassed(treshold);
       }
 
       // Act
-      let result: boolean = counter.isThresholdPassed();
+      let result: boolean = counter.isThresholdPassed(treshold);
 
       // Assert
       expect(result).toBeTruthy();

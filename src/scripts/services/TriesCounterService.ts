@@ -2,7 +2,7 @@ module OPENSets.Services {
   export class TriesCounterService {
     private counter: number;
 
-    constructor(private treshold: number) {
+    constructor() {
       this.counter = 0;
     }
 
@@ -14,9 +14,9 @@ module OPENSets.Services {
       return this.counter;
     }
 
-    isThresholdPassed(): boolean {
+    isThresholdPassed(treshold: number): boolean {
       this.counter++;
-      return this.counter >= this.treshold;
+      return this.counter >= treshold;
     }
   }
 }

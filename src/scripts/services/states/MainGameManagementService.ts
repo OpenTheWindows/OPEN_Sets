@@ -8,11 +8,11 @@ module OPENSets.Services {
     constructor() {
       this.gameState = Helpers.GameState.getInstance();
       this.gameModelGenerationService = new Services.GameModelGenerationService();
-      this.triesCounter = new Services.TriesCounterService(this.gameState.getWrongTriesTreshold());
+      this.triesCounter = new Services.TriesCounterService();
     }
 
     isThresholdPassed(): boolean {
-      return this.triesCounter.isThresholdPassed();
+      return this.triesCounter.isThresholdPassed(this.gameState.getWrongTriesTreshold());
     }
 
     getTries(): number {
