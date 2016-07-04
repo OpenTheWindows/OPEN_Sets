@@ -14,6 +14,7 @@ module OPENSets.State {
 
     private iteration: number;
     private gameState: Helpers.GameState;
+    private isLastPair: boolean;
 
     constructor() {
       super();
@@ -47,12 +48,6 @@ module OPENSets.State {
       if (this.iteration < this.gameState.pairs.length) {
         let model: Models.GameModel = this.createNewGameModel(this.getNextPair());
         this.drawOptions(model);
-      }
-      else {
-        // TODO: add some graphics for game finished.
-        alert('Играта заврши!');
-        this.newGame();
-        this.game.state.start('start');
       }
 
       this.unhappySound = this.add.audio('audio-wrong-option');
@@ -131,7 +126,13 @@ module OPENSets.State {
       rightOptionTransition.onComplete.add(() => {
         this.transitionSound.stop();
         this.wrongOptions.destroy();
-        this.playHappyAnimationAndSound();
+
+        if (this.iteration < this.gameState.pairs.length) {
+          this.playHappyAnimationAndSound();
+        }
+        else {
+          this.finalAnimationAndSound();
+        }
       },
         this);
     }
@@ -151,6 +152,35 @@ module OPENSets.State {
       happyAnimation.animations.play('idle', model.frameRate, false, true).onComplete.add(() => {
         this.nextButton.visible = true;
       }, this);
+    }
+
+    finalAnimationAndSound(): void {
+      let lasAnimation: Models.FinalAnimation[] = this.gameState.finalAnimations;
+      let lastAnimationFinished: boolean = false;
+
+      for (let i: number = 0; i < lasAnimation.length; i++) {
+
+        var animation: Phaser.Sprite = this.game.add.sprite(
+          lasAnimation[i].x,
+          lasAnimation[i].y,
+          lasAnimation[i].name
+        );
+        if (i != lasAnimation.length - 1) {
+          animation.animations.add('a', lasAnimation[i].frames);
+          animation.animations.play('a', lasAnimation[i].frameRate, true);
+        }
+        else {
+          animation.animations.add('a', lasAnimation[i].frames)
+            .onStart.add(() => this.happySound.play(), this);
+
+          animation.animations.play('a', lasAnimation[i].frameRate, false, true)
+            .onComplete.add(() => {
+              this.newGame();
+              this.game.state.start('start');
+            }, this);
+        }
+        animation.anchor.setTo(0.5);
+      }
     }
 
     wrongPicturePicked(item: Phaser.Button): void {

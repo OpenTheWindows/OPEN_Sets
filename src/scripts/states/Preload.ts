@@ -24,6 +24,7 @@ module OPENSets.State {
 
       let pairs: Array<Models.Pair> = JSON.parse(this.game.cache.getText('pairs'));
       let animations: Array<Models.Animation> = JSON.parse(this.game.cache.getText('happy-animations'));
+      let lastAnimations: Array<Models.FinalAnimation> = JSON.parse(this.game.cache.getText('final-animation'));
 
       for (let pair of pairs) {
         this.load.image(
@@ -44,6 +45,15 @@ module OPENSets.State {
           this.animationsPrefix + animation.name + this.jsonSuffix);
 
         this.gameState.animations.push(animation);
+      }
+
+      for (let animation of lastAnimations) {
+        this.load.spritesheet(
+          animation.name,
+          this.animationsPrefix + animation.name + this.imageSuffix,
+          100, 1000, 9);
+
+        this.gameState.finalAnimations.push(animation);
       }
 
       this.gameState.newGame();
