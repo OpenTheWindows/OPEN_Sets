@@ -6,6 +6,7 @@ module OPENSets.Helpers {
 
     public pairs: Array<Models.Pair>;
     public animations: Array<Models.Animation>;
+    public finalAnimations: Array<Models.FinalAnimation>;
     public shuffledAnimations: Array<Models.Animation>;
 
     public static getInstance(): GameState {
@@ -20,6 +21,7 @@ module OPENSets.Helpers {
       GameState._instance = this;
       this.pairs = new Array<Models.Pair>();
       this.animations = new Array<Models.Animation>();
+      this.finalAnimations = new Array<Models.FinalAnimation>();
       this.shuffledAnimations = new Array<Models.Animation>();
     }
 
