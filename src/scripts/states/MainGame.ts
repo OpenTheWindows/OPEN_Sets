@@ -21,19 +21,14 @@ module OPENSets.State {
     }
 
     create(): void {
-      if (this.mainGameService.isGameFinished()) {
-        this.game.state.start('start');
-      }
-      else {
-        this.sceneGroup = this.game.add.group();
-        this.drawScene();
+      this.sceneGroup = this.game.add.group();
+      this.drawScene();
 
-        this.wrongOptions = this.game.add.group();
-        this.drawGameModel();
+      this.wrongOptions = this.game.add.group();
+      this.drawGameModel();
 
-        this.unhappySound = this.add.audio('audio-wrong-option');
-        this.happySound = this.add.audio('audio-right-option');
-      }
+      this.unhappySound = this.add.audio('audio-wrong-option');
+      this.happySound = this.add.audio('audio-right-option');
     }
 
     drawScene(): void {
@@ -113,13 +108,11 @@ module OPENSets.State {
       rightOptionTransition.onComplete.add(() => {
         transitionSound.stop();
         this.wrongOptions.destroy();
-
-        if (!this.mainGameService.isLastPair()) {
+        if (!this.mainGameService.isGameFinished()) {
           this.playHappyAnimationAndSound();
         }
         else {
           this.finalAnimationAndSound();
-
         }
       },
         this);
@@ -150,12 +143,12 @@ module OPENSets.State {
 
       for (let i: number = 0; i < lastAnimation.length; i++) {
 
-        var animation: Phaser.Sprite = this.game.add.sprite(
+        let animation: Phaser.Sprite = this.game.add.sprite(
           lastAnimation[i].x,
           lastAnimation[i].y,
           lastAnimation[i].name
         );
-        if (i != lastAnimation.length - 1) {
+        if (i !== lastAnimation.length - 1) {
           animation.animations.add('a', lastAnimation[i].frames);
           animation.animations.play('a', lastAnimation[i].frameRate, true);
           this.sceneGroup.setAll('alpha', 0.2);

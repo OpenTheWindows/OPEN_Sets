@@ -30,10 +30,6 @@ module OPENSets.Services {
       return this.gameState.isGameFinished();
     }
 
-    isLastPair(): boolean {
-      return this.gameState.isLastPair();
-    }
-
     getRandomAnimation(): Models.Animation {
       return this.gameState.getAnimation();
     }

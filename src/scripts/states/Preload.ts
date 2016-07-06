@@ -81,7 +81,7 @@ module OPENSets.State {
           this.finalAnimationFrameMax);
       }
 
-      this.preloadService.setFinalAnimations(lastAnimations);
+      this.preloadService.setFinalAnimation(lastAnimations);
     }
   }
 }

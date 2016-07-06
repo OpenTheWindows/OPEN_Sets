@@ -6,7 +6,7 @@ module OPENSets.Helpers {
     private wrongTriesTreshold: number;
     private pairs: Array<Models.Pair>;
     private animations: Array<Models.Animation>;
-    public finalAnimations: Array<Models.FinalAnimation>;
+    private finalAnimations: Array<Models.FinalAnimation>;
     private shuffledAnimations: Array<Models.Animation>;
 
     public static getInstance(): GameState {
@@ -59,7 +59,7 @@ module OPENSets.Helpers {
       this.animations = animations;
     }
 
-    setFinalAnimations(finalAnimations: Array<Models.FinalAnimation>): void {
+    setFinalAnimation(finalAnimations: Array<Models.FinalAnimation>): void {
       this.finalAnimations = finalAnimations;
     }
 
@@ -70,16 +70,13 @@ module OPENSets.Helpers {
     getFinalAnimation(): Array<Models.FinalAnimation> {
       return this.finalAnimations;
     }
+
     getAnimation(): Models.Animation {
       return this.shuffledAnimations[this.iteration];
     }
 
     isGameFinished(): boolean {
       return this.iteration >= this.pairs.length;
-    }
-
-    isLastPair(): boolean {
-      return this.iteration == this.pairs.length;
     }
   }
 }
