@@ -10,9 +10,6 @@ module OPENSets.State {
     public sceneGroup: Phaser.Group;
     public nextButton: Phaser.Button;
 
-    private iteration: number;
-    private isLastPair: boolean;
-    private gameState: Helpers.GameState;
     private mainGameService: Services.MainGameManagementService;
 
     constructor() {
@@ -112,7 +109,7 @@ module OPENSets.State {
           this.playHappyAnimationAndSound();
         }
         else {
-          this.finalAnimationAndSound();
+          this.playFinalAnimationAndSound();
         }
       },
         this);
@@ -137,7 +134,7 @@ module OPENSets.State {
       }, this);
     }
 
-    finalAnimationAndSound(): void {
+    playFinalAnimationAndSound(): void {
       let lastAnimation: Models.FinalAnimation[] = this.mainGameService.getFinalAnimation();
       let lastAnimationFinished: boolean = false;
 
