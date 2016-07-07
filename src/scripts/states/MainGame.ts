@@ -135,7 +135,7 @@ module OPENSets.State {
     }
 
     playFinalAnimationAndSound(): void {
-      let lastAnimation: Models.FinalAnimation[] = this.mainGameService.getFinalAnimation();
+      let lastAnimation: Array<Models.FinalAnimation> = this.mainGameService.getFinalAnimation();
       let lastAnimationFinished: boolean = false;
 
       for (let i: number = 0; i < lastAnimation.length; i++) {

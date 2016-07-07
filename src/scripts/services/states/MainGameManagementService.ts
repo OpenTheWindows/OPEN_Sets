@@ -34,7 +34,7 @@ module OPENSets.Services {
       return this.gameState.getAnimation();
     }
 
-      getFinalAnimation(): Models.FinalAnimation[] {
+    getFinalAnimation(): Array<Models.FinalAnimation> {
       return this.gameState.getFinalAnimation();
     }
   }
