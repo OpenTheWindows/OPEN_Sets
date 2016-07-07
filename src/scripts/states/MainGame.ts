@@ -149,7 +149,7 @@ module OPENSets.State {
           lastAnimation[i].name
         );
 
-        let isAnimationFinished = (i !== lastAnimation.length - 1);
+        let isAnimationFinished: boolean = (i !== lastAnimation.length - 1);
 
         if (isAnimationFinished) {
           animation.animations.add('a', lastAnimation[i].frames);
