@@ -148,7 +148,10 @@ module OPENSets.State {
           lastAnimation[i].y,
           lastAnimation[i].name
         );
-        if (i !== lastAnimation.length - 1) {
+
+        let isAnimationFinished = (i !== lastAnimation.length - 1);
+
+        if (isAnimationFinished) {
           animation.animations.add('a', lastAnimation[i].frames);
           animation.animations.play('a', lastAnimation[i].frameRate, true);
           this.sceneGroup.setAll('alpha', 0.2);
