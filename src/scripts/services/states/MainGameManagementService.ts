@@ -33,5 +33,9 @@ module OPENSets.Services {
     getRandomAnimation(): Models.Animation {
       return this.gameState.getAnimation();
     }
+
+    getFinalAnimation(): Array<Models.FinalAnimation> {
+      return this.gameState.getFinalAnimation();
+    }
   }
 }

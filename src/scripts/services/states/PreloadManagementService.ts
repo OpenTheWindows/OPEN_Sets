@@ -18,5 +18,9 @@ module OPENSets.Services {
     setAnimations(animations: Array<Models.Animation>): void {
       this.gameState.setAnimations(animations);
     }
+
+    setFinalAnimation(finalAnimation: Array<Models.FinalAnimation>): void {
+      this.gameState.setFinalAnimation(finalAnimation);
+    }
   }
 }

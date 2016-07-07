@@ -1,0 +1,65 @@
+[
+  {
+    "x": 50,
+    "y": 300,
+    "name": "balloon",
+    "frames": null,
+    "frameRate": 5
+  },
+  {
+    "x": 250,
+    "y": 300,
+    "name": "balloon",
+    "frames": [4, 5, 6, 7, 8, 9, 1, 2, 3],
+    "frameRate": 5
+  },
+  {
+    "x": 450,
+    "y": 300,
+    "name": "balloon",
+    "frames": null,
+    "frameRate": 5
+  },
+  {
+    "x": 650,
+    "y": 300,
+    "name": "balloon",
+    "frames": [6, 7, 8, 9, 1, 2, 3, 4, 5],
+    "frameRate": 5
+  },
+  {
+    "x": 850,
+    "y": 300,
+    "name": "balloon",
+    "frames": null,
+    "frameRate": 5
+  },
+  {
+    "x": 1100,
+    "y": 300,
+    "name": "balloon",
+    "frames": [4, 5, 6, 7, 8, 9, 1, 2, 3],
+    "frameRate": 5
+  },
+  {
+    "x": 1300,
+    "y": 300,
+    "name": "balloon",
+    "frames": null,
+    "frameRate": 5
+  },
+  {
+    "x": 1500,
+    "y": 300,
+    "name": "balloon",
+    "frames": [4, 5, 6, 7, 8, 9, 1, 2, 3],
+    "frameRate": 5
+  },
+   {
+    "x": 1650,
+    "y": 300,
+    "name": "balloon",
+    "frames": [6, 7, 8, 9, 1, 2, 3, 4, 5],
+    "frameRate": 5
+  }
+]
