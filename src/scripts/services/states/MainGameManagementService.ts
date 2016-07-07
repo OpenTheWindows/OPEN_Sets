@@ -36,6 +36,10 @@ module OPENSets.Services {
       return this.gameState.getAnimation();
     }
 
+    getFinalAnimation(): Array<Models.FinalAnimation> {
+      return this.gameState.getFinalAnimation();
+    }
+
     gameFinished(): void {
       this.statisticsService.endGame();
     }

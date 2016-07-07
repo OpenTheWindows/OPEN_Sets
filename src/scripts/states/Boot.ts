@@ -10,13 +10,15 @@ module OPENSets.State {
       // Load happy animations from json
       this.load.text('happy-animations', 'assets/happy-animations.json');
 
+      // Load final animation from json
+      this.load.text('final-animation', 'assets/final-animation.json');
+
       this.load.image('loader', 'assets/images/loader.png');
       this.load.image('sets-logo', 'assets/images/sets-logo.png');
-      this.load.spritesheet('play-button', 'assets/images/play-button.png', 160, 160);
-      this.load.image('frame', 'assets/images/frame.png');
-      this.load.spritesheet('next-button', 'assets/images/next-button.png', 254, 141);
       this.load.image('wrong', 'assets/images/wrong.png');
-
+      this.load.image('frame', 'assets/images/frame.png');
+      this.load.spritesheet('play-button', 'assets/images/play-button.png', 160, 160);
+      this.load.spritesheet('next-button', 'assets/images/next-button.png', 254, 141);
       // Load sounds
       this.load.audio('audio-transition', 'assets/sounds/audio-transition.wav');
       this.load.audio('audio-right-option', 'assets/sounds/audio-right-option.mp3');

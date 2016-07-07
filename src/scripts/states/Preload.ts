@@ -4,6 +4,9 @@ module OPENSets.State {
 
     private pairsImagesPrefix: string;
     private animationsPrefix: string;
+    private finalAnimationFrameWidth: number;
+    private finalAnimationFrameHeight: number;
+    private finalAnimationFrameMax: number;
     private imageSuffix: string = '.png';
     private jsonSuffix: string = '.json';
 
@@ -19,6 +22,7 @@ module OPENSets.State {
       this.loadCongif();
       this.loadPairs();
       this.loadAnimations();
+      this.loadFinalAnimation();
     }
 
     create(): void {
@@ -31,6 +35,9 @@ module OPENSets.State {
       this.preloadService.setWrongTriesTreshold(config.wrongTriesTreshold);
       this.pairsImagesPrefix = config.pairsPath;
       this.animationsPrefix = config.animationsPath;
+      this.finalAnimationFrameWidth = config.finalAnimationFrameWidth;
+      this.finalAnimationFrameHeight = config.finalAnimationFrameHeight;
+      this.finalAnimationFrameMax = config.finalAnimationFrameMax;
     }
 
     loadPairs(): void {
@@ -60,6 +67,21 @@ module OPENSets.State {
       }
 
       this.preloadService.setAnimations(animations);
+    }
+
+    loadFinalAnimation(): void {
+      let lastAnimations: Array<Models.FinalAnimation> = JSON.parse(this.game.cache.getText('final-animation'));
+
+      for (let animation of lastAnimations) {
+        this.load.spritesheet(
+          animation.name,
+          this.animationsPrefix + animation.name + this.imageSuffix,
+          this.finalAnimationFrameWidth,
+          this.finalAnimationFrameHeight,
+          this.finalAnimationFrameMax);
+      }
+
+      this.preloadService.setFinalAnimation(lastAnimations);
     }
   }
 }
