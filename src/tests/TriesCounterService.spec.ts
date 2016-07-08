@@ -7,7 +7,7 @@ namespace OPENSets.Tests {
       counter = new Services.TriesCounterService();
     });
 
-    it('givenCounterService_whenNoWrongTriesAreMade_shouldBeFalsy', () => {
+    it('isThresholdPassed_whenNoWrongTriesAreMade_shouldBeFalsy', () => {
       // Arrange
       let gameState: Helpers.GameState = Helpers.GameState.getInstance();
 
@@ -18,7 +18,7 @@ namespace OPENSets.Tests {
       expect(result).toBeFalsy();
     });
 
-    it('givenCounterService_whenNoSixTriesAreMade_shouldBeTruthy', () => {
+    it('isThresholdPassed_whenNoSixTriesAreMade_shouldBeTruthy', () => {
       // Arrange
       let gameState: Helpers.GameState = Helpers.GameState.getInstance();
 
