@@ -96,6 +96,8 @@ module OPENSets.State {
     }
 
     rightOptionClicked(item: Phaser.Button): void {
+      this.mainGameService.iterationFinished();
+
       let transitionSound: Phaser.Sound = this.add.audio('audio-transition', 1, true);
       item.inputEnabled = false;
       this.disableWrongOptions();
