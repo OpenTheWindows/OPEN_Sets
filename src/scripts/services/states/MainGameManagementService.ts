@@ -10,7 +10,7 @@ module OPENSets.Services {
       this.gameState = Helpers.GameState.getInstance();
       this.gameModelGenerationService = new Services.GameModelGenerationService();
       this.triesCounter = new Services.TriesCounterService();
-      this.statisticsService = new Services.StatisticsService();
+      this.statisticsService = Services.StatisticsService.getInstance();
     }
 
     isThresholdPassed(): boolean {
@@ -28,10 +28,6 @@ module OPENSets.Services {
         this.gameState.getPairs());
     }
 
-    isGameFinished(): boolean {
-      return this.gameState.isGameFinished();
-    }
-
     getRandomAnimation(): Models.Animation {
       return this.gameState.getAnimation();
     }
@@ -40,12 +36,16 @@ module OPENSets.Services {
       return this.gameState.getFinalAnimation();
     }
 
-    gameFinished(): void {
-      this.statisticsService.endGame();
+    isGameFinished(): boolean {
+      return this.gameState.isGameFinished();
     }
 
-    iterationFinished(misses: number): void {
-      this.statisticsService.updateGame(misses);
+    iterationFinished(): void {
+      this.statisticsService.updateGame(this.getTries());
+
+      if (this.isGameFinished()) {
+        this.statisticsService.endGame();
+      }
     }
   }
 }
