@@ -2,7 +2,7 @@ module.exports = function (config) {
   config.set({
     basePath: '',
 
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine-ajax','jasmine'],
     browsers: ['PhantomJS'],
     reporters: ['progress', 'coverage'],
     exclude: [],
@@ -19,7 +19,8 @@ module.exports = function (config) {
       'karma-phantomjs-launcher',
       'karma-sourcemap-loader',
       'karma-typescript-preprocessor',
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-jasmine-ajax'
     ],
 
     preprocessors: {

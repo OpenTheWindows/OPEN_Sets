@@ -3,12 +3,14 @@ module OPENSets.Services {
 
     private triesCounter: Services.TriesCounterService;
     private gameModelGenerationService: Services.GameModelGenerationService;
+    private statisticsService: Services.StatisticsService;
     private gameState: Helpers.GameState;
 
     constructor() {
       this.gameState = Helpers.GameState.getInstance();
       this.gameModelGenerationService = new Services.GameModelGenerationService();
       this.triesCounter = new Services.TriesCounterService();
+      this.statisticsService = Services.StatisticsService.getInstance();
     }
 
     isThresholdPassed(): boolean {
@@ -26,16 +28,24 @@ module OPENSets.Services {
         this.gameState.getPairs());
     }
 
-    isGameFinished(): boolean {
-      return this.gameState.isGameFinished();
-    }
-
     getRandomAnimation(): Models.Animation {
       return this.gameState.getAnimation();
     }
 
     getFinalAnimation(): Array<Models.FinalAnimation> {
       return this.gameState.getFinalAnimation();
+    }
+
+    isGameFinished(): boolean {
+      return this.gameState.isGameFinished();
+    }
+
+    iterationFinished(): void {
+      this.statisticsService.updateGame(this.getTries());
+
+      if (this.isGameFinished()) {
+        this.statisticsService.endGame();
+      }
     }
   }
 }

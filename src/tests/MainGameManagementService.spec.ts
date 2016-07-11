@@ -1,11 +1,11 @@
 namespace OPENSets.Tests {
   describe('MainGameManagementServiceTests', () => {
     let mainGameService: Services.MainGameManagementService;
-    let gameState: Helpers.GameState;
+    let gameState: Helpers.GameState = Helpers.GameState.getInstance();
+    let statisticsService: Services.StatisticsService = Services.StatisticsService.getInstance();
     let treshold: number = 6;
 
     beforeEach(() => {
-      gameState = Helpers.GameState.getInstance();
       gameState.setWrongTriesTreshold(treshold);
       mainGameService = new Services.MainGameManagementService();
     });
@@ -25,6 +25,26 @@ namespace OPENSets.Tests {
       // Assert
       expect(gameModel).toBeDefined();
       expect(mainGameService.getTries()).toBe(0);
+    });
+
+    it('iterationFinished_whenGameIsFinished_shouldCallUpdateAndEndStatistics', () => {
+      // Arrange
+      let wrongTries = 2;
+      spyOn(statisticsService, 'updateGame').and.callFake(() => { });
+      spyOn(statisticsService, 'endGame').and.callFake(() => { });
+      spyOn(mainGameService, 'isGameFinished').and.callFake(() => {
+        return true;
+      });
+      spyOn(mainGameService, 'getTries').and.callFake(() => {
+        return wrongTries;
+      });
+
+      // Act
+      mainGameService.iterationFinished();
+
+      // Assert
+      expect(statisticsService.updateGame).toHaveBeenCalledWith(wrongTries);
+      expect(statisticsService.endGame).toHaveBeenCalled();
     });
   });
 }
