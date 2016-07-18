@@ -31,7 +31,7 @@ module OPENSets.Services {
         }
       };
 
-      http.open('GET', 'http://localhost:3000/api/gameStarted/:' + this.gameName, true);
+      http.open('GET', 'http://localhost:3000/api/gameStarted/' + this.gameName, true);
       http.send();
     }
 
