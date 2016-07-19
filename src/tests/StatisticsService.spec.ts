@@ -32,7 +32,7 @@ namespace OPENSets.Tests {
       request.respondWith(response);
 
       // Assert
-      expect(request.url).toEqual('http://localhost:3000/api/gameStarted/:Sets');
+      expect(request.url).toEqual('http://localhost:3000/api/gameStarted/Sets');
       expect(instance.setGuid).toHaveBeenCalledWith(guid);
     });
 
