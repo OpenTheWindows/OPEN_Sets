@@ -27,10 +27,10 @@ app.on('ready', () => {
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
   const cursorSize = process.argv[1];
-  const cursorColor = process.argv[2];
+  const cursorColor = process.argv[2].charAt(0);
   let big = bigPrefix + cursorColor + bigSuffix;
   let small = smallPrefix + cursorColor + smallSuffix;
-  global.cursor = cursorSize === "b" ? big : small;
+  global.cursor = cursorSize === "m" ? big : small;
 
   const language = process.argv[3];
   global.language = language;
