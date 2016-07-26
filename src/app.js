@@ -18,8 +18,7 @@ app.on('ready', () => {
   // Initialize the window to our specified dimensions
   mainWindow = new BrowserWindow({
     width: 1500,
-    height: 820,
-    // icon: __dirname + '/otw.png'
+    height: 820
   });
 
   // Open the DevTools
@@ -31,8 +30,10 @@ app.on('ready', () => {
   const cursorColor = process.argv[2];
   let big = bigPrefix + cursorColor + bigSuffix;
   let small = smallPrefix + cursorColor + smallSuffix;
-
   global.cursor = cursorSize === "b" ? big : small;
+
+  const language = process.argv[3];
+  global.language = language;
 
   // Clear out the main window when the app is closed
   mainWindow.on('closed', () => {
