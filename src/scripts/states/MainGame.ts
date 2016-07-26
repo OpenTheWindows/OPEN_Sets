@@ -132,6 +132,7 @@ module OPENSets.State {
         this.sceneGroup.setAll('alpha', 0.2);
       }, this);
       happyAnimation.animations.play('happy', model.frameRate, false, true).onComplete.add(() => {
+        this.happySound.stop();
         this.sceneGroup.setAll('alpha', 1);
         this.nextButton.visible = true;
       }, this);
