@@ -1,6 +1,7 @@
 module OPENSets {
   export class Game extends Phaser.Game {
-    constructor() {
+
+    constructor(language?: string) {
       super({
         width: 1700,
         height: 820,
@@ -13,7 +14,7 @@ module OPENSets {
       this.state.add('start', State.Start);
       this.state.add('mainGame', State.MainGame);
 
-      this.state.start('boot');
+      this.state.start('boot', true, false, language);
     }
   }
 }

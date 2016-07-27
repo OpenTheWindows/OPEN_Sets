@@ -11,14 +11,13 @@
     "node_modules",
     "typings/main",
     "typings/main.d.ts",
-    "src/scripts/states/*.ts",
+    "src/scripts/states",
     "src/scripts/*.ts",
     "src/vendor"
   ],
   "filesGlob": [
-    "/src/services/**/*.ts",
-    "/src/tests/**/*.ts",
-    "./typings/browser.d.ts"
+    "src/scripts/definitions/jasmine-ajax.d.ts",
+    "typings/browser.d.ts"
   ],
   "compileOnSave": false,
   "buildOnSave": false

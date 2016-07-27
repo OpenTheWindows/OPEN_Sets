@@ -13,12 +13,15 @@ OPEN_Sets/
  |
  ├──src/                                * our source files for the game and the logic
  |   ├──index.html                      * where we start our Phaser game
- │   │        
+ │   ├──app.js                          * the Electron main 'process' script
+ │   ├──config.js                       * file that contains our game's configuration parameters
+ │   │ 
  │   ├──scripts/                        
- │   │   ├──services/                   * folder that holds the services for the game logic
- │   │   ├──states/                     * folder that holds our game's Phaser states
+ │   │   ├──definitions/                * folder that holds the typescript definition files (d.ts) for the js libraries we use
+ │   │   ├──helpers/                    * folder that holds the helpers: GameState is a singleton that holds the game's state 
  │   │   ├──models/                     * folder that holds our models
- │   │   ├──definitions/                * folder that holds the Phaser's typescript definitions
+ │   │   ├──services/                   * folder that holds the services for the game logic and management services for the Phaser states
+ │   │   ├──states/                     * folder that holds our game's Phaser states
  │   │   └──Game.ts                     * our Phaser game file
  │   │        
  │   ├──tests/                          * folder that holds the tests for the services
@@ -28,10 +31,13 @@ OPEN_Sets/
  │   └──assets/                         * folder that holds the assets
  │       ├──animations/                 * animation atlases are stored here
  │       ├──images/                     * images are stored here
+ │       ├──pairs/                      * images of the pairs are stored here
  │       ├──pointers/                   * pointer images are stored here
- │       └──sounds/                     * sounds are stored here  
+ │       ├──sounds/                     * sounds are stored here  
+ │       ├──final-animation.json        * file that contains information for the frames of the final game animation 
+ │       ├──happy-animations.json       * file that contains all the happy animations for the game
+ │       └──pairs.json                  * file that contains all the pairs for the game
  │        
- ├──app.js                              * the electron main 'process' script
  ├──bower.json                          * what bower uses to install phaser
  ├──gulpfile.js                         * gulp file with the core tasks
  ├──karma.conf.js                       * config for the karma test runner

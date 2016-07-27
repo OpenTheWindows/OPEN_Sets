@@ -20,12 +20,6 @@ module OPENSets.State {
       let logo: Phaser.Sprite = this.game.add.sprite(this.game.world.centerX, 30, 'sets-logo');
       logo.anchor.setTo(0.5, 0);
 
-      this.game.add.text(
-        this.game.world.centerX - 85,
-        this.game.world.centerY - 100,
-        'Парови',
-        { fill: 'white', fontSize: '48px' });
-
       let startButton: Phaser.Button = this.game.add.button(
         this.game.world.centerX,
         this.game.world.centerY + 190,
